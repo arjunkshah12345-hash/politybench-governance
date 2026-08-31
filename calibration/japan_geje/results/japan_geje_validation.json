@@ -1,0 +1,31 @@
+{
+  "pre_event_window": "2010-01 to 2011-02",
+  "event": "2011-03 synthetic GEJE-intensity shock",
+  "validation_window": "2011-2016",
+  "pre_event_mean_damage": 0.0,
+  "event_damage": 0.5199883632716407,
+  "rmse_reconstruction_progress": 0.21668138947666138,
+  "simulated_progress": {
+    "2011": 0.5522408614717048,
+    "2012": 0.642470069773402,
+    "2013": 0.7147498865168255,
+    "2014": 0.7725942986634238,
+    "2015": 0.8188431253657158,
+    "2016": 0.8557880190694738
+  },
+  "observed_progress_scaffold": {
+    "2011": 0.15,
+    "2012": 0.35,
+    "2013": 0.55,
+    "2014": 0.7,
+    "2015": 0.82,
+    "2016": 0.9
+  },
+  "peak_displacement_sim": 795741.4268924012,
+  "fixture_displacement_peak": 470000,
+  "limitations": [
+    "Regional aggregate, not prefecture-resolved Tohoku model",
+    "Reconstruction Agency figures used as trajectory-shape targets via public scaffolds",
+    "Validation case only \u2014 not a leaderboard scenario"
+  ]
+}

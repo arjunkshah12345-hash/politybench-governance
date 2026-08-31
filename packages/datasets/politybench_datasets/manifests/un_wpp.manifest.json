@@ -1,0 +1,30 @@
+{
+  "dataset_id": "un_wpp",
+  "frozen_at": "2026-08-31T00:57:08.202300+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "un_wpp",
+      "indicator": "population_total",
+      "provider": "UN WPP",
+      "country": "GRC",
+      "vintage": "2024-revision-fixture",
+      "units": "persons",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "Check UN terms; generally attributable",
+        "attribution": "United Nations World Population Prospects",
+        "source_terms_id": "un-wpp-terms",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "population.un.org/wpp",
+      "download_sha256": "d765b1aa2beb98e69994541c4edad01b767888bed08427fafd43da279056a33f",
+      "transformations": [],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "9494b415c2a0bda8a04ff44797a884c1e90ba45ec4d630521929d21b8b45e663"
+}

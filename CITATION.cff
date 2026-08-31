@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: PolityBench
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - name: PolityBench Research Contributors
+version: 0.1.0
+date-released: "2026-08-30"
+abstract: >-
+  A research-grade longitudinal benchmark for evaluating constitutionally
+  constrained AI executive agents in hybrid country-governance simulations
+  under uncertainty. Not a policy oracle.
+license: Apache-2.0

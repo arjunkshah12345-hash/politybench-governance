@@ -1,0 +1,32 @@
+{
+  "dataset_id": "imf_weo",
+  "frozen_at": "2026-08-31T00:57:08.202137+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "imf_weo",
+      "indicator": "NGDP_RPCH",
+      "provider": "IMF WEO (synthetic scaffold)",
+      "country": "GRC",
+      "vintage": "synthetic-2026-08",
+      "units": "percent or index per series",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "Synthetic open scaffold for CI \u2014 not official IMF redistribution",
+        "attribution": "Synthetic series patterned on publicly discussed IMF WEO magnitudes (not a data dump)",
+        "source_terms_id": "politybench-synthetic-scaffold",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "imf.org/weo (adapter; raw restricted)",
+      "download_sha256": "37a326fb25093e0e655bf974a843da50678c08c7924d82dfbb996657757a12b4",
+      "transformations": [
+        "synthetic_scaffold"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "calibration_scaffold"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "7ec6f56b4cbc6ab729126848c0f9b9015b5d8459b703cee343c361cd2201da2c"
+}

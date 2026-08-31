@@ -1,0 +1,32 @@
+{
+  "dataset_id": "era5",
+  "frozen_at": "2026-08-31T00:57:08.202571+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "era5",
+      "indicator": "t2m_precip_reanalysis",
+      "provider": "Copernicus/ECMWF",
+      "country": "global",
+      "vintage": "adapter-only",
+      "units": "K / m",
+      "frequency": "hourly",
+      "license": {
+        "redistribution_allowed": false,
+        "commercial_reuse": "Copernicus license \u2014 check redistribution",
+        "attribution": "Copernicus Climate Change Service ERA5",
+        "source_terms_id": "copernicus-era5",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "cds.climate.copernicus.eu",
+      "download_sha256": null,
+      "transformations": [
+        "adapter_no_redistribution"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "hazard_climate"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "a650e1485b7186dacd147767645f1b740a756b51af09c4a79abcedaa2ab03148"
+}

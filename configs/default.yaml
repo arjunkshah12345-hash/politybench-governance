@@ -1,0 +1,4 @@
+{
+  "scenario": "hold_current",
+  "note": "Default configs live in code; YAML hooks for future strict schema validation"
+}

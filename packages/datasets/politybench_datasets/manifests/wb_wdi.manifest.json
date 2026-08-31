@@ -1,0 +1,105 @@
+{
+  "dataset_id": "wb_wdi",
+  "frozen_at": "2026-08-31T00:57:08.201810+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "wb_wdi",
+      "indicator": "NY.GDP.MKTP.KD",
+      "provider": "World Bank",
+      "country": "GRC",
+      "vintage": "2026-08-frozen-fixture",
+      "units": "constant USD index",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "CC BY 4.0 with World Bank additional terms",
+        "attribution": "World Bank World Development Indicators",
+        "source_terms_id": "worldbank-cc-by-4.0",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "api.worldbank.org/v2/country/GRC/indicator/NY.GDP.MKTP.KD",
+      "download_sha256": "37fb01a04d15b2e387617d726989559dc4c5544d21fe6402a459f641958fa956",
+      "transformations": [
+        "fixture_or_api",
+        "year_index"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    },
+    {
+      "dataset_id": "wb_wdi",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "provider": "World Bank",
+      "country": "GRC",
+      "vintage": "2026-08-frozen-fixture",
+      "units": "percent",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "CC BY 4.0 with World Bank additional terms",
+        "attribution": "World Bank World Development Indicators",
+        "source_terms_id": "worldbank-cc-by-4.0",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "api.worldbank.org/v2/country/GRC/indicator/SL.UEM.TOTL.ZS",
+      "download_sha256": "312529f94523deb856dacef410b5523982dcad34f618273ede345b67bdff163a",
+      "transformations": [
+        "fixture_or_api",
+        "year_index"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    },
+    {
+      "dataset_id": "wb_wdi",
+      "indicator": "FP.CPI.TOTL.ZG",
+      "provider": "World Bank",
+      "country": "GRC",
+      "vintage": "2026-08-frozen-fixture",
+      "units": "percent",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "CC BY 4.0 with World Bank additional terms",
+        "attribution": "World Bank World Development Indicators",
+        "source_terms_id": "worldbank-cc-by-4.0",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "api.worldbank.org/v2/country/GRC/indicator/FP.CPI.TOTL.ZG",
+      "download_sha256": "843c9163defebec69bfca23486e0bccc87a508a15698ed5079224f91e5d72bc0",
+      "transformations": [
+        "fixture_or_api",
+        "year_index"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    },
+    {
+      "dataset_id": "wb_wdi",
+      "indicator": "GC.DOD.TOTL.GD.ZS",
+      "provider": "World Bank",
+      "country": "GRC",
+      "vintage": "2026-08-frozen-fixture",
+      "units": "percent of GDP",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "CC BY 4.0 with World Bank additional terms",
+        "attribution": "World Bank World Development Indicators",
+        "source_terms_id": "worldbank-cc-by-4.0",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "api.worldbank.org/v2/country/GRC/indicator/GC.DOD.TOTL.GD.ZS",
+      "download_sha256": "ea381ffff582191693abe34fea1b8712f4dad5fc03f7d08fc12e36d024813f71",
+      "transformations": [
+        "fixture_or_api",
+        "year_index"
+      ],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "f60c7cc1c257808d79748833a7d02e6e1b5bd6341b70b8381d75729f8568f355"
+}

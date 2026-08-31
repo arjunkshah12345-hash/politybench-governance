@@ -1,0 +1,30 @@
+{
+  "dataset_id": "noaa_ibtracs",
+  "frozen_at": "2026-08-31T00:57:08.202801+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "noaa_ibtracs",
+      "indicator": "tropical_cyclone_tracks_sample",
+      "provider": "NOAA",
+      "country": "global",
+      "vintage": "sample",
+      "units": "track points",
+      "frequency": "event",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "US Government work / NOAA terms",
+        "attribution": "NOAA IBTrACS",
+        "source_terms_id": "noaa-ibtracs",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "ncei.noaa.gov/products/international-best-track-archive",
+      "download_sha256": "b09a00feb22a1a76b2c6e29c347d3a0b47b11b7d2e7f72c3796e01b19f241b78",
+      "transformations": [],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "5bdf2d51e8af92138678aa33d40f8763f3545b30c313268564a61e7006ab389a"
+}

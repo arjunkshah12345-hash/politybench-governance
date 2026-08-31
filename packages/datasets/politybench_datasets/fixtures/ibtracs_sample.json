@@ -1,0 +1,7 @@
+{
+  "vintage": "sample",
+  "note": "Minimal IBTrACS-shaped metadata sample for adapter tests",
+  "tracks": [
+    {"sid": "2011001N10000", "name": "SYNTH_STORM", "season": 2011, "basin": "WP", "max_wind_kt": 90}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "dataset_id": "who_gho",
+  "frozen_at": "2026-08-31T00:57:08.202463+00:00",
+  "benchmark_version": "0.1.0",
+  "series": [
+    {
+      "dataset_id": "who_gho",
+      "indicator": "WHOSIS_000001",
+      "provider": "WHO GHO",
+      "country": "GRC",
+      "vintage": "2026-08-frozen",
+      "units": "life expectancy years",
+      "frequency": "annual",
+      "license": {
+        "redistribution_allowed": true,
+        "commercial_reuse": "WHO GHO terms \u2014 attribution required",
+        "attribution": "WHO Global Health Observatory",
+        "source_terms_id": "who-gho-terms",
+        "checked_at": "2026-08-30"
+      },
+      "source_url_identifier": "www.who.int/data/gho",
+      "download_sha256": "d6a7209e896d28c8149e8e7f8e02e50b48b0e1f502516c03e36959f8d3ef3f03",
+      "transformations": [],
+      "missing_value_policy": "ffill_then_nan",
+      "calibration_usage": "baseline"
+    }
+  ],
+  "extra": {},
+  "manifest_sha256": "d280a221c7dce205fc4917636b03f11eaf16a19498df07d50cde3fad113f3278"
+}

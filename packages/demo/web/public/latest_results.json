@@ -1,0 +1,102 @@
+{
+  "scenario": "macro_fiscal_crisis",
+  "seeds": 8,
+  "robust_scores": {
+    "hold_policy": 23.358243613851826,
+    "rule_based": 18.90044150275934,
+    "random_valid": 23.170779125205083,
+    "simple_mpc": 29.789560669748294
+  },
+  "mean_utility": {
+    "hold_policy": 0.24745482474338587,
+    "rule_based": 0.20828186057783188,
+    "random_valid": 0.24572463331941483,
+    "simple_mpc": 0.35288101907896147
+  },
+  "mean_dims": {
+    "hold_policy": {
+      "economic": 0.5279895137159261,
+      "human": 0.7962547736163847,
+      "stability": 0.7289328339830441,
+      "equity": 0.001353563735890304,
+      "resilience": 0.9248479460306095,
+      "legitimacy": 0.9828317223220162,
+      "environment": 0.5834037860863843
+    },
+    "rule_based": {
+      "economic": 0.5133260714731599,
+      "human": 0.8312094145883063,
+      "stability": 0.7447420949048191,
+      "equity": 0.00010000000000000009,
+      "resilience": 0.9004037768527039,
+      "legitimacy": 0.9883338007713669,
+      "environment": 0.7076607099173964
+    },
+    "random_valid": {
+      "economic": 0.518774703929574,
+      "human": 0.7962547736163847,
+      "stability": 0.7181466691961864,
+      "equity": 0.0013159107276917697,
+      "resilience": 0.907310521150068,
+      "legitimacy": 0.9875621101828083,
+      "environment": 0.583347519128101
+    },
+    "simple_mpc": {
+      "economic": 0.6191336160279768,
+      "human": 0.8471503967738496,
+      "stability": 0.8181664331485886,
+      "equity": 0.05316665758124834,
+      "resilience": 0.9350805406845195,
+      "legitimacy": 0.9883338007713669,
+      "environment": 0.7080026443031264
+    }
+  },
+  "pareto_frontier": [
+    "simple_mpc"
+  ],
+  "weight_sensitivity": {
+    "hold_policy": {
+      "mean_rank": 2.077,
+      "rank_interval": [
+        2,
+        3
+      ],
+      "p_top1": 0.0
+    },
+    "rule_based": {
+      "mean_rank": 3.833,
+      "rank_interval": [
+        2,
+        4
+      ],
+      "p_top1": 0.0
+    },
+    "random_valid": {
+      "mean_rank": 3.09,
+      "rank_interval": [
+        2,
+        4
+      ],
+      "p_top1": 0.0
+    },
+    "simple_mpc": {
+      "mean_rank": 1.0,
+      "rank_interval": [
+        1,
+        1
+      ],
+      "p_top1": 1.0
+    }
+  },
+  "paired_rule_vs_hold": {
+    "paired_mean_diff": -0.03917296416555398,
+    "paired_median_diff": 0.01101636738491571,
+    "bootstrap_ci95": [
+      -0.09369947178163102,
+      0.004187811832023856
+    ],
+    "permutation_p": 0.2685,
+    "prob_superiority": 0.625,
+    "effect_size_matched": -0.537981185156485
+  }
+}

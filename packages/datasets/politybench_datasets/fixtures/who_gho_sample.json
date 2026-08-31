@@ -1,0 +1,12 @@
+{
+  "vintage": "2026-08-frozen",
+  "units": {
+    "WHOSIS_000001": "life expectancy years"
+  },
+  "series": {
+    "WHOSIS_000001": {
+      "years": [2005, 2010, 2015, 2018],
+      "values": [79.0, 80.2, 81.0, 81.4]
+    }
+  }
+}

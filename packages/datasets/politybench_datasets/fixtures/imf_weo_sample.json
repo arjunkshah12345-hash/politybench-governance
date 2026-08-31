@@ -1,0 +1,14 @@
+{
+  "vintage": "synthetic-2026-08",
+  "note": "Synthetic open scaffold approximating publicly discussed crisis magnitudes. NOT an IMF data redistribution.",
+  "series": {
+    "GRC:NGDP_RPCH": {
+      "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
+      "values": [-4.3, -5.5, -9.1, -7.3, -3.2, 0.7, -0.4, -0.2, 1.5, 1.9]
+    },
+    "GRC:GGXWDG_NGDP": {
+      "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
+      "values": [127, 146, 172, 160, 178, 180, 177, 181, 179, 186]
+    }
+  }
+}
