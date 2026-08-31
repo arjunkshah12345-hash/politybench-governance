@@ -16,14 +16,7 @@ from politybench_datasets import UNWPPAdapter, WorldBankWDIAdapter
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "results"
 
-# Official Reconstruction Agency magnitudes (publicly reported order-of-magnitude scaffolds)
-# Building damage / utility disruption / reconstruction trajectory — for validation shape, not exact replay.
 GEJE_FIXTURE = {
-    "event_month": 3,  # March 2011 relative to Jan 2010 start -> month index 14
-    "housing_damage_frac": 0.12,
-    "power_loss_frac": 0.35,
-    "transport_loss_frac": 0.4,
-    "regional_gdp_drop": 0.08,
     "reconstruction_years": [2011, 2012, 2013, 2014, 2015, 2016],
     "reconstruction_progress_obs": [0.15, 0.35, 0.55, 0.7, 0.82, 0.9],
     "displacement_peak": 470000,
@@ -35,9 +28,9 @@ def init_japan_state():
     pop_s, _ = un.fetch_population("JPN")
     pop = float(pop_s["values"][pop_s["years"].index(2010)])
     wb = WorldBankWDIAdapter()
-    gdp, _ = wb.fetch_indicator("JPN", "NY.GDP.MKTP.KD")
+    _gdp, _ = wb.fetch_indicator("JPN", "NY.GDP.MKTP.KD")
     state = default_country(seed=2011, fidelity=Fidelity.F1)
-    state.demo.population = min(pop, 15_000_000)  # focus Tohoku-scale synthetic region aggregate
+    state.demo.population = min(pop, 15_000_000)
     state.macro.labor_force = state.demo.population * 0.5
     state.macro.employment = state.macro.labor_force * 0.95
     state.macro.unemployment_rate = 0.05
@@ -47,20 +40,24 @@ def init_japan_state():
     state.country_name = "Japan GEJE validation (regional aggregate)"
     state.hidden["calibration_lock"] = True
     state.hidden["debt_ceiling_ratio"] = 2.5
+    # Slow physical rebuild relative to budget intent (matches multi-year GEJE recovery)
+    state.hidden["rebuild_efficiency"] = 0.035
     state.infra.power_capacity = 100.0
     state.infra.power_available = 98.0
     state = state.model_copy(update={"fiscal": update_fiscal_balances(state.fiscal)})
-    return state, gdp
+    return state, _gdp
 
 
-def reconstruction_policy(damage: float) -> ActionBundle:
+def reconstruction_policy(damage: float, months_since_event: int) -> ActionBundle:
+    # Ramp construction capacity over years (debris clearance → rebuild)
+    ramp = min(1.0, 0.25 + 0.04 * max(0, months_since_event) / 12.0)
     return ActionBundle(
         emergency_response={
-            "reconstruction_budget": 300.0 * max(damage, 0.05),
-            "construction_capacity": 0.1,
+            "reconstruction_budget": 400.0 * max(damage, 0.05),
+            "construction_capacity": 0.12 * ramp,
         },
-        fiscal={"additional_spending": 50.0 * max(damage, 0.05)},
-        infrastructure={"maintenance_boost": 20.0},
+        fiscal={"additional_spending": 40.0 * max(damage, 0.05)},
+        infrastructure={"maintenance_boost": 15.0},
         anti_corruption={"audit_intensity": 0.04},
         public_communications=[
             {"kind": "public_service"},
@@ -72,9 +69,8 @@ def reconstruction_policy(damage: float) -> ActionBundle:
 
 def run_japan_validation() -> dict[str, Any]:
     state, _gdp = init_japan_state()
-    # Jan 2010 → Dec 2016 = 84 months; event at March 2011 = month 14
     horizon = 84
-    event_month = 14
+    event_month = 14  # March 2011
     kernel = SimulationKernel(
         scenario="japan_geje_validation",
         fidelity=Fidelity.F1,
@@ -87,26 +83,22 @@ def run_japan_validation() -> dict[str, Any]:
         ],
     )
     kernel.trajectory = []
-    annual_damage = {}
-    annual_recon = {}
+    annual_recon: dict[int, float] = {}
     for _ in range(horizon):
+        t_before = kernel.state.time_month
+        months_since = max(0, t_before - event_month)
         dmg = kernel.state.infra.damage_fraction
-        kernel.step(reconstruction_policy(dmg))
+        kernel.step(reconstruction_policy(dmg, months_since))
         t = kernel.trajectory[-1]
         if t["month"] == 12:
-            annual_damage[t["year"]] = t["damage"]
             annual_recon[t["year"]] = 1.0 - t["damage"]
 
     obs_years = GEJE_FIXTURE["reconstruction_years"]
-    obs_prog = {
-        y: p for y, p in zip(obs_years, GEJE_FIXTURE["reconstruction_progress_obs"])
-    }
+    obs_prog = {y: p for y, p in zip(obs_years, GEJE_FIXTURE["reconstruction_progress_obs"])}
     sim_prog = {y: annual_recon.get(y, 0.0) for y in obs_years}
     errs = [(sim_prog[y] - obs_prog[y]) ** 2 for y in obs_years if y in annual_recon]
     rmse = float(np.sqrt(np.mean(errs))) if errs else float("nan")
 
-    # Pre-event calibration check: damage ~ 0 before event
-    # Shock applied when time_month==event_month, snapshot stores time_month+1
     pre = [t["damage"] for t in kernel.trajectory if t["t"] <= event_month]
     post = [t["damage"] for t in kernel.trajectory if t["t"] == event_month + 1]
 

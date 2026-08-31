@@ -110,13 +110,21 @@ class RuleBasedGovernment:
     name = "rule_based"
 
     def act(self, obs: Observation) -> ActionBundle:
-        debt = 0.0
+        debt_gdp = 0.8
         try:
-            debt = float(obs.government["debt"]["value"] or 0)
-            gdp = float(obs.economy["gdp_estimate"]["value"] or 1)
-            debt_gdp = debt / max(gdp, 1)
+            if obs.government.get("debt_gdp_estimate") and obs.government["debt_gdp_estimate"].get("value") is not None:
+                debt_gdp = float(obs.government["debt_gdp_estimate"]["value"])
+            else:
+                debt = float(obs.government["debt"]["value"] or 0)
+                gdp_monthly = float(obs.economy["gdp_estimate"]["value"] or 1)
+                debt_gdp = debt / max(gdp_monthly * 12.0, 1.0)
         except Exception:
             debt_gdp = 0.8
+
+        try:
+            gdp_monthly = float(obs.economy["gdp_estimate"]["value"] or 1)
+        except Exception:
+            gdp_monthly = 1.0
 
         unemp = 0.08
         try:
@@ -143,17 +151,22 @@ class RuleBasedGovernment:
         health: dict[str, Any] = {}
         emerg: dict[str, Any] = {}
         social: dict[str, Any] = {}
-        env: dict[str, Any] = {"clean_energy_invest": 0.002}
-        edu = {"funding_boost": 1.0}
+        env: dict[str, Any] = {"clean_energy_invest": 0.001}
+        edu = {"funding_boost": 0.5}
 
-        if debt_gdp > 1.0:
-            fiscal["spending_multiplier"] = 0.97
-            tax["income_tax_rate"] = 0.28
+        # Balanced crisis rules: avoid cliff-edge austerity that collapses welfare dimensions
+        if debt_gdp > 1.4:
+            fiscal["spending_multiplier"] = 0.99
+            tax["income_tax_rate"] = 0.27
             tax["enforcement_resources"] = 1.0
-        elif unemp > 0.12:
-            fiscal["spending_multiplier"] = 1.03
-            fiscal["additional_transfers"] = gdp * 0.001 if "gdp" in dir() else 50.0
-            social["transfer_boost"] = 20.0
+        elif debt_gdp > 1.0 and unemp < 0.14:
+            fiscal["spending_multiplier"] = 0.995
+            tax["enforcement_resources"] = 0.5
+        if unemp > 0.14:
+            fiscal["transfer_multiplier"] = 1.02
+            social["transfer_boost"] = max(5.0, gdp_monthly * 0.02)
+        if unemp > 0.12 and debt_gdp < 1.3:
+            fiscal["spending_multiplier"] = max(fiscal.get("spending_multiplier", 1.0), 1.01)
 
         if occ > 0.85:
             health["capacity_actions"] = [{"type": "add_beds", "amount": 200}]
@@ -161,9 +174,10 @@ class RuleBasedGovernment:
             health["capacity_actions"].append({"type": "vaccine", "coverage": 0.05})
 
         if damage > 0.05:
-            emerg["reconstruction_budget"] = max(100.0, damage * 500.0)
+            emerg["reconstruction_budget"] = max(50.0, damage * 200.0)
             emerg["construction_capacity"] = 0.08
-            fiscal["additional_spending"] = emerg["reconstruction_budget"] * 0.1
+            if debt_gdp < 1.5:
+                fiscal["additional_spending"] = emerg["reconstruction_budget"] * 0.05
 
         infected = 0.0
         try:
@@ -200,10 +214,17 @@ class SimpleMPCAgent:
 
     def act(self, obs: Observation) -> ActionBundle:
         base = RuleBasedGovernment().act(obs)
-        # Slightly more aggressive investment if cash-looking debt is moderate
         fiscal = dict(base.fiscal)
-        fiscal["capital_projects"] = [{"name": "grid_maintain", "budget": 30.0}]
-        return base.model_copy(update={"fiscal": fiscal, "education": {"funding_boost": 1.5}})
+        # Only invest when debt/GDP (annualized) is not extreme
+        try:
+            debt = float(obs.government["debt"]["value"] or 0)
+            gdp_m = float(obs.economy["gdp_estimate"]["value"] or 1)
+            debt_gdp = debt / max(gdp_m * 12.0, 1.0)
+        except Exception:
+            debt_gdp = 1.0
+        if debt_gdp < 1.25:
+            fiscal["capital_projects"] = [{"name": "grid_maintain", "budget": min(20.0, gdp_m * 0.05)}]
+        return base.model_copy(update={"fiscal": fiscal, "education": {"funding_boost": 1.0}})
 
 
 class PrivilegedOracleAgent:

@@ -60,6 +60,14 @@ def observe(
         government={
             "cash": _mv(state.fiscal.cash, "currency", period, released, noise(state.fiscal.cash * 0.01)),
             "debt": _mv(state.fiscal.debt, "currency", period, released, noise(state.fiscal.debt * 0.005), status),
+            "debt_gdp_estimate": _mv(
+                state.fiscal.debt / max(state.macro.gdp * 12.0, 1e-9),
+                "ratio",
+                period,
+                released,
+                noise(0.02),
+                status,
+            ),
             "approved_budget": {
                 "spending": state.fiscal.spending,
                 "transfers": state.fiscal.transfers,
@@ -67,6 +75,7 @@ def observe(
             "tax_receipts_estimate": _mv(
                 state.fiscal.tax_receipts, "currency", period, released, noise(state.fiscal.tax_receipts * 0.02)
             ),
+            "note": "gdp_estimate is a monthly flow; debt_gdp_estimate is annualized",
         },
         economy={
             "gdp_estimate": _mv(state.macro.gdp, "currency", qperiod, released, noise(state.macro.gdp * 0.01), status),

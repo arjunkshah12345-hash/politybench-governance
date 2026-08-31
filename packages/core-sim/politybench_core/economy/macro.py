@@ -68,10 +68,12 @@ def step_macro(state: CountryState, rng: NamedStream, policy: dict) -> CountrySt
     m.gdp = min(m.gdp, potential * 1.15)
 
     # Unemployment via Okun-style gap (bounded)
+    okun = float(hidden.get("okun_coef", 0.4))
+    natural_u = float(hidden.get("natural_u", 0.06))
     gap = (potential - m.gdp) / max(potential, 1.0)
     m.unemployment_rate = min(
         0.30,
-        max(0.03, 0.06 + 0.4 * gap + float(hidden.get("labor_shock", 0.0))),
+        max(0.03, natural_u + okun * gap + float(hidden.get("labor_shock", 0.0))),
     )
     m.employment = m.labor_force * (1.0 - m.unemployment_rate)
 
@@ -97,15 +99,16 @@ def step_macro(state: CountryState, rng: NamedStream, policy: dict) -> CountrySt
     m.imports = max(0.0, trade_open * m.consumption * (1.0 + 0.5 * m.inflation))
 
     # Productivity / capital
-    m.productivity *= 1.0 + productivity_drift + float(policy.get("education_productivity_boost", 0.0))
+    drift = productivity_drift + float(policy.get("education_productivity_boost", 0.0))
+    # Mild structural recovery channel when gap is closing (not year-indexed)
+    if gap < 0.05 and m.unemployment_rate > 0.12:
+        drift += float(hidden.get("recovery_drift_boost", 0.0))
+    m.productivity *= 1.0 + drift
     m.productivity *= 1.0 - 0.1 * state.infra.damage_fraction
     dep = 0.004  # monthly depreciation
     m.capital_stock = max(1.0, m.capital_stock * (1.0 - dep) + m.investment)
     m.capital_stock *= 1.0 - 0.3 * state.infra.damage_fraction
 
-    # Tax receipts
-    base = m.gdp * (f.tax_rate_income + f.tax_rate_vat * 0.5)
-    activity = 1.0 + tax_activity_elas * ((f.tax_rate_income - 0.25) / 0.25)
     # Tax receipts (monthly)
     base = m.gdp * (f.tax_rate_income + f.tax_rate_vat * 0.5)
     activity = 1.0 + tax_activity_elas * ((f.tax_rate_income - 0.25) / 0.25)
@@ -163,10 +166,11 @@ def step_macro(state: CountryState, rng: NamedStream, policy: dict) -> CountrySt
 
     m = enforce_gdp_identity(m)
 
-    # Decay transient shocks
+    # Decay transient shocks with configurable persistence
+    persist = float(hidden.get("demand_persist", 0.85))
     for key in ("active_demand_shock", "export_shock", "labor_shock", "info_shock"):
         if key in hidden:
-            hidden[key] = float(hidden[key]) * 0.85
+            hidden[key] = float(hidden[key]) * persist
 
     new_month = state.month + 1
     new_year = state.year
@@ -276,16 +280,18 @@ def reconstruct(state: CountryState, policy: dict) -> CountryState:
     infra = state.infra.model_copy(deep=True)
     budget = float(policy.get("reconstruction_budget", 0.0))
     capacity = float(policy.get("construction_capacity", 0.05))
-    progress = min(capacity, budget / max(state.macro.gdp * 0.01, 1e-9))
+    efficiency = float(state.hidden.get("rebuild_efficiency", 0.08))
+    # Progress scales with budget but is capped by physical construction capacity × efficiency
+    progress = min(capacity * efficiency, budget / max(state.macro.gdp * 12.0 * 0.05, 1e-9) * efficiency)
     # Corruption leakage on reconstruction
     progress *= 1.0 - state.governance.corruption_leakage
     infra.reconstruction_progress = min(1.0, infra.reconstruction_progress + progress)
-    infra.damage_fraction = max(0.0, infra.damage_fraction * (1.0 - 0.2 * progress))
+    infra.damage_fraction = max(0.0, infra.damage_fraction * (1.0 - 0.25 * progress))
     infra.power_available = infra.power_capacity * (1.0 - infra.damage_fraction)
     regions = []
     for r in state.regions:
         rr = r.model_copy(deep=True)
-        rr.damage = max(0.0, rr.damage * (1.0 - 0.15 * progress))
+        rr.damage = max(0.0, rr.damage * (1.0 - 0.2 * progress))
         rr.service_continuity = min(1.0, 1.0 - rr.damage)
         regions.append(rr)
     return state.model_copy(update={"infra": infra, "regions": regions})

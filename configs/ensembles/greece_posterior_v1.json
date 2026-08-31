@@ -1,0 +1,759 @@
+{
+  "benchmark_version": "0.1.0",
+  "ensemble_id": "greece_posterior_v1",
+  "frozen_at": "2026-08-31T01:16:02.459790+00:00",
+  "calibration_window": "2009-2013",
+  "holdout_window": "2014-2018",
+  "n_particles_searched": 48,
+  "n_particles_kept": 12,
+  "search_seed": 41823,
+  "param_bounds": {
+    "productivity_drift": [
+      -0.0035,
+      -0.0002
+    ],
+    "cons_income_elas": [
+      0.35,
+      0.75
+    ],
+    "inv_rate_elas": [
+      -1.0,
+      -0.2
+    ],
+    "tax_activity_elas": [
+      -0.6,
+      -0.1
+    ],
+    "okun_coef": [
+      0.35,
+      0.85
+    ],
+    "natural_u": [
+      0.06,
+      0.12
+    ],
+    "demand_persist": [
+      0.85,
+      0.97
+    ],
+    "export_shock0": [
+      -0.22,
+      -0.06
+    ],
+    "demand_shock0": [
+      -0.15,
+      -0.03
+    ],
+    "banking_shock": [
+      -0.1,
+      -0.02
+    ],
+    "demand_shock2": [
+      -0.1,
+      -0.02
+    ],
+    "tax_compliance0": [
+      0.6,
+      0.85
+    ],
+    "spend_share": [
+      0.18,
+      0.28
+    ],
+    "transfer_share": [
+      0.06,
+      0.14
+    ],
+    "austerity_spend": [
+      0.95,
+      0.995
+    ],
+    "austerity_transfer": [
+      0.96,
+      0.995
+    ],
+    "macro_noise": [
+      0.0005,
+      0.003
+    ],
+    "recovery_drift_boost": [
+      0.0,
+      0.0015
+    ]
+  },
+  "best_params": {
+    "productivity_drift": -0.00022025276415936026,
+    "cons_income_elas": 0.5449332370370557,
+    "inv_rate_elas": -0.7092760251980317,
+    "tax_activity_elas": -0.3669813086453203,
+    "okun_coef": 0.6048129561755445,
+    "natural_u": 0.0968300391618744,
+    "demand_persist": 0.8782539367283703,
+    "export_shock0": -0.14245633625914667,
+    "demand_shock0": -0.033272011659149045,
+    "banking_shock": -0.07855201876076709,
+    "demand_shock2": -0.06772221440614766,
+    "tax_compliance0": 0.7936488612951575,
+    "spend_share": 0.23663610541748314,
+    "transfer_share": 0.10102037900989483,
+    "austerity_spend": 0.9853832037999771,
+    "austerity_transfer": 0.9936258088907027,
+    "macro_noise": 0.0022192347798161032,
+    "recovery_drift_boost": 0.0013594587175943763
+  },
+  "particles": [
+    {
+      "productivity_drift": -0.00022025276415936026,
+      "cons_income_elas": 0.5449332370370557,
+      "inv_rate_elas": -0.7092760251980317,
+      "tax_activity_elas": -0.3669813086453203,
+      "okun_coef": 0.6048129561755445,
+      "natural_u": 0.0968300391618744,
+      "demand_persist": 0.8782539367283703,
+      "export_shock0": -0.14245633625914667,
+      "demand_shock0": -0.033272011659149045,
+      "banking_shock": -0.07855201876076709,
+      "demand_shock2": -0.06772221440614766,
+      "tax_compliance0": 0.7936488612951575,
+      "spend_share": 0.23663610541748314,
+      "transfer_share": 0.10102037900989483,
+      "austerity_spend": 0.9853832037999771,
+      "austerity_transfer": 0.9936258088907027,
+      "macro_noise": 0.0022192347798161032,
+      "recovery_drift_boost": 0.0013594587175943763
+    },
+    {
+      "productivity_drift": -0.0027609356815427835,
+      "cons_income_elas": 0.4842399512294911,
+      "inv_rate_elas": -0.21693082505565447,
+      "tax_activity_elas": -0.10690250062652334,
+      "okun_coef": 0.7064324742750865,
+      "natural_u": 0.0947312414974116,
+      "demand_persist": 0.8593051982442673,
+      "export_shock0": -0.1680399027056537,
+      "demand_shock0": -0.10400178267465458,
+      "banking_shock": -0.044504257228524996,
+      "demand_shock2": -0.09625755100751712,
+      "tax_compliance0": 0.768817515890982,
+      "spend_share": 0.24588944501340285,
+      "transfer_share": 0.06877298800845161,
+      "austerity_spend": 0.990186332913868,
+      "austerity_transfer": 0.9902914011392792,
+      "macro_noise": 0.0013945671737970531,
+      "recovery_drift_boost": 0.0012455012082480264
+    },
+    {
+      "productivity_drift": -0.0033797347605659268,
+      "cons_income_elas": 0.45167880731084376,
+      "inv_rate_elas": -0.5005184249704896,
+      "tax_activity_elas": -0.16615372469142364,
+      "okun_coef": 0.7842475785866098,
+      "natural_u": 0.0990574175082985,
+      "demand_persist": 0.8555534459172309,
+      "export_shock0": -0.10277698940258535,
+      "demand_shock0": -0.05482706820696618,
+      "banking_shock": -0.091803024034998,
+      "demand_shock2": -0.07213061394290457,
+      "tax_compliance0": 0.8005837078683482,
+      "spend_share": 0.24871644418027822,
+      "transfer_share": 0.13494331331918086,
+      "austerity_spend": 0.9924395600706619,
+      "austerity_transfer": 0.9625024422096984,
+      "macro_noise": 0.002125156334864394,
+      "recovery_drift_boost": 0.0011439993455167278
+    },
+    {
+      "productivity_drift": -0.0018482675497442222,
+      "cons_income_elas": 0.5491281176593386,
+      "inv_rate_elas": -0.30789702465514707,
+      "tax_activity_elas": -0.2960115478003903,
+      "okun_coef": 0.7408614139133105,
+      "natural_u": 0.11450689808015227,
+      "demand_persist": 0.9585802284901751,
+      "export_shock0": -0.08195590170034402,
+      "demand_shock0": -0.14837137012513565,
+      "banking_shock": -0.026247705482158126,
+      "demand_shock2": -0.023381907354422,
+      "tax_compliance0": 0.6059446989938052,
+      "spend_share": 0.21974136921595916,
+      "transfer_share": 0.12164633003539056,
+      "austerity_spend": 0.9878188539634544,
+      "austerity_transfer": 0.9718135715110373,
+      "macro_noise": 0.0029428277285527722,
+      "recovery_drift_boost": 0.0007975549437961171
+    },
+    {
+      "productivity_drift": -0.003005416098794011,
+      "cons_income_elas": 0.5268577659309425,
+      "inv_rate_elas": -0.6100158193781857,
+      "tax_activity_elas": -0.38873987978847996,
+      "okun_coef": 0.5369293806818458,
+      "natural_u": 0.083589469879923,
+      "demand_persist": 0.8516120322256688,
+      "export_shock0": -0.14236767655454471,
+      "demand_shock0": -0.07520296733220731,
+      "banking_shock": -0.07755248869897692,
+      "demand_shock2": -0.0273651163122352,
+      "tax_compliance0": 0.7039299947073295,
+      "spend_share": 0.2311727707631409,
+      "transfer_share": 0.08544445435771039,
+      "austerity_spend": 0.9874319120434514,
+      "austerity_transfer": 0.9674834639862817,
+      "macro_noise": 0.0013844797916509272,
+      "recovery_drift_boost": 0.0008121939041215037
+    },
+    {
+      "productivity_drift": -0.001373723141237274,
+      "cons_income_elas": 0.6211717046360499,
+      "inv_rate_elas": -0.44538501442967193,
+      "tax_activity_elas": -0.2841557922508273,
+      "okun_coef": 0.3641755761629174,
+      "natural_u": 0.08727465345011122,
+      "demand_persist": 0.8550219967417627,
+      "export_shock0": -0.19781480777673824,
+      "demand_shock0": -0.05062099382500912,
+      "banking_shock": -0.0957873912346017,
+      "demand_shock2": -0.038714799952660674,
+      "tax_compliance0": 0.6096648663192876,
+      "spend_share": 0.18081678094937986,
+      "transfer_share": 0.12121610332405436,
+      "austerity_spend": 0.9844941289415973,
+      "austerity_transfer": 0.9863660027420152,
+      "macro_noise": 0.0016439677412776646,
+      "recovery_drift_boost": 0.0011775935946920966
+    },
+    {
+      "productivity_drift": -0.0013150112849160992,
+      "cons_income_elas": 0.6416404853729507,
+      "inv_rate_elas": -0.5857102966013229,
+      "tax_activity_elas": -0.10695735501895626,
+      "okun_coef": 0.8169477995212284,
+      "natural_u": 0.0812073577005247,
+      "demand_persist": 0.9678984877627449,
+      "export_shock0": -0.08663364582764158,
+      "demand_shock0": -0.0371902921270401,
+      "banking_shock": -0.061766536592802575,
+      "demand_shock2": -0.07409931421083311,
+      "tax_compliance0": 0.692620371027804,
+      "spend_share": 0.2503890582566521,
+      "transfer_share": 0.11953360777005266,
+      "austerity_spend": 0.9677784775944094,
+      "austerity_transfer": 0.986580561500278,
+      "macro_noise": 0.0009753355063126383,
+      "recovery_drift_boost": 0.0013285287171972064
+    },
+    {
+      "productivity_drift": -0.0007022995685485062,
+      "cons_income_elas": 0.6407982529834158,
+      "inv_rate_elas": -0.43929926193318153,
+      "tax_activity_elas": -0.27816297084311603,
+      "okun_coef": 0.7671559609826069,
+      "natural_u": 0.09319531590290762,
+      "demand_persist": 0.8758891545920414,
+      "export_shock0": -0.061541146170402815,
+      "demand_shock0": -0.0550080364897579,
+      "banking_shock": -0.06365406570434412,
+      "demand_shock2": -0.03138978756282078,
+      "tax_compliance0": 0.713501161288709,
+      "spend_share": 0.27883633318806206,
+      "transfer_share": 0.08907990449930825,
+      "austerity_spend": 0.9615972629431017,
+      "austerity_transfer": 0.9929262998371977,
+      "macro_noise": 0.002596834571763826,
+      "recovery_drift_boost": 0.001434238614558544
+    },
+    {
+      "productivity_drift": -0.0005669708074401505,
+      "cons_income_elas": 0.6873301271548273,
+      "inv_rate_elas": -0.675011908390824,
+      "tax_activity_elas": -0.18089101264259355,
+      "okun_coef": 0.37473325467472435,
+      "natural_u": 0.07810969265148006,
+      "demand_persist": 0.8653732506125339,
+      "export_shock0": -0.20414858762576965,
+      "demand_shock0": -0.11861475438835149,
+      "banking_shock": -0.026175118427857292,
+      "demand_shock2": -0.06676009482690363,
+      "tax_compliance0": 0.8353399067808739,
+      "spend_share": 0.24866049817446595,
+      "transfer_share": 0.09523391128564906,
+      "austerity_spend": 0.9585513543697954,
+      "austerity_transfer": 0.9675594878307829,
+      "macro_noise": 0.0005554709978383952,
+      "recovery_drift_boost": 0.0013318063440821357
+    },
+    {
+      "productivity_drift": -0.0022058200663549097,
+      "cons_income_elas": 0.7012936701971173,
+      "inv_rate_elas": -0.47835701011042997,
+      "tax_activity_elas": -0.5715731038256164,
+      "okun_coef": 0.5484109638653735,
+      "natural_u": 0.09157664001199342,
+      "demand_persist": 0.9248239007672112,
+      "export_shock0": -0.07474541006984058,
+      "demand_shock0": -0.11933497041517768,
+      "banking_shock": -0.06532983648064733,
+      "demand_shock2": -0.049907267569711096,
+      "tax_compliance0": 0.6017528524900418,
+      "spend_share": 0.23367438100774604,
+      "transfer_share": 0.09456972049522043,
+      "austerity_spend": 0.9935951805595497,
+      "austerity_transfer": 0.9887751385672643,
+      "macro_noise": 0.0017181141170736572,
+      "recovery_drift_boost": 3.5410475908752404e-05
+    },
+    {
+      "productivity_drift": -0.0010540288000028175,
+      "cons_income_elas": 0.5873156225333482,
+      "inv_rate_elas": -0.46449032710504246,
+      "tax_activity_elas": -0.3378998754876748,
+      "okun_coef": 0.614102619368087,
+      "natural_u": 0.06261273669366492,
+      "demand_persist": 0.857438812574484,
+      "export_shock0": -0.06207149557357537,
+      "demand_shock0": -0.1433408921070724,
+      "banking_shock": -0.033424704590457606,
+      "demand_shock2": -0.06459390664926838,
+      "tax_compliance0": 0.8178759396635316,
+      "spend_share": 0.22337798112541088,
+      "transfer_share": 0.06961958138382951,
+      "austerity_spend": 0.9500413731515095,
+      "austerity_transfer": 0.9612763754493668,
+      "macro_noise": 0.0015084063016143436,
+      "recovery_drift_boost": 0.001381655174975793
+    },
+    {
+      "productivity_drift": -0.0020937626995868553,
+      "cons_income_elas": 0.7091717831751948,
+      "inv_rate_elas": -0.36828334365750964,
+      "tax_activity_elas": -0.3855697252626672,
+      "okun_coef": 0.8341541486287993,
+      "natural_u": 0.09113877741659743,
+      "demand_persist": 0.8535580966091469,
+      "export_shock0": -0.14044242837246756,
+      "demand_shock0": -0.10799170104848207,
+      "banking_shock": -0.08417654486954311,
+      "demand_shock2": -0.051912008980439184,
+      "tax_compliance0": 0.6631898156638795,
+      "spend_share": 0.20631836510480472,
+      "transfer_share": 0.13182188804576317,
+      "austerity_spend": 0.9632019526317379,
+      "austerity_transfer": 0.980115439778673,
+      "macro_noise": 0.0007140646086194778,
+      "recovery_drift_boost": 2.495698938370472e-05
+    }
+  ],
+  "weights": [
+    0.1881200809171409,
+    0.17945701820656168,
+    0.15263083442024167,
+    0.11619975949532167,
+    0.10940720069165782,
+    0.08365496812114774,
+    0.048753501279996794,
+    0.030811145262060226,
+    0.024027171469504054,
+    0.02282814119399362,
+    0.022257879237191656,
+    0.021852299705181988
+  ],
+  "elite_diagnostics": [
+    {
+      "cal_loss": 13.493227635543164,
+      "calibration": {
+        "rmse_gdp_index": 7.327202801654998,
+        "rmse_unemployment": 2.6787060374069673,
+        "rmse_debt_gdp": 0.11397003028609962
+      },
+      "holdout": {
+        "rmse_gdp_index": 16.314142665843637,
+        "rmse_unemployment": 2.6286029354208673,
+        "rmse_debt_gdp": 0.29564010114711575
+      },
+      "params": {
+        "productivity_drift": -0.00022025276415936026,
+        "cons_income_elas": 0.5449332370370557,
+        "inv_rate_elas": -0.7092760251980317,
+        "tax_activity_elas": -0.3669813086453203,
+        "okun_coef": 0.6048129561755445,
+        "natural_u": 0.0968300391618744,
+        "demand_persist": 0.8782539367283703,
+        "export_shock0": -0.14245633625914667,
+        "demand_shock0": -0.033272011659149045,
+        "banking_shock": -0.07855201876076709,
+        "demand_shock2": -0.06772221440614766,
+        "tax_compliance0": 0.7936488612951575,
+        "spend_share": 0.23663610541748314,
+        "transfer_share": 0.10102037900989483,
+        "austerity_spend": 0.9853832037999771,
+        "austerity_transfer": 0.9936258088907027,
+        "macro_noise": 0.0022192347798161032,
+        "recovery_drift_boost": 0.0013594587175943763
+      }
+    },
+    {
+      "cal_loss": 13.728951439772397,
+      "calibration": {
+        "rmse_gdp_index": 5.710649352076891,
+        "rmse_unemployment": 5.077884383080665,
+        "rmse_debt_gdp": 0.12428928644617766
+      },
+      "holdout": {
+        "rmse_gdp_index": 12.639301340653583,
+        "rmse_unemployment": 8.064143553162772,
+        "rmse_debt_gdp": 0.45304168280458473
+      },
+      "params": {
+        "productivity_drift": -0.0027609356815427835,
+        "cons_income_elas": 0.4842399512294911,
+        "inv_rate_elas": -0.21693082505565447,
+        "tax_activity_elas": -0.10690250062652334,
+        "okun_coef": 0.7064324742750865,
+        "natural_u": 0.0947312414974116,
+        "demand_persist": 0.8593051982442673,
+        "export_shock0": -0.1680399027056537,
+        "demand_shock0": -0.10400178267465458,
+        "banking_shock": -0.044504257228524996,
+        "demand_shock2": -0.09625755100751712,
+        "tax_compliance0": 0.768817515890982,
+        "spend_share": 0.24588944501340285,
+        "transfer_share": 0.06877298800845161,
+        "austerity_spend": 0.990186332913868,
+        "austerity_transfer": 0.9902914011392792,
+        "macro_noise": 0.0013945671737970531,
+        "recovery_drift_boost": 0.0012455012082480264
+      }
+    },
+    {
+      "cal_loss": 14.538519277306383,
+      "calibration": {
+        "rmse_gdp_index": 4.997769853874996,
+        "rmse_unemployment": 6.121064533181209,
+        "rmse_debt_gdp": 0.14670276758806655
+      },
+      "holdout": {
+        "rmse_gdp_index": 11.44878380506476,
+        "rmse_unemployment": 10.849492530895558,
+        "rmse_debt_gdp": 0.6088261438314457
+      },
+      "params": {
+        "productivity_drift": -0.0033797347605659268,
+        "cons_income_elas": 0.45167880731084376,
+        "inv_rate_elas": -0.5005184249704896,
+        "tax_activity_elas": -0.16615372469142364,
+        "okun_coef": 0.7842475785866098,
+        "natural_u": 0.0990574175082985,
+        "demand_persist": 0.8555534459172309,
+        "export_shock0": -0.10277698940258535,
+        "demand_shock0": -0.05482706820696618,
+        "banking_shock": -0.091803024034998,
+        "demand_shock2": -0.07213061394290457,
+        "tax_compliance0": 0.8005837078683482,
+        "spend_share": 0.24871644418027822,
+        "transfer_share": 0.13494331331918086,
+        "austerity_spend": 0.9924395600706619,
+        "austerity_transfer": 0.9625024422096984,
+        "macro_noise": 0.002125156334864394,
+        "recovery_drift_boost": 0.0011439993455167278
+      }
+    },
+    {
+      "cal_loss": 15.90207619826575,
+      "calibration": {
+        "rmse_gdp_index": 9.337213027658873,
+        "rmse_unemployment": 2.2627018738151405,
+        "rmse_debt_gdp": 0.13018105115794484
+      },
+      "holdout": {
+        "rmse_gdp_index": 20.411242771681135,
+        "rmse_unemployment": 1.5011046903190726,
+        "rmse_debt_gdp": 0.21259499793876893
+      },
+      "params": {
+        "productivity_drift": -0.0018482675497442222,
+        "cons_income_elas": 0.5491281176593386,
+        "inv_rate_elas": -0.30789702465514707,
+        "tax_activity_elas": -0.2960115478003903,
+        "okun_coef": 0.7408614139133105,
+        "natural_u": 0.11450689808015227,
+        "demand_persist": 0.9585802284901751,
+        "export_shock0": -0.08195590170034402,
+        "demand_shock0": -0.14837137012513565,
+        "banking_shock": -0.026247705482158126,
+        "demand_shock2": -0.023381907354422,
+        "tax_compliance0": 0.6059446989938052,
+        "spend_share": 0.21974136921595916,
+        "transfer_share": 0.12164633003539056,
+        "austerity_spend": 0.9878188539634544,
+        "austerity_transfer": 0.9718135715110373,
+        "macro_noise": 0.0029428277285527722,
+        "recovery_drift_boost": 0.0007975549437961171
+      }
+    },
+    {
+      "cal_loss": 16.203246533243437,
+      "calibration": {
+        "rmse_gdp_index": 8.246513950212991,
+        "rmse_unemployment": 6.22623384431171,
+        "rmse_debt_gdp": 0.10552480691108548
+      },
+      "holdout": {
+        "rmse_gdp_index": 17.0963562765449,
+        "rmse_unemployment": 9.194402158147842,
+        "rmse_debt_gdp": 0.45224277490134507
+      },
+      "params": {
+        "productivity_drift": -0.003005416098794011,
+        "cons_income_elas": 0.5268577659309425,
+        "inv_rate_elas": -0.6100158193781857,
+        "tax_activity_elas": -0.38873987978847996,
+        "okun_coef": 0.5369293806818458,
+        "natural_u": 0.083589469879923,
+        "demand_persist": 0.8516120322256688,
+        "export_shock0": -0.14236767655454471,
+        "demand_shock0": -0.07520296733220731,
+        "banking_shock": -0.07755248869897692,
+        "demand_shock2": -0.0273651163122352,
+        "tax_compliance0": 0.7039299947073295,
+        "spend_share": 0.2311727707631409,
+        "transfer_share": 0.08544445435771039,
+        "austerity_spend": 0.9874319120434514,
+        "austerity_transfer": 0.9674834639862817,
+        "macro_noise": 0.0013844797916509272,
+        "recovery_drift_boost": 0.0008121939041215037
+      }
+    },
+    {
+      "cal_loss": 17.545125984434396,
+      "calibration": {
+        "rmse_gdp_index": 7.7651937268705655,
+        "rmse_unemployment": 6.3010890599550295,
+        "rmse_debt_gdp": 0.1499819705397703
+      },
+      "holdout": {
+        "rmse_gdp_index": 17.75277365499527,
+        "rmse_unemployment": 6.852889991992407,
+        "rmse_debt_gdp": 0.11961112312745396
+      },
+      "params": {
+        "productivity_drift": -0.001373723141237274,
+        "cons_income_elas": 0.6211717046360499,
+        "inv_rate_elas": -0.44538501442967193,
+        "tax_activity_elas": -0.2841557922508273,
+        "okun_coef": 0.3641755761629174,
+        "natural_u": 0.08727465345011122,
+        "demand_persist": 0.8550219967417627,
+        "export_shock0": -0.19781480777673824,
+        "demand_shock0": -0.05062099382500912,
+        "banking_shock": -0.0957873912346017,
+        "demand_shock2": -0.038714799952660674,
+        "tax_compliance0": 0.6096648663192876,
+        "spend_share": 0.18081678094937986,
+        "transfer_share": 0.12121610332405436,
+        "austerity_spend": 0.9844941289415973,
+        "austerity_transfer": 0.9863660027420152,
+        "macro_noise": 0.0016439677412776646,
+        "recovery_drift_boost": 0.0011775935946920966
+      }
+    },
+    {
+      "cal_loss": 20.244744991640875,
+      "calibration": {
+        "rmse_gdp_index": 15.8103135209509,
+        "rmse_unemployment": 1.9057713859857441,
+        "rmse_debt_gdp": 0.08227421597746329
+      },
+      "holdout": {
+        "rmse_gdp_index": 31.15557555607661,
+        "rmse_unemployment": 6.6030819117557735,
+        "rmse_debt_gdp": 0.07219837443594244
+      },
+      "params": {
+        "productivity_drift": -0.0013150112849160992,
+        "cons_income_elas": 0.6416404853729507,
+        "inv_rate_elas": -0.5857102966013229,
+        "tax_activity_elas": -0.10695735501895626,
+        "okun_coef": 0.8169477995212284,
+        "natural_u": 0.0812073577005247,
+        "demand_persist": 0.9678984877627449,
+        "export_shock0": -0.08663364582764158,
+        "demand_shock0": -0.0371902921270401,
+        "banking_shock": -0.061766536592802575,
+        "demand_shock2": -0.07409931421083311,
+        "tax_compliance0": 0.692620371027804,
+        "spend_share": 0.2503890582566521,
+        "transfer_share": 0.11953360777005266,
+        "austerity_spend": 0.9677784775944094,
+        "austerity_transfer": 0.986580561500278,
+        "macro_noise": 0.0009753355063126383,
+        "recovery_drift_boost": 0.0013285287171972064
+      }
+    },
+    {
+      "cal_loss": 22.539247653195318,
+      "calibration": {
+        "rmse_gdp_index": 13.097011174599679,
+        "rmse_unemployment": 1.5225769213279516,
+        "rmse_debt_gdp": 0.21321725814497172
+      },
+      "holdout": {
+        "rmse_gdp_index": 24.884722456066363,
+        "rmse_unemployment": 4.686336199516974,
+        "rmse_debt_gdp": 0.759872701725106
+      },
+      "params": {
+        "productivity_drift": -0.0007022995685485062,
+        "cons_income_elas": 0.6407982529834158,
+        "inv_rate_elas": -0.43929926193318153,
+        "tax_activity_elas": -0.27816297084311603,
+        "okun_coef": 0.7671559609826069,
+        "natural_u": 0.09319531590290762,
+        "demand_persist": 0.8758891545920414,
+        "export_shock0": -0.061541146170402815,
+        "demand_shock0": -0.0550080364897579,
+        "banking_shock": -0.06365406570434412,
+        "demand_shock2": -0.03138978756282078,
+        "tax_compliance0": 0.713501161288709,
+        "spend_share": 0.27883633318806206,
+        "transfer_share": 0.08907990449930825,
+        "austerity_spend": 0.9615972629431017,
+        "austerity_transfer": 0.9929262998371977,
+        "macro_noise": 0.002596834571763826,
+        "recovery_drift_boost": 0.001434238614558544
+      }
+    },
+    {
+      "cal_loss": 23.782703399014494,
+      "calibration": {
+        "rmse_gdp_index": 15.931051411868783,
+        "rmse_unemployment": 3.6815637207566745,
+        "rmse_debt_gdp": 0.14106784386729262
+      },
+      "holdout": {
+        "rmse_gdp_index": 29.433140179182566,
+        "rmse_unemployment": 2.8938053764168084,
+        "rmse_debt_gdp": 0.49953898417696685
+      },
+      "params": {
+        "productivity_drift": -0.0005669708074401505,
+        "cons_income_elas": 0.6873301271548273,
+        "inv_rate_elas": -0.675011908390824,
+        "tax_activity_elas": -0.18089101264259355,
+        "okun_coef": 0.37473325467472435,
+        "natural_u": 0.07810969265148006,
+        "demand_persist": 0.8653732506125339,
+        "export_shock0": -0.20414858762576965,
+        "demand_shock0": -0.11861475438835149,
+        "banking_shock": -0.026175118427857292,
+        "demand_shock2": -0.06676009482690363,
+        "tax_compliance0": 0.8353399067808739,
+        "spend_share": 0.24866049817446595,
+        "transfer_share": 0.09523391128564906,
+        "austerity_spend": 0.9585513543697954,
+        "austerity_transfer": 0.9675594878307829,
+        "macro_noise": 0.0005554709978383952,
+        "recovery_drift_boost": 0.0013318063440821357
+      }
+    },
+    {
+      "cal_loss": 24.03865988271285,
+      "calibration": {
+        "rmse_gdp_index": 1.6423044917462275,
+        "rmse_unemployment": 13.512866226121186,
+        "rmse_debt_gdp": 0.3572158913823477
+      },
+      "holdout": {
+        "rmse_gdp_index": 4.594874050261703,
+        "rmse_unemployment": 17.41148687175369,
+        "rmse_debt_gdp": 0.9591668220511664
+      },
+      "params": {
+        "productivity_drift": -0.0022058200663549097,
+        "cons_income_elas": 0.7012936701971173,
+        "inv_rate_elas": -0.47835701011042997,
+        "tax_activity_elas": -0.5715731038256164,
+        "okun_coef": 0.5484109638653735,
+        "natural_u": 0.09157664001199342,
+        "demand_persist": 0.9248239007672112,
+        "export_shock0": -0.07474541006984058,
+        "demand_shock0": -0.11933497041517768,
+        "banking_shock": -0.06532983648064733,
+        "demand_shock2": -0.049907267569711096,
+        "tax_compliance0": 0.6017528524900418,
+        "spend_share": 0.23367438100774604,
+        "transfer_share": 0.09456972049522043,
+        "austerity_spend": 0.9935951805595497,
+        "austerity_transfer": 0.9887751385672643,
+        "macro_noise": 0.0017181141170736572,
+        "recovery_drift_boost": 3.5410475908752404e-05
+      }
+    },
+    {
+      "cal_loss": 24.16514972687908,
+      "calibration": {
+        "rmse_gdp_index": 16.302888607305,
+        "rmse_unemployment": 3.649143578895056,
+        "rmse_debt_gdp": 0.1418193743059262
+      },
+      "holdout": {
+        "rmse_gdp_index": 26.987566671607304,
+        "rmse_unemployment": 4.215647277493873,
+        "rmse_debt_gdp": 0.37764857546331004
+      },
+      "params": {
+        "productivity_drift": -0.0010540288000028175,
+        "cons_income_elas": 0.5873156225333482,
+        "inv_rate_elas": -0.46449032710504246,
+        "tax_activity_elas": -0.3378998754876748,
+        "okun_coef": 0.614102619368087,
+        "natural_u": 0.06261273669366492,
+        "demand_persist": 0.857438812574484,
+        "export_shock0": -0.06207149557357537,
+        "demand_shock0": -0.1433408921070724,
+        "banking_shock": -0.033424704590457606,
+        "demand_shock2": -0.06459390664926838,
+        "tax_compliance0": 0.8178759396635316,
+        "spend_share": 0.22337798112541088,
+        "transfer_share": 0.06961958138382951,
+        "austerity_spend": 0.9500413731515095,
+        "austerity_transfer": 0.9612763754493668,
+        "macro_noise": 0.0015084063016143436,
+        "recovery_drift_boost": 0.001381655174975793
+      }
+    },
+    {
+      "cal_loss": 24.25709924326418,
+      "calibration": {
+        "rmse_gdp_index": 11.33251148206511,
+        "rmse_unemployment": 2.4004577292252796,
+        "rmse_debt_gdp": 0.28710782809159746
+      },
+      "holdout": {
+        "rmse_gdp_index": 23.51522465812809,
+        "rmse_unemployment": 1.5594504121557458,
+        "rmse_debt_gdp": 1.2132458043545027
+      },
+      "params": {
+        "productivity_drift": -0.0020937626995868553,
+        "cons_income_elas": 0.7091717831751948,
+        "inv_rate_elas": -0.36828334365750964,
+        "tax_activity_elas": -0.3855697252626672,
+        "okun_coef": 0.8341541486287993,
+        "natural_u": 0.09113877741659743,
+        "demand_persist": 0.8535580966091469,
+        "export_shock0": -0.14044242837246756,
+        "demand_shock0": -0.10799170104848207,
+        "banking_shock": -0.08417654486954311,
+        "demand_shock2": -0.051912008980439184,
+        "tax_compliance0": 0.6631898156638795,
+        "spend_share": 0.20631836510480472,
+        "transfer_share": 0.13182188804576317,
+        "austerity_spend": 0.9632019526317379,
+        "austerity_transfer": 0.980115439778673,
+        "macro_noise": 0.0007140646086194778,
+        "recovery_drift_boost": 2.495698938370472e-05
+      }
+    }
+  ],
+  "content_hash": "7e858b4daef03e95fec1846cdb44251aa48f8ec2f116ac1a057e3a294697caa7"
+}

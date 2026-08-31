@@ -1,6 +1,6 @@
 {
   "dataset_id": "wb_wdi",
-  "frozen_at": "2026-08-31T00:57:08.201810+00:00",
+  "frozen_at": "2026-08-31T01:16:03.833898+00:00",
   "benchmark_version": "0.1.0",
   "series": [
     {
@@ -101,5 +101,5 @@
     }
   ],
   "extra": {},
-  "manifest_sha256": "f60c7cc1c257808d79748833a7d02e6e1b5bd6341b70b8381d75729f8568f355"
+  "manifest_sha256": "57bd907ae9224ff973c9e2785d53028af2d4d5f1cf831d49064767f65df8dfab"
 }

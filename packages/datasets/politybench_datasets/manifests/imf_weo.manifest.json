@@ -1,6 +1,6 @@
 {
   "dataset_id": "imf_weo",
-  "frozen_at": "2026-08-31T00:57:08.202137+00:00",
+  "frozen_at": "2026-08-31T01:16:03.834937+00:00",
   "benchmark_version": "0.1.0",
   "series": [
     {
@@ -28,5 +28,5 @@
     }
   ],
   "extra": {},
-  "manifest_sha256": "7ec6f56b4cbc6ab729126848c0f9b9015b5d8459b703cee343c361cd2201da2c"
+  "manifest_sha256": "43338842d516af202e8a97fac1e51c3134a4ecdaed399c06b7d569efc14708e3"
 }

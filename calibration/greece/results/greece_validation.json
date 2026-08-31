@@ -1,77 +1,107 @@
 {
   "calibration_window": "2009-2013",
   "validation_window": "2014-2018",
-  "rmse_gdp_index_calibration": 13.507032516478322,
-  "rmse_gdp_index_validation": 25.59072457563438,
-  "rmse_unemployment_calibration": 5.730840691924938,
-  "rmse_unemployment_validation": 5.741058631576643,
-  "rmse_debt_gdp_validation": 0.2287650595773682,
+  "posterior_id": "greece_posterior_v1",
+  "posterior_hash": "7e858b4daef03e95fec1846cdb44251aa48f8ec2f116ac1a057e3a294697caa7",
+  "best_params": {
+    "productivity_drift": -0.00022025276415936026,
+    "cons_income_elas": 0.5449332370370557,
+    "inv_rate_elas": -0.7092760251980317,
+    "tax_activity_elas": -0.3669813086453203,
+    "okun_coef": 0.6048129561755445,
+    "natural_u": 0.0968300391618744,
+    "demand_persist": 0.8782539367283703,
+    "export_shock0": -0.14245633625914667,
+    "demand_shock0": -0.033272011659149045,
+    "banking_shock": -0.07855201876076709,
+    "demand_shock2": -0.06772221440614766,
+    "tax_compliance0": 0.7936488612951575,
+    "spend_share": 0.23663610541748314,
+    "transfer_share": 0.10102037900989483,
+    "austerity_spend": 0.9853832037999771,
+    "austerity_transfer": 0.9936258088907027,
+    "macro_noise": 0.0022192347798161032,
+    "recovery_drift_boost": 0.0013594587175943763
+  },
+  "rmse_gdp_index_calibration": 7.327202801654998,
+  "rmse_gdp_index_validation": 16.314142665843637,
+  "rmse_unemployment_calibration": 2.6787060374069673,
+  "rmse_unemployment_validation": 2.6286029354208673,
+  "rmse_debt_gdp_validation": 0.29564010114711575,
+  "holdout_gdp_ensemble_mean": {
+    "2014": 67.1675259738002,
+    "2015": 66.51836763358934,
+    "2016": 66.218694816659,
+    "2017": 66.06948235507656,
+    "2018": 66.01329727152242
+  },
+  "holdout_gdp_ensemble_std": {
+    "2014": 5.769766744058827,
+    "2015": 6.027902734163989,
+    "2016": 6.17105634384851,
+    "2017": 6.236893932485582,
+    "2018": 6.265824222787592
+  },
   "simulated_annual": {
     "2009": {
-      "gdp": 14933.778297335095,
-      "unemployment": 0.0757248676168525,
-      "inflation": 0.010584601833180211,
-      "debt_gdp": 1.4060690109421736
+      "gdp": 15100.053828712826,
+      "unemployment": 0.10844981218315357,
+      "inflation": 0.0026622685973166577,
+      "debt_gdp": 1.395674221849191
     },
     "2010": {
-      "gdp": 12803.038870714776,
-      "unemployment": 0.11513062699928958,
-      "inflation": 0.0008092224727868118,
-      "debt_gdp": 1.5851972156570904
+      "gdp": 13454.909635441436,
+      "unemployment": 0.1546997343473101,
+      "inflation": -0.010546846266469706,
+      "debt_gdp": 1.5320578491966668
     },
     "2011": {
-      "gdp": 11234.360902893206,
-      "unemployment": 0.14482379365533132,
-      "inflation": -0.009406479167849252,
-      "debt_gdp": 1.7412195476742234
+      "gdp": 12338.811948034867,
+      "unemployment": 0.18637977570808834,
+      "inflation": -0.02,
+      "debt_gdp": 1.6379324144557783
     },
     "2012": {
-      "gdp": 10098.030659107542,
-      "unemployment": 0.16708656877147562,
-      "inflation": -0.015131700420517867,
-      "debt_gdp": 1.890376295172936
+      "gdp": 11427.863933370501,
+      "unemployment": 0.21370347763411385,
+      "inflation": -0.02,
+      "debt_gdp": 1.7597636377739485
     },
     "2013": {
-      "gdp": 9309.897638329097,
-      "unemployment": 0.18126838566380665,
-      "inflation": -0.01973391370623298,
-      "debt_gdp": 2.0100266657261465
+      "gdp": 10709.403984392538,
+      "unemployment": 0.2338524660016595,
+      "inflation": -0.02,
+      "debt_gdp": 1.8881664772330111
     },
     "2014": {
-      "gdp": 9046.960446798457,
-      "unemployment": 0.18372873308663504,
+      "gdp": 10530.009347966668,
+      "unemployment": 0.23854371061380708,
       "inflation": -0.02,
-      "debt_gdp": 2.046050754173411
+      "debt_gdp": 1.9579521188104598
     },
     "2015": {
-      "gdp": 8936.773805910268,
-      "unemployment": 0.18194026942665306,
+      "gdp": 10442.385044202898,
+      "unemployment": 0.24015946462560417,
       "inflation": -0.02,
-      "debt_gdp": 2.053337545128461
+      "debt_gdp": 2.024781822896243
     },
     "2016": {
-      "gdp": 8886.124624716915,
-      "unemployment": 0.17858466685211613,
-      "inflation": -0.017156397186650626,
-      "debt_gdp": 2.0424571921249566
+      "gdp": 10401.849354535818,
+      "unemployment": 0.2401153251278026,
+      "inflation": -0.02,
+      "debt_gdp": 2.0906758040652544
     },
     "2017": {
-      "gdp": 8863.580684490866,
-      "unemployment": 0.1743446247917974,
-      "inflation": -0.015446541196526746,
-      "debt_gdp": 2.0190694141590937
+      "gdp": 10383.78843864161,
+      "unemployment": 0.23958616515119185,
+      "inflation": -0.02,
+      "debt_gdp": 2.157392542207987
     },
     "2018": {
-      "gdp": 8859.702081942287,
-      "unemployment": 0.16971263287057575,
-      "inflation": -0.01791852737909897,
-      "debt_gdp": 1.9797371355705817
-    },
-    "2019": {
-      "gdp": 8854.99732973725,
-      "unemployment": 0.16925081374558631,
-      "inflation": -0.012169851964138253,
-      "debt_gdp": 1.9777658917057594
+      "gdp": 10378.06539286416,
+      "unemployment": 0.2382331771408428,
+      "inflation": -0.02,
+      "debt_gdp": 2.2252348708141287
     }
   },
   "observed_gdp_index_norm": {
@@ -93,6 +123,7 @@
   "limitations": [
     "Simplified fiscal-crisis spine; not a full DSGE/ABM of Greece",
     "Uses open fixtures patterned on public magnitudes, not a redistributed IMF dump",
-    "Historical replay is validation-only, never a leaderboard scenario"
+    "Historical replay is validation-only, never a leaderboard scenario",
+    "Posterior selected on 2009\u20132013 only; 2014\u20132018 metrics are held-out"
   ]
 }

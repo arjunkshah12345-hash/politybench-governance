@@ -82,6 +82,34 @@ def _shocks_disaster(rng) -> list[dict[str, Any]]:
     ]
 
 
+def _apply_greece_posterior(hidden: dict, rng) -> dict:
+    """Sample structural elasticities from frozen Greece cal ensemble (not historical shocks)."""
+    try:
+        from calibration.greece.calibrate import load_posterior, sample_posterior_params
+        import numpy as np
+
+        # Use scenario RNG seed material via numpy Generator from a draw
+        seed = int(rng.integers(0, 2**31 - 1))
+        npr = np.random.default_rng(seed)
+        params = sample_posterior_params(npr)
+        hidden["cons_income_elas"] = params.cons_income_elas
+        hidden["inv_rate_elas"] = params.inv_rate_elas
+        hidden["tax_activity_elas"] = params.tax_activity_elas
+        hidden["okun_coef"] = params.okun_coef
+        hidden["natural_u"] = params.natural_u
+        hidden["demand_persist"] = params.demand_persist
+        hidden["macro_noise"] = params.macro_noise
+        hidden["recovery_drift_boost"] = params.recovery_drift_boost
+        # Productivity drift for synthetic crises: keep negative-to-mild, not Greece year path
+        hidden["productivity_drift"] = float(
+            np.clip(params.productivity_drift + 0.002, -0.002, 0.002)
+        )
+        hidden["posterior_source"] = "greece_posterior_v1"
+    except Exception:
+        hidden["posterior_source"] = "fallback_priors"
+    return hidden
+
+
 def build_scenario(
     name: str,
     seed: int = 41823,
@@ -102,20 +130,26 @@ def build_scenario(
     hidden["tax_activity_elas"] = float(rng.uniform(-0.5, -0.15))
     hidden["productivity_drift"] = float(rng.uniform(0.0005, 0.0025))
     hidden["carbon_intensity"] = float(rng.uniform(0.25, 0.5))
+    hidden["okun_coef"] = float(rng.uniform(0.35, 0.7))
+    hidden["natural_u"] = float(rng.uniform(0.05, 0.09))
+    hidden["demand_persist"] = float(rng.uniform(0.85, 0.95))
     state.governance.administrative_capacity = float(rng.uniform(0.45, 0.85))
     state.governance.corruption_leakage = float(rng.uniform(0.03, 0.15))
 
     if name == "baseline_development":
-        # Vary demographics / debt
         state.demo.mean_age = float(rng.uniform(28, 45))
-        state.fiscal.debt = state.macro.gdp * float(rng.uniform(0.3, 1.1))
+        state.fiscal.debt = state.macro.gdp * 12.0 * float(rng.uniform(0.3, 1.1))
         state.environment.clean_energy_share = float(rng.uniform(0.15, 0.45))
         shocks = _shocks_development(rng)
     elif name == "macro_fiscal_crisis":
-        state.fiscal.debt = state.macro.gdp * float(rng.uniform(1.0, 1.6))
+        hidden = _apply_greece_posterior(hidden, rng)
+        state.fiscal.debt = state.macro.gdp * 12.0 * float(rng.uniform(1.0, 1.6))
         state.macro.unemployment_rate = float(rng.uniform(0.1, 0.18))
         state.macro.employment = state.macro.labor_force * (1 - state.macro.unemployment_rate)
         state.macro.investment *= 0.7
+        state.fiscal.spending = state.macro.gdp * float(rng.uniform(0.18, 0.26))
+        state.fiscal.transfers = state.macro.gdp * float(rng.uniform(0.08, 0.12))
+        state.fiscal.tax_compliance = float(rng.uniform(0.65, 0.85))
         state.governance.administrative_capacity = float(rng.uniform(0.35, 0.65))
         hidden["debt_ceiling_ratio"] = float(rng.uniform(1.2, 1.8))
         shocks = _shocks_macro(rng)
@@ -126,15 +160,14 @@ def build_scenario(
         shocks = _shocks_pandemic(rng)
     else:  # compound_disaster
         state.infra.maintenance_backlog = float(rng.uniform(0.1, 0.35))
-        state.fiscal.cash = state.macro.gdp * float(rng.uniform(0.005, 0.02))
+        state.fiscal.cash = state.macro.gdp * 12.0 * float(rng.uniform(0.005, 0.02))
+        hidden["rebuild_efficiency"] = float(rng.uniform(0.04, 0.12))
         shocks = _shocks_disaster(rng)
 
-    # Recompute primary balance
     from politybench_core.accounting.invariants import update_fiscal_balances
 
     state = state.model_copy(update={"fiscal": update_fiscal_balances(state.fiscal), "hidden": hidden})
 
-    # Shorten horizons slightly for F0 smoke
     horizon = meta["horizon_months"]
     if fidelity == "F0":
         horizon = min(horizon, 24)

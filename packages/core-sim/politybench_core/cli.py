@@ -109,11 +109,10 @@ def benchmark(
 
     agents = ["hold_policy", "rule_based", "random_valid", "simple_mpc"]
     utilities: dict[str, list[float]] = {a: [] for a in agents}
-    mean_dims: dict[str, dict[str, float]] = {}
+    dims_acc: dict[str, list[dict[str, float]]] = {a: [] for a in agents}
 
     seed_list = list(common_random_seeds(41823, seeds))
     for seed in seed_list:
-        dim_acc: dict[str, list] = {a: [] for a in agents}
         for aname in agents:
             env = PolityEnv(scenario=scenario, fidelity=fidelity, seed=seed)
             out = run_episode(env, get_baseline(aname, seed=seed))
@@ -125,28 +124,12 @@ def benchmark(
                 hard_violations=out["hard_violations"],
             )
             utilities[aname].append(ep.utility)
-            dim_acc[aname].append(ep.dims)
-        for aname in agents:
-            # running mean dims
-            pass
-        # accumulate last dims for sensitivity using mean across seeds at end
+            dims_acc[aname].append(ep.dims)
 
-    # Average dimensions
-    for aname in agents:
-        # recompute mean dims via last full pass store — redo lightweight
-        all_dims = []
-        for seed in seed_list:
-            env = PolityEnv(scenario=scenario, fidelity=fidelity, seed=seed)
-            out = run_episode(env, get_baseline(aname, seed=seed))
-            ep = evaluate_episode(
-                out["trajectory"],
-                seed=seed,
-                scenario=scenario,
-                extras=extras_from_state(out["state"]),
-            )
-            all_dims.append(ep.dims)
-        keys = all_dims[0].keys()
-        mean_dims[aname] = {k: sum(d[k] for d in all_dims) / len(all_dims) for k in keys}
+    mean_dims = {
+        a: {k: sum(d[k] for d in dims_acc[a]) / len(dims_acc[a]) for k in dims_acc[a][0]}
+        for a in agents
+    }
 
     out_dir.mkdir(parents=True, exist_ok=True)
     summary = {
@@ -161,7 +144,6 @@ def benchmark(
     }
     path = out_dir / f"{scenario}_f{fidelity}_s{seeds}.json"
     path.write_text(json.dumps(summary, indent=2))
-    # Also write a dashboard-friendly latest
     latest = Path("packages/demo/web/public/latest_results.json")
     latest.parent.mkdir(parents=True, exist_ok=True)
     latest.write_text(json.dumps(summary, indent=2))
@@ -178,6 +160,22 @@ def benchmark(
     console.print(f"Wrote {path}")
 
 
+@app.command("calibrate")
+def calibrate(
+    particles: int = 48,
+    keep: int = 12,
+    seed: int = 41823,
+):
+    """Fit Greece parameter ensemble on 2009–2013 only; freeze posterior."""
+    from calibration.greece.calibrate import calibrate_ensemble
+
+    result = calibrate_ensemble(n_particles=particles, keep_top=keep, seed=seed)
+    best = result["elite_diagnostics"][0]
+    console.print("Best calibration:", best["calibration"])
+    console.print("Best holdout (not used in fit):", best["holdout"])
+    console.print(f"Posterior hash: {result['content_hash'][:16]}…")
+
+
 @app.command("calibrate-smoke")
 def calibrate_smoke():
     from calibration.greece.validate import run_greece_validation
@@ -185,8 +183,16 @@ def calibrate_smoke():
 
     g = run_greece_validation()
     j = run_japan_validation()
-    console.print("Greece:", g)
-    console.print("Japan:", j)
+    console.print(
+        "Greece RMSE GDP cal/val:",
+        round(g["rmse_gdp_index_calibration"], 2),
+        round(g["rmse_gdp_index_validation"], 2),
+    )
+    console.print(
+        "Japan recon RMSE / event damage:",
+        round(j["rmse_reconstruction_progress"], 3),
+        j["event_damage"],
+    )
 
 
 @app.command("serve")
