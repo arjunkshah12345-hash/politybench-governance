@@ -33,6 +33,11 @@ from politybench_core.schemas import (
     RegionState,
     StepResult,
 )
+from politybench_core.trade.external import (
+    apply_diplomacy_actions,
+    inject_creditor_pressure,
+    tick_external_environment,
+)
 from politybench_core.__version__ import BENCHMARK_VERSION, __version__
 
 
@@ -362,6 +367,10 @@ class SimulationKernel:
                 g.transparency = min(0.99, g.transparency + merged["transparency_boost"])
             self.state = self.state.model_copy(update={"governance": g})
 
+        # Diplomacy / trade / creditor responses (immediate strategic layer)
+        if action.diplomacy:
+            self.state = apply_diplomacy_actions(self.state, action.diplomacy, self.bank["foreign"])
+
         # Scheduled shocks
         for sh in self.shock_schedule:
             if int(sh.get("month", -1)) == self.state.time_month:
@@ -375,6 +384,7 @@ class SimulationKernel:
             self.state = reconstruct(self.state, merged)
 
         self.state = step_macro(self.state, self.bank["macro_shock"], merged)
+        self.state = tick_external_environment(self.state, self.bank["foreign"])
         if self.state.households:
             self.state = self.state.model_copy(
                 update={
@@ -432,15 +442,7 @@ class SimulationKernel:
             self.state.hidden["active_demand_shock"] = float(sh.get("magnitude", -0.04))
             self.state.macro.interest_rate += 0.01
         elif kind == "creditor_pressure":
-            inbox = list(self.state.hidden.get("diplomatic_inbox", []))
-            inbox.append(
-                {
-                    "from": "creditor_consortium",
-                    "message": "Request fiscal consolidation and transparency review",
-                    "severity": float(sh.get("severity", 0.5)),
-                }
-            )
-            self.state.hidden["diplomatic_inbox"] = inbox
+            self.state = inject_creditor_pressure(self.state, float(sh.get("severity", 0.5)))
 
     def _snapshot(self) -> dict[str, Any]:
         s = self.state
@@ -452,8 +454,9 @@ class SimulationKernel:
             "unemployment": s.macro.unemployment_rate,
             "inflation": s.macro.inflation,
             "debt": s.fiscal.debt,
-            # Debt/GDP uses annualized GDP
-    "debt_gdp": s.fiscal.debt / max(s.macro.gdp * 12.0, 1.0),
+            "debt_gdp": s.fiscal.debt / max(s.macro.gdp * 12.0, 1.0),
+            "financing_spread": float((s.hidden.get("external") or {}).get("financing_spread", 0.0)),
+            "creditor_stance": float((s.hidden.get("external") or {}).get("creditor_stance", 0.0)),
             "poverty": s.poverty_rate,
             "gini": s.gini,
             "trust": s.governance.institutional_trust,

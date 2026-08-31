@@ -266,7 +266,7 @@ def apply_disaster(state: CountryState, rng: NamedStream, intensity: float) -> C
         r.damage = min(1.0, r.damage + local)
         r.service_continuity = max(0.05, 1.0 - r.damage)
 
-    displaced = state.demo.population * 0.1 * damage
+    displaced = state.demo.population * float(state.hidden.get("displacement_frac", 0.1)) * damage
     hidden["displaced"] = float(hidden.get("displaced", 0.0)) + displaced
     hidden["alerts"] = list(hidden.get("alerts", [])) + [
         f"Compound disaster intensity={intensity:.2f}; estimated displacement={displaced:.0f}"

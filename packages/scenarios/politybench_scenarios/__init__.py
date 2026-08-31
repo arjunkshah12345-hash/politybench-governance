@@ -74,12 +74,40 @@ def _shocks_pandemic(rng) -> list[dict[str, Any]]:
     ]
 
 
+def _apply_japan_posterior(hidden: dict, rng) -> dict:
+    try:
+        from calibration.japan_geje.calibrate import load_posterior, sample_posterior_params
+        import numpy as np
+
+        seed = int(rng.integers(0, 2**31 - 1))
+        params = sample_posterior_params(np.random.default_rng(seed))
+        hidden["rebuild_efficiency"] = params.rebuild_efficiency
+        hidden["displacement_frac"] = params.displacement_frac
+        hidden["japan_posterior_intensity_prior"] = params.disaster_intensity
+        hidden["japan_posterior_source"] = "japan_geje_posterior_v1"
+    except Exception:
+        hidden["japan_posterior_source"] = "fallback_priors"
+    return hidden
+
+
 def _shocks_disaster(rng) -> list[dict[str, Any]]:
     m = int(rng.integers(2, 10))
+    intensity = float(rng.uniform(0.35, 0.7))
     return [
-        {"month": m, "type": "disaster", "intensity": float(rng.uniform(0.35, 0.7))},
+        {"month": m, "type": "disaster", "intensity": intensity},
         {"month": m + int(rng.integers(1, 4)), "type": "demand", "magnitude": float(rng.uniform(-0.12, -0.04))},
     ]
+
+
+def _shocks_disaster_with_posterior(rng, hidden: dict) -> list[dict[str, Any]]:
+    shocks = _shocks_disaster(rng)
+    prior = hidden.get("japan_posterior_intensity_prior")
+    if prior is not None:
+        # Blend generative timing with calibrated intensity scale (not historical replay)
+        shocks[0]["intensity"] = float(
+            0.5 * float(shocks[0]["intensity"]) + 0.5 * float(prior)
+        )
+    return shocks
 
 
 def _apply_greece_posterior(hidden: dict, rng) -> dict:
@@ -159,12 +187,19 @@ def build_scenario(
         state.governance.institutional_trust = float(rng.uniform(0.35, 0.6))
         shocks = _shocks_pandemic(rng)
     else:  # compound_disaster
+        hidden = _apply_japan_posterior(hidden, rng)
         state.infra.maintenance_backlog = float(rng.uniform(0.1, 0.35))
         state.fiscal.cash = state.macro.gdp * 12.0 * float(rng.uniform(0.005, 0.02))
-        hidden["rebuild_efficiency"] = float(rng.uniform(0.04, 0.12))
-        shocks = _shocks_disaster(rng)
+        shocks = _shocks_disaster_with_posterior(rng, hidden)
 
     from politybench_core.accounting.invariants import update_fiscal_balances
+    from politybench_core.trade.external import ensure_external_state
+
+    ensure_external_state(hidden)
+    if name == "macro_fiscal_crisis":
+        # Start with mild external stress latent state
+        hidden["external"]["financing_spread"] = float(rng.uniform(0.005, 0.02))
+        hidden["external"]["partner_demand"] = float(rng.uniform(0.75, 1.0))
 
     state = state.model_copy(update={"fiscal": update_fiscal_balances(state.fiscal), "hidden": hidden})
 

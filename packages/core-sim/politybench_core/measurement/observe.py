@@ -158,7 +158,19 @@ def observe(
             "tax_elasticity": "uncertain",
             "shock_schedule": "hidden",
             "behavioral_compliance": "partially observed",
+            "partner_retaliation": "uncertain",
         },
         training_signals=training_signals if mode == EvalMode.TRAINING else None,
     )
+    # Attach external summary as cabinet-visible structured report (not latent θ)
+    ext = state.hidden.get("external_summary") or {}
+    if ext:
+        obs.cabinet_reports = list(obs.cabinet_reports) + [
+            f"External: partner_demand={ext.get('partner_demand')}, "
+            f"tariffs home/partner={ext.get('tariff_home')}/{ext.get('tariff_partner')}, "
+            f"agreement={ext.get('trade_agreement')}, "
+            f"creditor_stance={ext.get('creditor_stance')}, "
+            f"financing_spread={ext.get('financing_spread')}, "
+            f"program_active={ext.get('program_active')}"
+        ]
     return obs

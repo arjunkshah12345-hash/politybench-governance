@@ -1,0 +1,180 @@
+{
+  "benchmark_version": "0.1.0",
+  "ensemble_id": "japan_geje_posterior_v1",
+  "frozen_at": "2026-08-31T01:41:59.382628+00:00",
+  "calibration_window": "2011-2013",
+  "holdout_window": "2014-2016",
+  "n_particles_searched": 6,
+  "n_particles_kept": 3,
+  "search_seed": 99,
+  "param_bounds": {
+    "disaster_intensity": [
+      0.4,
+      0.75
+    ],
+    "demand_shock": [
+      -0.18,
+      -0.04
+    ],
+    "rebuild_efficiency": [
+      0.015,
+      0.055
+    ],
+    "construction_base": [
+      0.06,
+      0.18
+    ],
+    "ramp_per_year": [
+      0.02,
+      0.08
+    ],
+    "ramp_start": [
+      0.1,
+      0.4
+    ],
+    "budget_scale": [
+      200.0,
+      600.0
+    ],
+    "spend_scale": [
+      10.0,
+      80.0
+    ],
+    "displacement_frac": [
+      0.05,
+      0.18
+    ]
+  },
+  "best_params": {
+    "disaster_intensity": 0.6711272230799685,
+    "demand_shock": -0.17432058634544842,
+    "rebuild_efficiency": 0.026946223835382428,
+    "construction_base": 0.14431093759895783,
+    "ramp_per_year": 0.047135157251133354,
+    "ramp_start": 0.36695736715075605,
+    "budget_scale": 374.04001262642464,
+    "spend_scale": 53.6491856935427,
+    "displacement_frac": 0.12609936301550753
+  },
+  "particles": [
+    {
+      "disaster_intensity": 0.6711272230799685,
+      "demand_shock": -0.17432058634544842,
+      "rebuild_efficiency": 0.026946223835382428,
+      "construction_base": 0.14431093759895783,
+      "ramp_per_year": 0.047135157251133354,
+      "ramp_start": 0.36695736715075605,
+      "budget_scale": 374.04001262642464,
+      "spend_scale": 53.6491856935427,
+      "displacement_frac": 0.12609936301550753
+    },
+    {
+      "disaster_intensity": 0.6159205084795759,
+      "demand_shock": -0.14086741311676124,
+      "rebuild_efficiency": 0.05144425268186291,
+      "construction_base": 0.12875237534306183,
+      "ramp_per_year": 0.06309863155628737,
+      "ramp_start": 0.3017124047387446,
+      "budget_scale": 507.91765911917,
+      "spend_scale": 62.66841264993006,
+      "displacement_frac": 0.10333950582720831
+    },
+    {
+      "disaster_intensity": 0.613520302806803,
+      "demand_shock": -0.049738050324846746,
+      "rebuild_efficiency": 0.024835415345617323,
+      "construction_base": 0.097132600637223,
+      "ramp_per_year": 0.04346477906233383,
+      "ramp_start": 0.181081519719793,
+      "budget_scale": 340.00597977144554,
+      "spend_scale": 75.536078376278,
+      "displacement_frac": 0.09912494805877545
+    }
+  ],
+  "weights": [
+    0.3830855886853489,
+    0.31354373209471864,
+    0.30337067921993244
+  ],
+  "elite_diagnostics": [
+    {
+      "cal_loss": 0.16176718204823456,
+      "rmse_calibration_2011_2013": 0.16176718204823456,
+      "rmse_holdout_2014_2016": 0.44955003037129954,
+      "event_damage": 0.6463030598667315,
+      "params": {
+        "disaster_intensity": 0.6711272230799685,
+        "demand_shock": -0.17432058634544842,
+        "rebuild_efficiency": 0.026946223835382428,
+        "construction_base": 0.14431093759895783,
+        "ramp_per_year": 0.047135157251133354,
+        "ramp_start": 0.36695736715075605,
+        "budget_scale": 374.04001262642464,
+        "spend_scale": 53.6491856935427,
+        "displacement_frac": 0.12609936301550753
+      },
+      "simulated_progress": {
+        "2010": 1.0,
+        "2011": 0.3546067347736429,
+        "2012": 0.3563330907192406,
+        "2013": 0.3586839274637649,
+        "2014": 0.3614061201851495,
+        "2015": 0.36425007319539615,
+        "2016": 0.3671474142034836
+      }
+    },
+    {
+      "cal_loss": 0.17178316138365057,
+      "rmse_calibration_2011_2013": 0.17178316138365057,
+      "rmse_holdout_2014_2016": 0.3858506093245693,
+      "event_damage": 0.5931259158040724,
+      "params": {
+        "disaster_intensity": 0.6159205084795759,
+        "demand_shock": -0.14086741311676124,
+        "rebuild_efficiency": 0.05144425268186291,
+        "construction_base": 0.12875237534306183,
+        "ramp_per_year": 0.06309863155628737,
+        "ramp_start": 0.3017124047387446,
+        "budget_scale": 507.91765911917,
+        "spend_scale": 62.66841264993006,
+        "displacement_frac": 0.10333950582720831
+      },
+      "simulated_progress": {
+        "2010": 1.0,
+        "2011": 0.40885050438142767,
+        "2012": 0.4124987718738685,
+        "2013": 0.4172646109712159,
+        "2014": 0.42270226361758356,
+        "2015": 0.42862435571486124,
+        "2016": 0.43462579722764527
+      }
+    },
+    {
+      "cal_loss": 0.1734323326380177,
+      "rmse_calibration_2011_2013": 0.1734323326380177,
+      "rmse_holdout_2014_2016": 0.4004318486771752,
+      "event_damage": 0.590828211954826,
+      "params": {
+        "disaster_intensity": 0.613520302806803,
+        "demand_shock": -0.049738050324846746,
+        "rebuild_efficiency": 0.024835415345617323,
+        "construction_base": 0.097132600637223,
+        "ramp_per_year": 0.04346477906233383,
+        "ramp_start": 0.181081519719793,
+        "budget_scale": 340.00597977144554,
+        "spend_scale": 75.536078376278,
+        "displacement_frac": 0.09912494805877545
+      },
+      "simulated_progress": {
+        "2010": 1.0,
+        "2011": 0.40969261658150935,
+        "2012": 0.4106190180724252,
+        "2013": 0.41171984396242456,
+        "2014": 0.4129951349867017,
+        "2015": 0.414444693201402,
+        "2016": 0.41606808651293314
+      }
+    }
+  ],
+  "content_hash": "5c146040f0cd3ae78803339b98076c9eb22c65df89b68981f6e0c1f07d9ec370"
+}

@@ -2,53 +2,53 @@
   "scenario": "macro_fiscal_crisis",
   "seeds": 4,
   "robust_scores": {
-    "hold_policy": 17.778407948178053,
-    "rule_based": 11.911251003010182,
-    "random_valid": 16.324246921860396,
-    "simple_mpc": 11.946286665797402
+    "hold_policy": 27.178170880299113,
+    "rule_based": 21.7444553618851,
+    "random_valid": 28.978070468950136,
+    "simple_mpc": 21.772046909775074
   },
   "mean_utility": {
-    "hold_policy": 0.20919368705079866,
-    "rule_based": 0.14836676140571226,
-    "random_valid": 0.19093668904771105,
-    "simple_mpc": 0.14880316626529658
+    "hold_policy": 0.3364183141979693,
+    "rule_based": 0.2826254669157268,
+    "random_valid": 0.3471029061903103,
+    "simple_mpc": 0.28298409048093237
   },
   "mean_dims": {
     "hold_policy": {
-      "economic": 0.2632823504748805,
+      "economic": 0.2870920260054667,
       "human": 0.7962547736163847,
-      "stability": 0.7536941144149369,
-      "equity": 0.13552591543308484,
-      "resilience": 0.03048288001852716,
+      "stability": 0.5829715417889838,
+      "equity": 0.2242172566461107,
+      "resilience": 0.1831131326763967,
       "legitimacy": 0.9894494274645753,
-      "environment": 0.5741869823732579
+      "environment": 0.5738985740348728
     },
     "rule_based": {
-      "economic": 0.18661706206256756,
-      "human": 0.8142946200926776,
-      "stability": 0.43116605437571226,
-      "equity": 0.001681447449231912,
-      "resilience": 0.24388693343151446,
-      "legitimacy": 0.9934334797105981,
-      "environment": 0.6406157950558427
+      "economic": 0.20101377608114182,
+      "human": 0.8036169258673753,
+      "stability": 0.4930931926024046,
+      "equity": 0.12158114614533871,
+      "resilience": 0.4394256947080451,
+      "legitimacy": 0.9911353072391011,
+      "environment": 0.6009074740871492
     },
     "random_valid": {
-      "economic": 0.28522849886369334,
+      "economic": 0.2521429561496167,
       "human": 0.7962547736163847,
-      "stability": 0.7532543885586718,
-      "equity": 0.16121076264089354,
-      "resilience": 0.029997318824262702,
-      "legitimacy": 0.9927313520929969,
-      "environment": 0.5739617796550143
+      "stability": 0.6328562353775437,
+      "equity": 0.14275260569294349,
+      "resilience": 0.33827952153937424,
+      "legitimacy": 0.9908772075135017,
+      "environment": 0.5739324562621759
     },
     "simple_mpc": {
-      "economic": 0.18661706206256756,
-      "human": 0.8312094145883063,
-      "stability": 0.43116605437571226,
-      "equity": 0.001681447449231912,
-      "resilience": 0.24388693343151446,
-      "legitimacy": 0.9934334797105981,
-      "environment": 0.6406157950558427
+      "economic": 0.20101377608114182,
+      "human": 0.8107821243338479,
+      "stability": 0.4930931926024046,
+      "equity": 0.12158114614533871,
+      "resilience": 0.4394256947080451,
+      "legitimacy": 0.9911353072391011,
+      "environment": 0.6009074740871492
     }
   },
   "pareto_frontier": [
@@ -58,15 +58,15 @@
   ],
   "weight_sensitivity": {
     "hold_policy": {
-      "mean_rank": 2.458,
+      "mean_rank": 2.333,
       "rank_interval": [
-        2,
+        1,
         4
       ],
-      "p_top1": 0.0
+      "p_top1": 0.451
     },
     "rule_based": {
-      "mean_rank": 3.541,
+      "mean_rank": 3.39,
       "rank_interval": [
         2,
         4
@@ -74,31 +74,31 @@
       "p_top1": 0.0
     },
     "random_valid": {
-      "mean_rank": 1.465,
+      "mean_rank": 1.903,
       "rank_interval": [
         1,
         4
       ],
-      "p_top1": 0.773
+      "p_top1": 0.323
     },
     "simple_mpc": {
-      "mean_rank": 2.536,
+      "mean_rank": 2.374,
       "rank_interval": [
         1,
         3
       ],
-      "p_top1": 0.227
+      "p_top1": 0.226
     }
   },
   "paired_rule_vs_hold": {
-    "paired_mean_diff": -0.06082692564508639,
-    "paired_median_diff": -0.061724715934054465,
+    "paired_mean_diff": -0.05379284728224246,
+    "paired_median_diff": -0.025869539521870134,
     "bootstrap_ci95": [
-      -0.09530236316725638,
-      -0.02545369783394833
+      -0.128784628490887,
+      0.006960930515371874
     ],
-    "permutation_p": 0.1265,
-    "prob_superiority": 0.0,
-    "effect_size_matched": -1.698115626275581
+    "permutation_p": 0.487,
+    "prob_superiority": 0.5,
+    "effect_size_matched": -0.7313271641549068
   }
 }

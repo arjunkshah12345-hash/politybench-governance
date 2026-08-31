@@ -20,8 +20,21 @@ Synthetic `macro_fiscal_crisis` scenarios sample elasticities from this posterio
 
 ## Japan GEJE (2011+)
 
-Pre-event 2010–2011Q1 → event injection → 2011–2016 reconstruction shape vs public scaffold.
+| Phase | Years | Use |
+|-------|-------|-----|
+| Pre-event | 2010–2011Q1 | Structural check (damage ≈ 0) |
+| Calibration | 2011–2013 | Rebuild-parameter ensemble |
+| Holdout | 2014–2016 | Report only |
 
-## Rule
+```bash
+politybench calibrate --target japan --particles 48 --keep 12
+```
 
-`verification ≠ calibration ≠ validation`. Failed fits are published in result JSONs.
+Frozen artifact: `configs/ensembles/japan_geje_posterior_v1.json`  
+Synthetic `compound_disaster` blends generative timing with calibrated intensity/rebuild priors.
+
+## External trade & creditor negotiation
+
+Strategic (non-tactical) module: tariffs, trade agreements, creditor program accept/counter/reject.
+Affects partner demand, financing spreads, and export access. Options appear in `diplomatic_inbox`.
+

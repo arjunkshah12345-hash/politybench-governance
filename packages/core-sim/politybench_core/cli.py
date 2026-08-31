@@ -162,17 +162,31 @@ def benchmark(
 
 @app.command("calibrate")
 def calibrate(
+    target: str = "greece",
     particles: int = 48,
     keep: int = 12,
     seed: int = 41823,
 ):
-    """Fit Greece parameter ensemble on 2009–2013 only; freeze posterior."""
-    from calibration.greece.calibrate import calibrate_ensemble
+    """Fit parameter ensemble on calibration window only; freeze posterior."""
+    if target == "greece":
+        from calibration.greece.calibrate import calibrate_ensemble
 
-    result = calibrate_ensemble(n_particles=particles, keep_top=keep, seed=seed)
-    best = result["elite_diagnostics"][0]
-    console.print("Best calibration:", best["calibration"])
-    console.print("Best holdout (not used in fit):", best["holdout"])
+        result = calibrate_ensemble(n_particles=particles, keep_top=keep, seed=seed)
+        best = result["elite_diagnostics"][0]
+        console.print("Best calibration:", best["calibration"])
+        console.print("Best holdout (not used in fit):", best["holdout"])
+    elif target in {"japan", "japan_geje"}:
+        from calibration.japan_geje.calibrate import calibrate_ensemble
+
+        result = calibrate_ensemble(
+            n_particles=particles, keep_top=keep, seed=seed if seed != 41823 else 20110311
+        )
+        best = result["elite_diagnostics"][0]
+        console.print("Best cal RMSE 2011-13:", best["rmse_calibration_2011_2013"])
+        console.print("Holdout RMSE 2014-16:", best["rmse_holdout_2014_2016"])
+    else:
+        console.print(f"[red]Unknown calibrate target: {target}[/red]")
+        raise typer.Exit(1)
     console.print(f"Posterior hash: {result['content_hash'][:16]}…")
 
 
@@ -189,8 +203,10 @@ def calibrate_smoke():
         round(g["rmse_gdp_index_validation"], 2),
     )
     console.print(
-        "Japan recon RMSE / event damage:",
-        round(j["rmse_reconstruction_progress"], 3),
+        "Japan recon RMSE cal/holdout:",
+        round(j["rmse_reconstruction_calibration"], 3),
+        round(j["rmse_reconstruction_holdout"], 3),
+        "event_damage=",
         j["event_damage"],
     )
 

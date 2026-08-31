@@ -198,6 +198,7 @@ class RuleBasedGovernment:
             social_policy=social,
             education=edu,
             environment=env,
+            diplomacy=_diplomacy_from_inbox(obs, debt_gdp),
             anti_corruption={"audit_intensity": 0.03},
             public_communications=[
                 {"kind": "disclosure", "text": "Publishing hospital and fiscal situation reports"},
@@ -205,6 +206,30 @@ class RuleBasedGovernment:
             ],
             meta={"implementation_lag_months": 1},
         )
+
+
+def _diplomacy_from_inbox(obs: Observation, debt_gdp: float) -> list[dict]:
+    acts: list[dict] = []
+    inbox = obs.diplomatic_inbox or []
+    for msg in inbox[-3:]:
+        kind = (msg or {}).get("kind")
+        if kind == "creditor_demand":
+            if debt_gdp > 1.35:
+                acts.append(
+                    {
+                        "kind": "creditor_response",
+                        "decision": "accept_program",
+                        "primary_surplus_target": 0.015,
+                    }
+                )
+            elif debt_gdp > 1.1:
+                acts.append({"kind": "creditor_response", "decision": "counter_offer"})
+            else:
+                acts.append({"kind": "creditor_response", "decision": "acknowledge"})
+    # Mild proactive trade posture under export stress alerts
+    if any("retaliat" in a.lower() or "export" in a.lower() for a in (obs.alerts or [])):
+        acts.append({"kind": "propose_trade_agreement"})
+    return acts
 
 
 class SimpleMPCAgent:

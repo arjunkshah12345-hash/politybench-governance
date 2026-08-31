@@ -1,17 +1,34 @@
 {
   "pre_event_window": "2010-01 to 2011-02",
   "event": "2011-03 synthetic GEJE-intensity shock",
-  "validation_window": "2011-2016",
+  "calibration_window": "2011-2013",
+  "validation_window": "2014-2016",
+  "posterior_id": "japan_geje_posterior_v1",
+  "posterior_hash": "5c146040f0cd3ae78803339b98076c9eb22c65df89b68981f6e0c1f07d9ec370",
+  "best_params": {
+    "disaster_intensity": 0.6711272230799685,
+    "demand_shock": -0.17432058634544842,
+    "rebuild_efficiency": 0.026946223835382428,
+    "construction_base": 0.14431093759895783,
+    "ramp_per_year": 0.047135157251133354,
+    "ramp_start": 0.36695736715075605,
+    "budget_scale": 374.04001262642464,
+    "spend_scale": 53.6491856935427,
+    "displacement_frac": 0.12609936301550753
+  },
   "pre_event_mean_damage": 0.0,
-  "event_damage": 0.5296537281221091,
-  "rmse_reconstruction_progress": 0.2784526611827111,
+  "event_damage": 0.6463030598667315,
+  "rmse_reconstruction_calibration": 0.16176718204823456,
+  "rmse_reconstruction_holdout": 0.44955003037129954,
+  "rmse_reconstruction_progress": 0.33783416863504423,
   "simulated_progress": {
-    "2011": 0.4711613521573934,
-    "2012": 0.4726022920588635,
-    "2013": 0.4744794625192005,
-    "2014": 0.47667377808770817,
-    "2015": 0.47902413935580745,
-    "2016": 0.48143473571771944
+    "2010": 1.0,
+    "2011": 0.3546067347736429,
+    "2012": 0.3563330907192406,
+    "2013": 0.3586839274637649,
+    "2014": 0.3614061201851495,
+    "2015": 0.36425007319539615,
+    "2016": 0.3671474142034836
   },
   "observed_progress_scaffold": {
     "2011": 0.15,
@@ -21,11 +38,17 @@
     "2015": 0.82,
     "2016": 0.9
   },
-  "peak_displacement_sim": 795741.4268924012,
+  "holdout_ensemble_mean": {
+    "2014": 0.3990345062631449,
+    "2015": 0.4024397073705532,
+    "2016": 0.40594709931468737
+  },
+  "peak_displacement_sim": 1224410.4489991576,
   "fixture_displacement_peak": 470000,
   "limitations": [
     "Regional aggregate, not prefecture-resolved Tohoku model",
     "Reconstruction Agency figures used as trajectory-shape targets via public scaffolds",
+    "Posterior fit on 2011\u20132013 only; 2014\u20132016 is held-out",
     "Validation case only \u2014 not a leaderboard scenario"
   ]
 }
