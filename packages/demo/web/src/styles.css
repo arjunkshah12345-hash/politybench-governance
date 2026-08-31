@@ -719,6 +719,382 @@ body {
   50% { opacity: 0; }
 }
 
+/* ═══ COUNTRY BENCH LAYOUT ═══ */
+.bench-world {
+  background: linear-gradient(180deg, var(--sky-top) 0%, #b8e4ff 42%, var(--grass) 42%, #6b8e23 100%);
+}
+
+.bench-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bench-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+  line-height: 1.8;
+}
+
+.bench-meta span {
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 0.35rem 0.5rem;
+  border: 2px solid #000;
+}
+
+.warn-pill {
+  background: #8b4513 !important;
+  color: #ffe !important;
+}
+
+.pareto-bar {
+  max-width: 1200px;
+  margin: 0 auto 0.75rem;
+  padding: 0 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.pareto-chip {
+  background: var(--accent);
+  border: 2px solid #3d2914;
+  padding: 0.15rem 0.45rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+}
+
+.bench-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.section-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.country-card {
+  text-align: left;
+  cursor: pointer;
+  background: var(--panel-bg, #f5e6c8);
+  border: 4px solid #3d2914;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
+  padding: 0;
+  font-family: inherit;
+  color: inherit;
+  transition: transform 0.08s;
+  position: relative;
+  overflow: hidden;
+}
+
+.country-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.28);
+}
+
+.country-card.selected {
+  outline: 3px solid var(--accent);
+  transform: translate(-2px, -2px);
+}
+
+.country-flag {
+  height: 8px;
+  width: 100%;
+}
+
+.country-card__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.6rem 0.75rem 0.35rem;
+}
+
+.country-card__head h3 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.42rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.country-agent {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.country-leader {
+  font-size: 1.75rem;
+}
+
+.country-score {
+  text-align: center;
+  background: #2d6b2d;
+  color: #fff;
+  border: 2px solid #1a4020;
+  padding: 0.25rem 0.4rem;
+  min-width: 3rem;
+}
+
+.country-score strong {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+}
+
+.country-score small {
+  font-size: 0.65rem;
+  opacity: 0.85;
+}
+
+.country-voxel-map {
+  display: flex;
+  gap: 4px;
+  padding: 0 0.75rem 0.35rem;
+  height: 28px;
+  align-items: flex-end;
+}
+
+.voxel-block {
+  width: 16px;
+  background: #6b4423;
+  border: 2px solid #2a1808;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.voxel-block.house { height: 22px; background: #a04030; }
+.voxel-block.tree { height: 26px; background: #2d6b2d; width: 10px; }
+.voxel-block.field { height: 14px; flex: 1; background: #7cb342; }
+
+.citizen-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+  border-top: 2px dashed rgba(61, 41, 20, 0.2);
+  border-bottom: 2px dashed rgba(61, 41, 20, 0.2);
+}
+
+.citizen {
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.1;
+  filter: grayscale(0.1);
+}
+
+.citizen.mood-happy { filter: saturate(1.2); }
+.citizen.mood-angry { filter: hue-rotate(-20deg) saturate(1.3); }
+.citizen.mood-sick { opacity: 0.75; }
+.citizen.jobless { opacity: 0.65; }
+
+.citizen-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+  color: #666;
+}
+
+.country-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.country-stats div {
+  text-align: center;
+}
+
+.country-stats span {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.32rem;
+  color: #888;
+}
+
+.country-stats strong {
+  font-size: 1rem;
+}
+
+.country-sparklines {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  height: 36px;
+  padding: 0 0.75rem 0.5rem;
+}
+
+.mini-chart {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(61, 41, 20, 0.2);
+}
+
+.llm-badge {
+  margin: 0;
+  padding: 0.25rem 0.75rem 0.5rem;
+  font-size: 0.75rem;
+  color: #2563eb;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+}
+
+.nation-detail-wrap {
+  margin-top: 0.5rem;
+}
+
+.country-detail {
+  background: var(--panel-bg);
+  border: 4px solid #3d2914;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+}
+
+.detail-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 3px solid #3d2914;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.detail-leader {
+  font-size: 3rem;
+}
+
+.detail-header h2 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  margin: 0 0 0.35rem;
+}
+
+.detail-header p {
+  margin: 0.15rem 0;
+  color: #555;
+}
+
+.detail-meta code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.1rem 0.25rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.detail-panel {
+  background: rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(61, 41, 20, 0.25);
+  padding: 0.65rem;
+}
+
+.detail-panel.span-2 {
+  grid-column: span 2;
+}
+
+.detail-panel h4 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.4rem;
+  margin: 0 0 0.5rem;
+  color: #666;
+}
+
+.big-num {
+  font-family: "Press Start 2P", monospace;
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: #2d6b2d;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+}
+
+.timeline li {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed rgba(61, 41, 20, 0.15);
+}
+
+.evt-month {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+  color: #888;
+  min-width: 2.5rem;
+}
+
+.evt-disaster { color: #c0392b; }
+.evt-epidemic { color: #8e44ad; }
+.evt-fiscal { color: #d35400; }
+
+.trajectory-charts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.traj-block {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.traj-block label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.integrity-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+}
+
+.muted { color: #777; }
+
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; }
+  .detail-panel.span-2 { grid-column: span 1; }
+  .trajectory-charts { grid-template-columns: repeat(2, 1fr); }
+}
+
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .span-score,

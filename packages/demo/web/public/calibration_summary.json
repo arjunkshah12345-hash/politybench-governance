@@ -134,7 +134,7 @@
     "calibration_window": "2011-2013",
     "validation_window": "2014-2016",
     "posterior_id": "japan_geje_posterior_v1",
-    "posterior_hash": "40ca41d8648bc74231610eb4a70b3906c9b143aaf2b56c98718d72643f2080a3",
+    "posterior_hash": "cb6276a6895cf7717a5b27e8bee520d157b7dc76b1d0aeff58810ac75559ee36",
     "best_params": {
       "disaster_intensity": 0.6711272230799685,
       "demand_shock": -0.17432058634544842,

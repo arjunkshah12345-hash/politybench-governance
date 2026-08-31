@@ -1,6 +1,6 @@
 {
   "dataset_id": "era5",
-  "frozen_at": "2026-08-31T05:03:15.665005+00:00",
+  "frozen_at": "2026-08-31T05:17:54.200791+00:00",
   "benchmark_version": "0.1.0",
   "series": [
     {
@@ -28,5 +28,5 @@
     }
   ],
   "extra": {},
-  "manifest_sha256": "45a7bf7c09e3b5f551804a2240101f09345c3d9d10e6a4c89b7c9df538e2cd8b"
+  "manifest_sha256": "96b5aa93a8bfb05e3bea19bf02f05300ca156b7bc045104a0c45b5f4ec8646ff"
 }

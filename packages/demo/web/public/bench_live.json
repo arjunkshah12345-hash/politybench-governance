@@ -1,0 +1,5780 @@
+{
+  "generated_at": "2026-08-31T05:17:41.909506+00:00",
+  "bench_kind": "country_live",
+  "scenario": "macro_fiscal_crisis",
+  "fidelity": "F0",
+  "seeds": 1,
+  "seed_list": [
+    374330184296152539
+  ],
+  "llm_interval_months": 6,
+  "agents": [
+    "rule_based",
+    "hold_policy",
+    "simple_mpc",
+    "composer-2.5",
+    "gpt-5.2",
+    "gemini-3.7-flash-high"
+  ],
+  "countries": [
+    {
+      "agent_id": "rule_based",
+      "model": "rule_based",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "Meridian Federation",
+      "motto": "Rules before rhetoric",
+      "leader_title": "Chief Administrator",
+      "sprite": "\ud83d\udc68\u200d\u2696\ufe0f",
+      "flag": [
+        "#1f6f5b",
+        "#f4d03f",
+        "#1f6f5b"
+      ],
+      "terrain": "coast",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 80.7,
+        "unemployment_pct": 17.9,
+        "debt_gdp": 2.26,
+        "trust": 0.95,
+        "poverty_pct": 53.6,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -2.0,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.23688129813438136,
+        "robust_score_single": 23.688129813438135,
+        "dims": {
+          "economic": 0.027288169730922185,
+          "human": 0.8036169258673753,
+          "stability": 0.5990501889133194,
+          "equity": 0.006159993402610584,
+          "resilience": 0.8645057759666532,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.598247072117099
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8050435311054793,
+          "unemployment": 0.16560386767596738,
+          "inflation_dev": 0.02728311265105605,
+          "debt_stress": 2.261579571803925,
+          "investment_share": 0.2112559936762347,
+          "mortality_proxy": 0.0,
+          "education_index": 0.7319999999999987,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.0025691582996156407,
+          "service_continuity": 1.0,
+          "poverty": 0.5356341200503563,
+          "gini": 0.479876756507235,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.19288011984230824,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.09093554451702623,
+          "trust": 0.95,
+          "corruption_inv": 0.9602223869607268,
+          "rights": 1.0,
+          "emissions_intensity": 0.3387706422481705,
+          "clean_energy": 0.30400000000000005,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12256962983829046
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.1162862135186174
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.1189635470508663
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15814.219277783188,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319140.9118756041,
+          "debt_gdp": 1.6817191871745523,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.12516830100385062,
+          "gini": 0.3546673204015402,
+          "trust": 0.5980475280984072,
+          "emissions": 5721.842467271946,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15622.775014277586,
+          "unemployment": 0.12256962983829046,
+          "inflation": -0.002151484313078835,
+          "debt": 320376.66670751834,
+          "debt_gdp": 1.708918904263847,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1378944692903549,
+          "gini": 0.3585063951193761,
+          "trust": 0.6442152372075989,
+          "emissions": 5512.892508491041,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15381.81050770605,
+          "unemployment": 0.07671011580030822,
+          "inflation": 0.01365317841372389,
+          "debt": 321526.7155491531,
+          "debt_gdp": 1.7419206242988168,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13679078485932886,
+          "gini": 0.3577307190309595,
+          "trust": 0.6885947106047887,
+          "emissions": 5440.778636343155,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15201.531524453152,
+          "unemployment": 0.1162862135186174,
+          "inflation": 3.976836933562849e-05,
+          "debt": 322683.0619102306,
+          "debt_gdp": 1.7689175012353378,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14746172344987646,
+          "gini": 0.3608733701968062,
+          "trust": 0.7312730004263464,
+          "emissions": 5347.694412225769,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 15010.9577258066,
+          "unemployment": 0.10077782630320148,
+          "inflation": 0.004610955401283594,
+          "debt": 323774.91456815746,
+          "debt_gdp": 1.7974364709784014,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1534057322447676,
+          "gini": 0.36243541718869865,
+          "trust": 0.7723328532647706,
+          "emissions": 5277.393440340009,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 14847.179131470892,
+          "unemployment": 0.1189635470508663,
+          "inflation": -0.0005746229127392595,
+          "debt": 324883.2054226121,
+          "debt_gdp": 1.8234844620752004,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.16472592394311847,
+          "gini": 0.3657842229270217,
+          "trust": 0.8118529245050145,
+          "emissions": 5204.547522862201,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14661.774556734026,
+          "unemployment": 0.12004326373504624,
+          "inflation": -0.0011840926845451609,
+          "debt": 325970.76951368357,
+          "debt_gdp": 1.8527246267288067,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.17626130248634533,
+          "gini": 0.3691975090696115,
+          "trust": 0.8499079819628094,
+          "emissions": 5110.359715243161,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14492.71923971904,
+          "unemployment": 0.12822159356901372,
+          "inflation": -0.0038257805435615616,
+          "debt": 327058.01877942844,
+          "debt_gdp": 1.880588069600531,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.19017404465953136,
+          "gini": 0.3733981740675057,
+          "trust": 0.8865690993595134,
+          "emissions": 5044.241497520542,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14331.157742480795,
+          "unemployment": 0.1313311139302007,
+          "inflation": -0.0029520058645092894,
+          "debt": 328197.8948643285,
+          "debt_gdp": 1.9084169655711976,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20494909786877072,
+          "gini": 0.37788157307259745,
+          "trust": 0.921903840141289,
+          "emissions": 4983.842316857174,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14187.745897601717,
+          "unemployment": 0.1375267486462597,
+          "inflation": -0.0079149293747262,
+          "debt": 329206.7106123371,
+          "debt_gdp": 1.9336329216091677,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.22151083762105345,
+          "gini": 0.38295573400058536,
+          "trust": 0.95,
+          "emissions": 4923.641329722832,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14047.100626495441,
+          "unemployment": 0.14378439343389507,
+          "inflation": -0.009686962834736967,
+          "debt": 330266.61782626103,
+          "debt_gdp": 1.9592810562114436,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2397233333695612,
+          "gini": 0.38856504443131057,
+          "trust": 0.95,
+          "emissions": 4851.250071930603,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 13915.93185918457,
+          "unemployment": 0.14538371770807504,
+          "inflation": -0.009200414615184008,
+          "debt": 331371.16131360276,
+          "debt_gdp": 1.984363226424877,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.25821734830108495,
+          "gini": 0.39425497604975857,
+          "trust": 0.95,
+          "emissions": 4804.02555070177,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 13795.73974971367,
+          "unemployment": 0.14993579327583453,
+          "inflation": -0.010347379409318798,
+          "debt": 332507.5332886422,
+          "debt_gdp": 2.008515788938534,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2778713187059468,
+          "gini": 0.4003178483461866,
+          "trust": 0.95,
+          "emissions": 4756.1399409002815,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 13682.672627502754,
+          "unemployment": 0.15268941938719013,
+          "inflation": -0.010938353916628965,
+          "debt": 333668.94495421,
+          "debt_gdp": 2.0321867057580625,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.29813973773834024,
+          "gini": 0.4065714275714002,
+          "trust": 0.95,
+          "emissions": 4708.701317546312,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 13575.588073336536,
+          "unemployment": 0.15555373478451634,
+          "inflation": -0.010330571810927667,
+          "debt": 334903.9706860879,
+          "debt_gdp": 2.05579780950008,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3190597687066604,
+          "gini": 0.41302836526303793,
+          "trust": 0.95,
+          "emissions": 4667.785852446342,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 13475.628234618647,
+          "unemployment": 0.16195250906479683,
+          "inflation": -0.013431187880663626,
+          "debt": 336142.51108639664,
+          "debt_gdp": 2.078706494136161,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3416460877847434,
+          "gini": 0.42002384271297516,
+          "trust": 0.95,
+          "emissions": 4604.112821978002,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 13377.301372991384,
+          "unemployment": 0.1616612109447952,
+          "inflation": -0.011745364960189865,
+          "debt": 337442.6137767252,
+          "debt_gdp": 2.10208449601812,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3639350777068789,
+          "gini": 0.4269062144629334,
+          "trust": 0.95,
+          "emissions": 4569.892645519521,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 13289.083765437303,
+          "unemployment": 0.16547317324055924,
+          "inflation": -0.013762600058659596,
+          "debt": 338724.31912303664,
+          "debt_gdp": 2.1240762035829883,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.3871510505159662,
+          "gini": 0.4340831401217572,
+          "trust": 0.95,
+          "emissions": 4535.294297136428,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 13205.762632076818,
+          "unemployment": 0.16678919636584166,
+          "inflation": -0.015312064667681521,
+          "debt": 339963.85329852276,
+          "debt_gdp": 2.145299888958767,
+          "financing_spread": 0.005324044138074973,
+          "creditor_stance": 0.2121229692237442,
+          "poverty": 0.41053970514035704,
+          "gini": 0.4413028180441967,
+          "trust": 0.95,
+          "emissions": 4501.049863692022,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 13099.060025440409,
+          "unemployment": 0.16940653611165823,
+          "inflation": -0.01466743083251171,
+          "debt": 341251.65808410884,
+          "debt_gdp": 2.170967849482744,
+          "financing_spread": 0.002,
+          "creditor_stance": 0.5921229692237442,
+          "poverty": 0.4344878480361877,
+          "gini": 0.44869394448029576,
+          "trust": 0.95,
+          "emissions": 4468.1953461488,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 12997.049241779307,
+          "unemployment": 0.1726105050506411,
+          "inflation": -0.015291725106347994,
+          "debt": 342555.1817813895,
+          "debt_gdp": 2.1963650839058544,
+          "financing_spread": 0.002,
+          "creditor_stance": 0.9721229692237442,
+          "poverty": 0.45914787690914505,
+          "gini": 0.4563057459284659,
+          "trust": 0.95,
+          "emissions": 4426.965227494587,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 12898.348455606367,
+          "unemployment": 0.17475638027601814,
+          "inflation": -0.015482340013032314,
+          "debt": 343872.4697176202,
+          "debt_gdp": 2.22168281790212,
+          "financing_spread": 0.004,
+          "creditor_stance": 0.9521229692237442,
+          "poverty": 0.4842044028645067,
+          "gini": 0.46403322870509023,
+          "trust": 0.95,
+          "emissions": 4390.338776152099,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 12828.475925838107,
+          "unemployment": 0.17752080544936183,
+          "inflation": -0.016985797666216332,
+          "debt": 345186.012275779,
+          "debt_gdp": 2.2423163273077806,
+          "financing_spread": 0.006,
+          "creditor_stance": 0.9321229692237442,
+          "poverty": 0.5098362474073465,
+          "gini": 0.4719355504132389,
+          "trust": 0.95,
+          "emissions": 4353.98671222275,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 12763.970768271825,
+          "unemployment": 0.17889714816039537,
+          "inflation": -0.02,
+          "debt": 346400.82653551205,
+          "debt_gdp": 2.261579571803925,
+          "financing_spread": 0.008,
+          "creditor_stance": 0.9121229692237441,
+          "poverty": 0.5356341200503563,
+          "gini": 0.479876756507235,
+          "trust": 0.95,
+          "emissions": 4324.05857480432,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 0,
+        "llm_calls": 0
+      }
+    },
+    {
+      "agent_id": "hold_policy",
+      "model": "hold_policy",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "Stasis Republic",
+      "motto": "Steady hands, frozen budgets",
+      "leader_title": "Caretaker PM",
+      "sprite": "\ud83e\uddd1\u200d\ud83c\udf3e",
+      "flag": [
+        "#6b8e23",
+        "#f5f5dc",
+        "#6b8e23"
+      ],
+      "terrain": "plains",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 88.1,
+        "unemployment_pct": 14.1,
+        "debt_gdp": 2.16,
+        "trust": 0.95,
+        "poverty_pct": 42.6,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -0.88,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.157333365508784,
+        "robust_score_single": 15.733336550878398,
+        "dims": {
+          "economic": 0.03444098497910126,
+          "human": 0.7962547736163847,
+          "stability": 0.732039563491623,
+          "equity": 0.007047013494448022,
+          "resilience": 0.02954997060444051,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.5708493449643276
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8789727604568159,
+          "unemployment": 0.13723411701671898,
+          "inflation_dev": 0.021602131931669415,
+          "debt_stress": 2.161919073823784,
+          "investment_share": 0.20407104064979556,
+          "mortality_proxy": 0.0,
+          "education_index": 0.72,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.002917287826510179,
+          "service_continuity": 1.0,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.11876021398794623,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.0,
+          "trust": 0.95,
+          "corruption_inv": 0.9572481493684676,
+          "rights": 1.0,
+          "emissions_intensity": 0.3489226824727414,
+          "clean_energy": 0.28,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12012949780835229
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11129703469996476
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11097512009816876
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15855.82515465313,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319368.46301284496,
+          "debt_gdp": 1.678502274389262,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1252862249111359,
+          "gini": 0.3547144899644543,
+          "trust": 0.5776449629873693,
+          "emissions": 5725.0492317224325,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15706.899325310002,
+          "unemployment": 0.12012949780835229,
+          "inflation": -0.0014194447040973826,
+          "debt": 320887.6024170102,
+          "debt_gdp": 1.7024769167305451,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13741859906717674,
+          "gini": 0.3583648496707036,
+          "trust": 0.6040276778253703,
+          "emissions": 5538.268197197814,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15510.842707729234,
+          "unemployment": 0.07347627267090338,
+          "inflation": 0.01462333135254534,
+          "debt": 322404.99093462666,
+          "debt_gdp": 1.7321484773033882,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13550141636357999,
+          "gini": 0.35732845113584677,
+          "trust": 0.6292088569214711,
+          "emissions": 5488.471417720322,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15377.093544466323,
+          "unemployment": 0.11129703469996476,
+          "inflation": 0.0015365220149314205,
+          "debt": 323971.8050736213,
+          "debt_gdp": 1.7557056764161574,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14485322667958447,
+          "gini": 0.36004323456824927,
+          "trust": 0.6532462250627669,
+          "emissions": 5418.257031040651,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 15234.343809354457,
+          "unemployment": 0.09439955838131303,
+          "inflation": 0.0065244357778501275,
+          "debt": 325566.83256780385,
+          "debt_gdp": 1.780882046523798,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14908299737021055,
+          "gini": 0.3610471516768734,
+          "trust": 0.6761946678369979,
+          "emissions": 5371.284665799152,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 15119.99283954658,
+          "unemployment": 0.11097512009816876,
+          "inflation": 0.0018219051730700014,
+          "debt": 327203.47049497045,
+          "debt_gdp": 1.8033709515565193,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.15822907892572,
+          "gini": 0.3636860818971138,
+          "trust": 0.6981063726517174,
+          "emissions": 5322.034649637793,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14984.953718910616,
+          "unemployment": 0.1103953197638364,
+          "inflation": 0.0017102905068177893,
+          "debt": 328877.78961858625,
+          "debt_gdp": 1.8289334076240267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.16711878798128663,
+          "gini": 0.36623405912406376,
+          "trust": 0.7190309627213168,
+          "emissions": 5251.6034319809405,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14867.075904061914,
+          "unemployment": 0.11605750993047928,
+          "inflation": -0.0001765554520012304,
+          "debt": 330595.63103719783,
+          "debt_gdp": 1.8530635141399596,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.17765698232780194,
+          "gini": 0.3693281866640603,
+          "trust": 0.7390156243731401,
+          "emissions": 5209.6413804377635,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14757.665432316311,
+          "unemployment": 0.1170994497167491,
+          "inflation": 0.0013174933995261874,
+          "debt": 332417.4737690376,
+          "debt_gdp": 1.8770893183930837,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.18846401770911697,
+          "gini": 0.3725090118222514,
+          "trust": 0.7581052280063617,
+          "emissions": 5173.601267656161,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14667.253225294671,
+          "unemployment": 0.12091685362558638,
+          "inflation": -0.0029319608685242074,
+          "debt": 334167.1213959786,
+          "debt_gdp": 1.8986008960632836,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20037234462461728,
+          "gini": 0.3760540055159398,
+          "trust": 0.776342443020632,
+          "emissions": 5137.904063156214,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14580.171019088477,
+          "unemployment": 0.12586626272801632,
+          "inflation": -0.004311523622973341,
+          "debt": 335966.3420570259,
+          "debt_gdp": 1.9202240587414696,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2137047421542528,
+          "gini": 0.38006963927323373,
+          "trust": 0.7937678470156445,
+          "emissions": 5089.340942912231,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 14500.190490615336,
+          "unemployment": 0.12624751664216877,
+          "inflation": -0.0034595542954121293,
+          "debt": 337823.04655726475,
+          "debt_gdp": 1.9414862559673907,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.227123168025456,
+          "gini": 0.38411205928887165,
+          "trust": 0.8104200295477328,
+          "emissions": 5066.993420575888,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 14430.312133909541,
+          "unemployment": 0.1296359477687406,
+          "inflation": -0.004257425757190619,
+          "debt": 339723.0552855386,
+          "debt_gdp": 1.9618601693723892,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2415275017893859,
+          "gini": 0.3884810738390688,
+          "trust": 0.8263356907153068,
+          "emissions": 5043.0729944523855,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 14366.567553651179,
+          "unemployment": 0.1312300225450044,
+          "inflation": -0.004500534863973248,
+          "debt": 341657.92104859406,
+          "debt_gdp": 1.9817881560359425,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2563790101131422,
+          "gini": 0.39299707671767126,
+          "trust": 0.8415497348313502,
+          "emissions": 5019.048947254658,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 14307.881286684911,
+          "unemployment": 0.13295479253183867,
+          "inflation": -0.00355088913512437,
+          "debt": 343676.9272893744,
+          "debt_gdp": 2.0016760949389267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2717249973286772,
+          "gini": 0.3976763757532485,
+          "trust": 0.8560953594283026,
+          "emissions": 5001.435828096262,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 14255.282957783427,
+          "unemployment": 0.13837620168090975,
+          "inflation": -0.006358295665497505,
+          "debt": 345703.67954449885,
+          "debt_gdp": 2.020909725002124,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2886410622413096,
+          "gini": 0.40287527768468323,
+          "trust": 0.8700041398283844,
+          "emissions": 4958.717187506649,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 14202.871437838801,
+          "unemployment": 0.13603791881527963,
+          "inflation": -0.004058377321335197,
+          "debt": 347795.4755870452,
+          "debt_gdp": 2.04064061452426,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.30484020328316574,
+          "gini": 0.40783417572512015,
+          "trust": 0.8833061095007796,
+          "emissions": 4947.139000367868,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 14160.502066237063,
+          "unemployment": 0.13939498997435742,
+          "inflation": -0.005939145078799055,
+          "debt": 349877.1678049965,
+          "debt_gdp": 2.058996956042552,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.32202963138358487,
+          "gini": 0.41312204716580064,
+          "trust": 0.8960298364160261,
+          "emissions": 4934.575913483875,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 14120.214221372224,
+          "unemployment": 0.13844520993550677,
+          "inflation": -0.006808868738581053,
+          "debt": 351912.61905182723,
+          "debt_gdp": 2.0768843253995843,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.338917313502027,
+          "gini": 0.4183082158144673,
+          "trust": 0.9082024955974518,
+          "emissions": 4922.093001808456,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 14082.997063239654,
+          "unemployment": 0.1395921930336165,
+          "inflation": -0.0057231279090991915,
+          "debt": 354024.1475878804,
+          "debt_gdp": 2.094867460847385,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.35613675705846365,
+          "gini": 0.42360414937636964,
+          "trust": 0.9198499380595092,
+          "emissions": 4912.975453367986,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 14049.805528667024,
+          "unemployment": 0.13985961626590562,
+          "inflation": -0.005466458470927351,
+          "debt": 356161.0769545725,
+          "debt_gdp": 2.112491143429391,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.37342056700036724,
+          "gini": 0.42892048102781294,
+          "trust": 0.9309967563133725,
+          "emissions": 4901.30002843291,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 14019.799604769612,
+          "unemployment": 0.1399526462875339,
+          "inflation": -0.005041219816487039,
+          "debt": 358324.73679753474,
+          "debt_gdp": 2.1298731490405345,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.390722721336374,
+          "gini": 0.43424228983646496,
+          "trust": 0.9416663466111532,
+          "emissions": 4894.286030355422,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 13993.820566244245,
+          "unemployment": 0.1405488206206801,
+          "inflation": -0.005894202217611814,
+          "debt": 360469.4560495667,
+          "debt_gdp": 2.1465990074164565,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.4081905501290681,
+          "gini": 0.439618444941129,
+          "trust": 0.95,
+          "emissions": 4884.65516686151,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 13972.783966331064,
+          "unemployment": 0.1407810447412542,
+          "inflation": -0.008774064322743528,
+          "debt": 362496.33805476327,
+          "debt_gdp": 2.161919073823784,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "trust": 0.95,
+          "emissions": 4875.421263144346,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 0,
+        "llm_calls": 0
+      }
+    },
+    {
+      "agent_id": "simple_mpc",
+      "model": "simple_mpc",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "Horizon Planning State",
+      "motto": "One step ahead, barely",
+      "leader_title": "Planning Minister",
+      "sprite": "\ud83e\uddee",
+      "flag": [
+        "#2980b9",
+        "#ffffff",
+        "#2980b9"
+      ],
+      "terrain": "hills",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 80.7,
+        "unemployment_pct": 17.9,
+        "debt_gdp": 2.26,
+        "trust": 0.95,
+        "poverty_pct": 53.6,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -2.0,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.23718187690597806,
+        "robust_score_single": 23.718187690597805,
+        "dims": {
+          "economic": 0.027288169730922185,
+          "human": 0.8107821243338479,
+          "stability": 0.5990501889133194,
+          "equity": 0.006159993402610584,
+          "resilience": 0.8645057759666532,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.598247072117099
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8050435311054793,
+          "unemployment": 0.16560386767596738,
+          "inflation_dev": 0.02728311265105605,
+          "debt_stress": 2.261579571803925,
+          "investment_share": 0.2112559936762347,
+          "mortality_proxy": 0.0,
+          "education_index": 0.744,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.0025691582996156407,
+          "service_continuity": 1.0,
+          "poverty": 0.5356341200503563,
+          "gini": 0.479876756507235,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.19288011984230824,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.09093554451702623,
+          "trust": 0.95,
+          "corruption_inv": 0.9602223869607268,
+          "rights": 1.0,
+          "emissions_intensity": 0.3387706422481705,
+          "clean_energy": 0.30400000000000005,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12256962983829046
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.1162862135186174
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.1189635470508663
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15814.219277783188,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319140.9118756041,
+          "debt_gdp": 1.6817191871745523,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.12516830100385062,
+          "gini": 0.3546673204015402,
+          "trust": 0.5980475280984072,
+          "emissions": 5721.842467271946,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15622.775014277586,
+          "unemployment": 0.12256962983829046,
+          "inflation": -0.002151484313078835,
+          "debt": 320376.66670751834,
+          "debt_gdp": 1.708918904263847,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1378944692903549,
+          "gini": 0.3585063951193761,
+          "trust": 0.6442152372075989,
+          "emissions": 5512.892508491041,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15381.81050770605,
+          "unemployment": 0.07671011580030822,
+          "inflation": 0.01365317841372389,
+          "debt": 321526.7155491531,
+          "debt_gdp": 1.7419206242988168,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13679078485932886,
+          "gini": 0.3577307190309595,
+          "trust": 0.6885947106047887,
+          "emissions": 5440.778636343155,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15201.531524453152,
+          "unemployment": 0.1162862135186174,
+          "inflation": 3.976836933562849e-05,
+          "debt": 322683.0619102306,
+          "debt_gdp": 1.7689175012353378,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14746172344987646,
+          "gini": 0.3608733701968062,
+          "trust": 0.7312730004263464,
+          "emissions": 5347.694412225769,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 15010.9577258066,
+          "unemployment": 0.10077782630320148,
+          "inflation": 0.004610955401283594,
+          "debt": 323774.91456815746,
+          "debt_gdp": 1.7974364709784014,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1534057322447676,
+          "gini": 0.36243541718869865,
+          "trust": 0.7723328532647706,
+          "emissions": 5277.393440340009,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 14847.179131470892,
+          "unemployment": 0.1189635470508663,
+          "inflation": -0.0005746229127392595,
+          "debt": 324883.2054226121,
+          "debt_gdp": 1.8234844620752004,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.16472592394311847,
+          "gini": 0.3657842229270217,
+          "trust": 0.8118529245050145,
+          "emissions": 5204.547522862201,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14661.774556734026,
+          "unemployment": 0.12004326373504624,
+          "inflation": -0.0011840926845451609,
+          "debt": 325970.76951368357,
+          "debt_gdp": 1.8527246267288067,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.17626130248634533,
+          "gini": 0.3691975090696115,
+          "trust": 0.8499079819628094,
+          "emissions": 5110.359715243161,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14492.71923971904,
+          "unemployment": 0.12822159356901372,
+          "inflation": -0.0038257805435615616,
+          "debt": 327058.01877942844,
+          "debt_gdp": 1.880588069600531,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.19017404465953136,
+          "gini": 0.3733981740675057,
+          "trust": 0.8865690993595134,
+          "emissions": 5044.241497520542,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14331.157742480795,
+          "unemployment": 0.1313311139302007,
+          "inflation": -0.0029520058645092894,
+          "debt": 328197.8948643285,
+          "debt_gdp": 1.9084169655711976,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20494909786877072,
+          "gini": 0.37788157307259745,
+          "trust": 0.921903840141289,
+          "emissions": 4983.842316857174,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14187.745897601717,
+          "unemployment": 0.1375267486462597,
+          "inflation": -0.0079149293747262,
+          "debt": 329206.7106123371,
+          "debt_gdp": 1.9336329216091677,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.22151083762105345,
+          "gini": 0.38295573400058536,
+          "trust": 0.95,
+          "emissions": 4923.641329722832,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14047.100626495441,
+          "unemployment": 0.14378439343389507,
+          "inflation": -0.009686962834736967,
+          "debt": 330266.61782626103,
+          "debt_gdp": 1.9592810562114436,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2397233333695612,
+          "gini": 0.38856504443131057,
+          "trust": 0.95,
+          "emissions": 4851.250071930603,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 13915.93185918457,
+          "unemployment": 0.14538371770807504,
+          "inflation": -0.009200414615184008,
+          "debt": 331371.16131360276,
+          "debt_gdp": 1.984363226424877,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.25821734830108495,
+          "gini": 0.39425497604975857,
+          "trust": 0.95,
+          "emissions": 4804.02555070177,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 13795.73974971367,
+          "unemployment": 0.14993579327583453,
+          "inflation": -0.010347379409318798,
+          "debt": 332507.5332886422,
+          "debt_gdp": 2.008515788938534,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2778713187059468,
+          "gini": 0.4003178483461866,
+          "trust": 0.95,
+          "emissions": 4756.1399409002815,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 13682.672627502754,
+          "unemployment": 0.15268941938719013,
+          "inflation": -0.010938353916628965,
+          "debt": 333668.94495421,
+          "debt_gdp": 2.0321867057580625,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.29813973773834024,
+          "gini": 0.4065714275714002,
+          "trust": 0.95,
+          "emissions": 4708.701317546312,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 13575.588073336536,
+          "unemployment": 0.15555373478451634,
+          "inflation": -0.010330571810927667,
+          "debt": 334903.9706860879,
+          "debt_gdp": 2.05579780950008,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3190597687066604,
+          "gini": 0.41302836526303793,
+          "trust": 0.95,
+          "emissions": 4667.785852446342,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 13475.628234618647,
+          "unemployment": 0.16195250906479683,
+          "inflation": -0.013431187880663626,
+          "debt": 336142.51108639664,
+          "debt_gdp": 2.078706494136161,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3416460877847434,
+          "gini": 0.42002384271297516,
+          "trust": 0.95,
+          "emissions": 4604.112821978002,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 13377.301372991384,
+          "unemployment": 0.1616612109447952,
+          "inflation": -0.011745364960189865,
+          "debt": 337442.6137767252,
+          "debt_gdp": 2.10208449601812,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3639350777068789,
+          "gini": 0.4269062144629334,
+          "trust": 0.95,
+          "emissions": 4569.892645519521,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 13289.083765437303,
+          "unemployment": 0.16547317324055924,
+          "inflation": -0.013762600058659596,
+          "debt": 338724.31912303664,
+          "debt_gdp": 2.1240762035829883,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.3871510505159662,
+          "gini": 0.4340831401217572,
+          "trust": 0.95,
+          "emissions": 4535.294297136428,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 13205.762632076818,
+          "unemployment": 0.16678919636584166,
+          "inflation": -0.015312064667681521,
+          "debt": 339963.85329852276,
+          "debt_gdp": 2.145299888958767,
+          "financing_spread": 0.005324044138074973,
+          "creditor_stance": 0.2121229692237442,
+          "poverty": 0.41053970514035704,
+          "gini": 0.4413028180441967,
+          "trust": 0.95,
+          "emissions": 4501.049863692022,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 13099.060025440409,
+          "unemployment": 0.16940653611165823,
+          "inflation": -0.01466743083251171,
+          "debt": 341251.65808410884,
+          "debt_gdp": 2.170967849482744,
+          "financing_spread": 0.002,
+          "creditor_stance": 0.5921229692237442,
+          "poverty": 0.4344878480361877,
+          "gini": 0.44869394448029576,
+          "trust": 0.95,
+          "emissions": 4468.1953461488,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 12997.049241779307,
+          "unemployment": 0.1726105050506411,
+          "inflation": -0.015291725106347994,
+          "debt": 342555.1817813895,
+          "debt_gdp": 2.1963650839058544,
+          "financing_spread": 0.002,
+          "creditor_stance": 0.9721229692237442,
+          "poverty": 0.45914787690914505,
+          "gini": 0.4563057459284659,
+          "trust": 0.95,
+          "emissions": 4426.965227494587,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 12898.348455606367,
+          "unemployment": 0.17475638027601814,
+          "inflation": -0.015482340013032314,
+          "debt": 343872.4697176202,
+          "debt_gdp": 2.22168281790212,
+          "financing_spread": 0.004,
+          "creditor_stance": 0.9521229692237442,
+          "poverty": 0.4842044028645067,
+          "gini": 0.46403322870509023,
+          "trust": 0.95,
+          "emissions": 4390.338776152099,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 12828.475925838107,
+          "unemployment": 0.17752080544936183,
+          "inflation": -0.016985797666216332,
+          "debt": 345186.012275779,
+          "debt_gdp": 2.2423163273077806,
+          "financing_spread": 0.006,
+          "creditor_stance": 0.9321229692237442,
+          "poverty": 0.5098362474073465,
+          "gini": 0.4719355504132389,
+          "trust": 0.95,
+          "emissions": 4353.98671222275,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 12763.970768271825,
+          "unemployment": 0.17889714816039537,
+          "inflation": -0.02,
+          "debt": 346400.82653551205,
+          "debt_gdp": 2.261579571803925,
+          "financing_spread": 0.008,
+          "creditor_stance": 0.9121229692237441,
+          "poverty": 0.5356341200503563,
+          "gini": 0.479876756507235,
+          "trust": 0.95,
+          "emissions": 4324.05857480432,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 0,
+        "llm_calls": 0
+      }
+    },
+    {
+      "agent_id": "composer-2.5",
+      "model": "composer-2.5",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "Composer Union",
+      "motto": "Cursor Composer executive",
+      "leader_title": "AI Premier",
+      "sprite": "\ud83e\udd16",
+      "flag": [
+        "#2563eb",
+        "#fbfbf8",
+        "#2563eb"
+      ],
+      "terrain": "coast",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 80.6,
+        "unemployment_pct": 18.1,
+        "debt_gdp": 2.39,
+        "trust": 0.95,
+        "poverty_pct": 43.2,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -2.0,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.15309278270845247,
+        "robust_score_single": 15.309278270845248,
+        "dims": {
+          "economic": 0.027802403301468447,
+          "human": 0.8107821243338479,
+          "stability": 0.6168045596483472,
+          "equity": 0.0071761296572364144,
+          "resilience": 0.027965199615510524,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.7063838148941756
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8037300087437,
+          "unemployment": 0.16245408356466867,
+          "inflation_dev": 0.026821828942906106,
+          "debt_stress": 2.393463684330898,
+          "investment_share": 0.2132003370200754,
+          "mortality_proxy": 0.0,
+          "education_index": 0.744,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.0031439797063690243,
+          "service_continuity": 1.0,
+          "poverty": 0.43205138665715304,
+          "gini": 0.43913560653160805,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.1941970300095981,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.0,
+          "trust": 0.95,
+          "corruption_inv": 0.9623235271456105,
+          "rights": 1.0,
+          "emissions_intensity": 0.2882816307139758,
+          "clean_energy": 0.41200000000000014,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12420803877524278
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11914744148447858
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.1230406066010525
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15789.09213164696,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319220.2323303491,
+          "debt_gdp": 1.684814161937142,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.12510743828089352,
+          "gini": 0.3546429753123574,
+          "trust": 0.6082500932094451,
+          "emissions": 5718.634831962375,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15574.462646952217,
+          "unemployment": 0.12420803877524278,
+          "inflation": -0.002643006994164531,
+          "debt": 320575.32062834426,
+          "debt_gdp": 1.715282938354848,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1380683554246535,
+          "gini": 0.3585431813943565,
+          "trust": 0.6643127811991614,
+          "emissions": 5462.764132892887,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15310.890946340432,
+          "unemployment": 0.07859837096439491,
+          "inflation": 0.013086701864497882,
+          "debt": 321872.8815437811,
+          "debt_gdp": 1.751873239947511,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1370697595307846,
+          "gini": 0.357771775617521,
+          "trust": 0.7182950036334909,
+          "emissions": 5345.441156809827,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15109.722198700321,
+          "unemployment": 0.11914744148447858,
+          "inflation": -0.0008186000204227273,
+          "debt": 323229.92019887303,
+          "debt_gdp": 1.7826817944777524,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14791885280893852,
+          "gini": 0.36092846409909296,
+          "trust": 0.770298401377138,
+          "emissions": 5208.808790452892,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 14899.442149957042,
+          "unemployment": 0.10415639205305063,
+          "inflation": 0.003597385676328846,
+          "debt": 324549.63809134054,
+          "debt_gdp": 1.8152225366609689,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.15396801520095227,
+          "gini": 0.36246500121483743,
+          "trust": 0.8204195804740508,
+          "emissions": 5096.232831077041,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 14717.467122672935,
+          "unemployment": 0.1230406066010525,
+          "inflation": -0.001797740777795119,
+          "debt": 325950.7702468794,
+          "debt_gdp": 1.8456004664956762,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1653618526101515,
+          "gini": 0.3657617240464961,
+          "trust": 0.8687503629465634,
+          "emissions": 4982.604038142433,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14585.61343223169,
+          "unemployment": 0.124272610772132,
+          "inflation": -0.0024528967956708894,
+          "debt": 327245.9455519374,
+          "debt_gdp": 1.8696845072280854,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1766170249605895,
+          "gini": 0.36897834077122865,
+          "trust": 0.9153763756459583,
+          "emissions": 4858.243422990221,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14477.554023957853,
+          "unemployment": 0.12959518440196516,
+          "inflation": -0.004237857793446993,
+          "debt": 328690.74173736316,
+          "debt_gdp": 1.891955996120136,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.18899910271726017,
+          "gini": 0.37253926818585764,
+          "trust": 0.95,
+          "emissions": 4763.091003998798,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14385.501309662432,
+          "unemployment": 0.13124794911629267,
+          "inflation": -0.0029270564203368824,
+          "debt": 330348.87775497674,
+          "debt_gdp": 1.9136679740008349,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20139373400053645,
+          "gini": 0.37607216171684227,
+          "trust": 0.95,
+          "emissions": 4676.476090359426,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14318.858151410934,
+          "unemployment": 0.1346859652964757,
+          "inflation": -0.007062694369791004,
+          "debt": 332032.4469425139,
+          "debt_gdp": 1.9323726994122346,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.21431430220974648,
+          "gini": 0.37974666969459675,
+          "trust": 0.95,
+          "emissions": 4593.3395948088355,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14260.612678691068,
+          "unemployment": 0.1386058345513525,
+          "inflation": -0.008133395169974196,
+          "debt": 333892.1777363923,
+          "debt_gdp": 1.951132729821343,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2278557810205124,
+          "gini": 0.38359114452787607,
+          "trust": 0.95,
+          "emissions": 4501.523298206065,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 14216.889413069777,
+          "unemployment": 0.13724000977018824,
+          "inflation": -0.0067573022338179725,
+          "debt": 335921.33680977,
+          "debt_gdp": 1.9690273955716886,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.24045869046658677,
+          "gini": 0.38708750811090203,
+          "trust": 0.95,
+          "emissions": 4435.377832532432,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 14066.02485484331,
+          "unemployment": 0.14163322304738196,
+          "inflation": -0.007856608340783028,
+          "debt": 337928.75427936757,
+          "debt_gdp": 2.002038942337297,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2537974702892709,
+          "gini": 0.3907903555790281,
+          "trust": 0.95,
+          "emissions": 4359.478780770194,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 13925.9112772841,
+          "unemployment": 0.14601215376690788,
+          "inflation": -0.008935174230544289,
+          "debt": 340037.05676817184,
+          "debt_gdp": 2.034798357761329,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.26776685431484665,
+          "gini": 0.39465786611392023,
+          "trust": 0.95,
+          "emissions": 4286.3776196078925,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 13790.617910817138,
+          "unemployment": 0.14925828160491011,
+          "inflation": -0.008441935857045802,
+          "debt": 342297.8324060236,
+          "debt_gdp": 2.068422136820586,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.28200401963071764,
+          "gini": 0.39856756660817044,
+          "trust": 0.95,
+          "emissions": 4220.67085738568,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 13666.598010498801,
+          "unemployment": 0.15697635950053013,
+          "inflation": -0.011938343011383617,
+          "debt": 344657.12375058053,
+          "debt_gdp": 2.101578385282935,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2977385510733144,
+          "gini": 0.40292185199519853,
+          "trust": 0.95,
+          "emissions": 4134.063670757357,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 13546.367963044133,
+          "unemployment": 0.15710027068229068,
+          "inflation": -0.010377082881438513,
+          "debt": 347176.7495112586,
+          "debt_gdp": 2.135730837338294,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.3127336097319232,
+          "gini": 0.40697787004499625,
+          "trust": 0.95,
+          "emissions": 4076.2157920684067,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 13439.693591111198,
+          "unemployment": 0.16176180151278147,
+          "inflation": -0.012649188540326267,
+          "debt": 349787.40553749836,
+          "debt_gdp": 2.1688701653687144,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.3283053788694593,
+          "gini": 0.41117134166975505,
+          "trust": 0.95,
+          "emissions": 4019.0230419426307,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 13311.655712533231,
+          "unemployment": 0.1639017595099067,
+          "inflation": -0.014445833610901036,
+          "debt": 352328.4108908632,
+          "debt_gdp": 2.2056385427643055,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.34409540978177505,
+          "gini": 0.41540931884448323,
+          "trust": 0.95,
+          "emissions": 3961.2196560322373,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 13185.026550114922,
+          "unemployment": 0.16792603442549553,
+          "inflation": -0.014223280326662898,
+          "debt": 354931.95012688485,
+          "debt_gdp": 2.2432766743511743,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.36064827802740246,
+          "gini": 0.4198719454542243,
+          "trust": 0.95,
+          "emissions": 3901.925587136531,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 13062.783018699658,
+          "unemployment": 0.17131192445100946,
+          "inflation": -0.014902150926458505,
+          "debt": 357556.56740993646,
+          "debt_gdp": 2.2810132094240974,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.3777477734161854,
+          "gini": 0.42448550512071725,
+          "trust": 0.95,
+          "emissions": 3840.5521804623013,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 12944.33762619185,
+          "unemployment": 0.1743553120598731,
+          "inflation": -0.015362019548188796,
+          "debt": 360207.7315909403,
+          "debt_gdp": 2.3189530304875565,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.39529363717604066,
+          "gini": 0.42921674438346186,
+          "trust": 0.95,
+          "emissions": 3783.672028312373,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 12831.042421302109,
+          "unemployment": 0.1780092064852797,
+          "inflation": -0.017132317976991687,
+          "debt": 362847.21479038947,
+          "debt_gdp": 2.356571423144793,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.4134451176904139,
+          "gini": 0.43411715245950555,
+          "trust": 0.95,
+          "emissions": 3725.18662643088,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 12722.897333133205,
+          "unemployment": 0.18120267572965748,
+          "inflation": -0.02,
+          "debt": 365421.51271589706,
+          "debt_gdp": 2.393463684330898,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.43205138665715304,
+          "gini": 0.43913560653160805,
+          "trust": 0.95,
+          "emissions": 3667.777590602134,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 24,
+        "llm_calls": 4
+      }
+    },
+    {
+      "agent_id": "gpt-5.2",
+      "model": "gpt-5.2",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "GPT Commonwealth",
+      "motto": "GPT-5.2 national executive",
+      "leader_title": "AI President",
+      "sprite": "\ud83e\udde0",
+      "flag": [
+        "#10a37f",
+        "#ffffff",
+        "#10a37f"
+      ],
+      "terrain": "plains",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 88.1,
+        "unemployment_pct": 14.1,
+        "debt_gdp": 2.16,
+        "trust": 0.95,
+        "poverty_pct": 42.6,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -0.88,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.157333365508784,
+        "robust_score_single": 15.733336550878398,
+        "dims": {
+          "economic": 0.03444098497910126,
+          "human": 0.7962547736163847,
+          "stability": 0.732039563491623,
+          "equity": 0.007047013494448022,
+          "resilience": 0.02954997060444051,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.5708493449643276
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8789727604568159,
+          "unemployment": 0.13723411701671898,
+          "inflation_dev": 0.021602131931669415,
+          "debt_stress": 2.161919073823784,
+          "investment_share": 0.20407104064979556,
+          "mortality_proxy": 0.0,
+          "education_index": 0.72,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.002917287826510179,
+          "service_continuity": 1.0,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.11876021398794623,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.0,
+          "trust": 0.95,
+          "corruption_inv": 0.9572481493684676,
+          "rights": 1.0,
+          "emissions_intensity": 0.3489226824727414,
+          "clean_energy": 0.28,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12012949780835229
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11129703469996476
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11097512009816876
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15855.82515465313,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319368.46301284496,
+          "debt_gdp": 1.678502274389262,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1252862249111359,
+          "gini": 0.3547144899644543,
+          "trust": 0.5776449629873693,
+          "emissions": 5725.0492317224325,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15706.899325310002,
+          "unemployment": 0.12012949780835229,
+          "inflation": -0.0014194447040973826,
+          "debt": 320887.6024170102,
+          "debt_gdp": 1.7024769167305451,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13741859906717674,
+          "gini": 0.3583648496707036,
+          "trust": 0.6040276778253703,
+          "emissions": 5538.268197197814,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15510.842707729234,
+          "unemployment": 0.07347627267090338,
+          "inflation": 0.01462333135254534,
+          "debt": 322404.99093462666,
+          "debt_gdp": 1.7321484773033882,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13550141636357999,
+          "gini": 0.35732845113584677,
+          "trust": 0.6292088569214711,
+          "emissions": 5488.471417720322,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15377.093544466323,
+          "unemployment": 0.11129703469996476,
+          "inflation": 0.0015365220149314205,
+          "debt": 323971.8050736213,
+          "debt_gdp": 1.7557056764161574,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14485322667958447,
+          "gini": 0.36004323456824927,
+          "trust": 0.6532462250627669,
+          "emissions": 5418.257031040651,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 15234.343809354457,
+          "unemployment": 0.09439955838131303,
+          "inflation": 0.0065244357778501275,
+          "debt": 325566.83256780385,
+          "debt_gdp": 1.780882046523798,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14908299737021055,
+          "gini": 0.3610471516768734,
+          "trust": 0.6761946678369979,
+          "emissions": 5371.284665799152,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 15119.99283954658,
+          "unemployment": 0.11097512009816876,
+          "inflation": 0.0018219051730700014,
+          "debt": 327203.47049497045,
+          "debt_gdp": 1.8033709515565193,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.15822907892572,
+          "gini": 0.3636860818971138,
+          "trust": 0.6981063726517174,
+          "emissions": 5322.034649637793,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14984.953718910616,
+          "unemployment": 0.1103953197638364,
+          "inflation": 0.0017102905068177893,
+          "debt": 328877.78961858625,
+          "debt_gdp": 1.8289334076240267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.16711878798128663,
+          "gini": 0.36623405912406376,
+          "trust": 0.7190309627213168,
+          "emissions": 5251.6034319809405,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14867.075904061914,
+          "unemployment": 0.11605750993047928,
+          "inflation": -0.0001765554520012304,
+          "debt": 330595.63103719783,
+          "debt_gdp": 1.8530635141399596,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.17765698232780194,
+          "gini": 0.3693281866640603,
+          "trust": 0.7390156243731401,
+          "emissions": 5209.6413804377635,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14757.665432316311,
+          "unemployment": 0.1170994497167491,
+          "inflation": 0.0013174933995261874,
+          "debt": 332417.4737690376,
+          "debt_gdp": 1.8770893183930837,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.18846401770911697,
+          "gini": 0.3725090118222514,
+          "trust": 0.7581052280063617,
+          "emissions": 5173.601267656161,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14667.253225294671,
+          "unemployment": 0.12091685362558638,
+          "inflation": -0.0029319608685242074,
+          "debt": 334167.1213959786,
+          "debt_gdp": 1.8986008960632836,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20037234462461728,
+          "gini": 0.3760540055159398,
+          "trust": 0.776342443020632,
+          "emissions": 5137.904063156214,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14580.171019088477,
+          "unemployment": 0.12586626272801632,
+          "inflation": -0.004311523622973341,
+          "debt": 335966.3420570259,
+          "debt_gdp": 1.9202240587414696,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2137047421542528,
+          "gini": 0.38006963927323373,
+          "trust": 0.7937678470156445,
+          "emissions": 5089.340942912231,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 14500.190490615336,
+          "unemployment": 0.12624751664216877,
+          "inflation": -0.0034595542954121293,
+          "debt": 337823.04655726475,
+          "debt_gdp": 1.9414862559673907,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.227123168025456,
+          "gini": 0.38411205928887165,
+          "trust": 0.8104200295477328,
+          "emissions": 5066.993420575888,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 14430.312133909541,
+          "unemployment": 0.1296359477687406,
+          "inflation": -0.004257425757190619,
+          "debt": 339723.0552855386,
+          "debt_gdp": 1.9618601693723892,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2415275017893859,
+          "gini": 0.3884810738390688,
+          "trust": 0.8263356907153068,
+          "emissions": 5043.0729944523855,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 14366.567553651179,
+          "unemployment": 0.1312300225450044,
+          "inflation": -0.004500534863973248,
+          "debt": 341657.92104859406,
+          "debt_gdp": 1.9817881560359425,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2563790101131422,
+          "gini": 0.39299707671767126,
+          "trust": 0.8415497348313502,
+          "emissions": 5019.048947254658,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 14307.881286684911,
+          "unemployment": 0.13295479253183867,
+          "inflation": -0.00355088913512437,
+          "debt": 343676.9272893744,
+          "debt_gdp": 2.0016760949389267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2717249973286772,
+          "gini": 0.3976763757532485,
+          "trust": 0.8560953594283026,
+          "emissions": 5001.435828096262,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 14255.282957783427,
+          "unemployment": 0.13837620168090975,
+          "inflation": -0.006358295665497505,
+          "debt": 345703.67954449885,
+          "debt_gdp": 2.020909725002124,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2886410622413096,
+          "gini": 0.40287527768468323,
+          "trust": 0.8700041398283844,
+          "emissions": 4958.717187506649,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 14202.871437838801,
+          "unemployment": 0.13603791881527963,
+          "inflation": -0.004058377321335197,
+          "debt": 347795.4755870452,
+          "debt_gdp": 2.04064061452426,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.30484020328316574,
+          "gini": 0.40783417572512015,
+          "trust": 0.8833061095007796,
+          "emissions": 4947.139000367868,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 14160.502066237063,
+          "unemployment": 0.13939498997435742,
+          "inflation": -0.005939145078799055,
+          "debt": 349877.1678049965,
+          "debt_gdp": 2.058996956042552,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.32202963138358487,
+          "gini": 0.41312204716580064,
+          "trust": 0.8960298364160261,
+          "emissions": 4934.575913483875,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 14120.214221372224,
+          "unemployment": 0.13844520993550677,
+          "inflation": -0.006808868738581053,
+          "debt": 351912.61905182723,
+          "debt_gdp": 2.0768843253995843,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.338917313502027,
+          "gini": 0.4183082158144673,
+          "trust": 0.9082024955974518,
+          "emissions": 4922.093001808456,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 14082.997063239654,
+          "unemployment": 0.1395921930336165,
+          "inflation": -0.0057231279090991915,
+          "debt": 354024.1475878804,
+          "debt_gdp": 2.094867460847385,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.35613675705846365,
+          "gini": 0.42360414937636964,
+          "trust": 0.9198499380595092,
+          "emissions": 4912.975453367986,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 14049.805528667024,
+          "unemployment": 0.13985961626590562,
+          "inflation": -0.005466458470927351,
+          "debt": 356161.0769545725,
+          "debt_gdp": 2.112491143429391,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.37342056700036724,
+          "gini": 0.42892048102781294,
+          "trust": 0.9309967563133725,
+          "emissions": 4901.30002843291,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 14019.799604769612,
+          "unemployment": 0.1399526462875339,
+          "inflation": -0.005041219816487039,
+          "debt": 358324.73679753474,
+          "debt_gdp": 2.1298731490405345,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.390722721336374,
+          "gini": 0.43424228983646496,
+          "trust": 0.9416663466111532,
+          "emissions": 4894.286030355422,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 13993.820566244245,
+          "unemployment": 0.1405488206206801,
+          "inflation": -0.005894202217611814,
+          "debt": 360469.4560495667,
+          "debt_gdp": 2.1465990074164565,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.4081905501290681,
+          "gini": 0.439618444941129,
+          "trust": 0.95,
+          "emissions": 4884.65516686151,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 13972.783966331064,
+          "unemployment": 0.1407810447412542,
+          "inflation": -0.008774064322743528,
+          "debt": 362496.33805476327,
+          "debt_gdp": 2.161919073823784,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "trust": 0.95,
+          "emissions": 4875.421263144346,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 0,
+        "llm_calls": 4
+      }
+    },
+    {
+      "agent_id": "gemini-3.7-flash-high",
+      "model": "gemini-3.7-flash-high",
+      "seed": 374330184296152539,
+      "scenario": "macro_fiscal_crisis",
+      "country_name": "Gemini Republic",
+      "motto": "Gemini flash governance trial",
+      "leader_title": "AI Governor",
+      "sprite": "\u2728",
+      "flag": [
+        "#4285f4",
+        "#fbbc04",
+        "#34a853"
+      ],
+      "terrain": "hills",
+      "overview": {
+        "population": 10026914.649892468,
+        "gdp_index": 88.1,
+        "unemployment_pct": 14.1,
+        "debt_gdp": 2.16,
+        "trust": 0.95,
+        "poverty_pct": 42.6,
+        "infected": 0,
+        "deaths": 0,
+        "damage": 0.0,
+        "inflation_pct": -0.88,
+        "admin_capacity": 0.51,
+        "corruption": 0.04
+      },
+      "evaluation": {
+        "utility": 0.157333365508784,
+        "robust_score_single": 15.733336550878398,
+        "dims": {
+          "economic": 0.03444098497910126,
+          "human": 0.7962547736163847,
+          "stability": 0.732039563491623,
+          "equity": 0.007047013494448022,
+          "resilience": 0.02954997060444051,
+          "legitimacy": 0.9999999999993333,
+          "environment": 0.5708493449643276
+        },
+        "metrics": {
+          "gdp_per_capita_index": 0.8789727604568159,
+          "unemployment": 0.13723411701671898,
+          "inflation_dev": 0.021602131931669415,
+          "debt_stress": 2.161919073823784,
+          "investment_share": 0.20407104064979556,
+          "mortality_proxy": 0.0,
+          "education_index": 0.72,
+          "health_index": 0.78,
+          "service_coverage": 1.0,
+          "output_volatility": 0.002917287826510179,
+          "service_continuity": 1.0,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "regional_disparity": 0.0,
+          "shock_loss": 0.11876021398794623,
+          "recovery": 1.0,
+          "fiscal_buffer": 0.0,
+          "trust": 0.95,
+          "corruption_inv": 0.9572481493684676,
+          "rights": 1.0,
+          "emissions_intensity": 0.3489226824727414,
+          "clean_energy": 0.28,
+          "climate_loss": 0.0
+        },
+        "hard_violations": 0
+      },
+      "citizens": [
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 3
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 4
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 5
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 6
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 7
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 8
+        },
+        {
+          "mood": "worried",
+          "employed": false,
+          "cohort": 9
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 0
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 1
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 2
+        },
+        {
+          "mood": "neutral",
+          "employed": true,
+          "cohort": 3
+        }
+      ],
+      "regions": [
+        {
+          "name": "Capital",
+          "population_share": 0.4,
+          "gdp_share": 0.5,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Coast",
+          "population_share": 0.35,
+          "gdp_share": 0.3,
+          "damage": 0.0,
+          "services": 1.0
+        },
+        {
+          "name": "Interior",
+          "population_share": 0.25,
+          "gdp_share": 0.2,
+          "damage": 0.0,
+          "services": 1.0
+        }
+      ],
+      "timeline": [
+        {
+          "month": 1,
+          "year": 2030,
+          "type": "inauguration",
+          "label": "Executive term begins",
+          "severity": 0.2
+        },
+        {
+          "month": 2,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.12012949780835229
+        },
+        {
+          "month": 4,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11129703469996476
+        },
+        {
+          "month": 6,
+          "year": 2030,
+          "type": "recession",
+          "label": "Jobs crisis",
+          "severity": 0.11097512009816876
+        },
+        {
+          "month": 24,
+          "year": 2032,
+          "type": "term_end",
+          "label": "Simulation horizon reached",
+          "severity": 0.3
+        }
+      ],
+      "trajectory": [
+        {
+          "t": 1,
+          "year": 2030,
+          "month": 2,
+          "gdp": 15855.82515465313,
+          "unemployment": 0.03,
+          "inflation": 0.027313496344428596,
+          "debt": 319368.46301284496,
+          "debt_gdp": 1.678502274389262,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.1252862249111359,
+          "gini": 0.3547144899644543,
+          "trust": 0.5776449629873693,
+          "emissions": 5725.0492317224325,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10001120.0
+        },
+        {
+          "t": 2,
+          "year": 2030,
+          "month": 3,
+          "gdp": 15706.899325310002,
+          "unemployment": 0.12012949780835229,
+          "inflation": -0.0014194447040973826,
+          "debt": 320887.6024170102,
+          "debt_gdp": 1.7024769167305451,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13741859906717674,
+          "gini": 0.3583648496707036,
+          "trust": 0.6040276778253703,
+          "emissions": 5538.268197197814,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10002240.12544
+        },
+        {
+          "t": 3,
+          "year": 2030,
+          "month": 4,
+          "gdp": 15510.842707729234,
+          "unemployment": 0.07347627267090338,
+          "inflation": 0.01462333135254534,
+          "debt": 322404.99093462666,
+          "debt_gdp": 1.7321484773033882,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.13550141636357999,
+          "gini": 0.35732845113584677,
+          "trust": 0.6292088569214711,
+          "emissions": 5488.471417720322,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10003360.376334049
+        },
+        {
+          "t": 4,
+          "year": 2030,
+          "month": 5,
+          "gdp": 15377.093544466323,
+          "unemployment": 0.11129703469996476,
+          "inflation": 0.0015365220149314205,
+          "debt": 323971.8050736213,
+          "debt_gdp": 1.7557056764161574,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14485322667958447,
+          "gini": 0.36004323456824927,
+          "trust": 0.6532462250627669,
+          "emissions": 5418.257031040651,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10004480.752696197
+        },
+        {
+          "t": 5,
+          "year": 2030,
+          "month": 6,
+          "gdp": 15234.343809354457,
+          "unemployment": 0.09439955838131303,
+          "inflation": 0.0065244357778501275,
+          "debt": 325566.83256780385,
+          "debt_gdp": 1.780882046523798,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.14908299737021055,
+          "gini": 0.3610471516768734,
+          "trust": 0.6761946678369979,
+          "emissions": 5371.284665799152,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10005601.2545405
+        },
+        {
+          "t": 6,
+          "year": 2030,
+          "month": 7,
+          "gdp": 15119.99283954658,
+          "unemployment": 0.11097512009816876,
+          "inflation": 0.0018219051730700014,
+          "debt": 327203.47049497045,
+          "debt_gdp": 1.8033709515565193,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.15822907892572,
+          "gini": 0.3636860818971138,
+          "trust": 0.6981063726517174,
+          "emissions": 5322.034649637793,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10006721.881881008
+        },
+        {
+          "t": 7,
+          "year": 2030,
+          "month": 8,
+          "gdp": 14984.953718910616,
+          "unemployment": 0.1103953197638364,
+          "inflation": 0.0017102905068177893,
+          "debt": 328877.78961858625,
+          "debt_gdp": 1.8289334076240267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.16711878798128663,
+          "gini": 0.36623405912406376,
+          "trust": 0.7190309627213168,
+          "emissions": 5251.6034319809405,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10007842.634731779
+        },
+        {
+          "t": 8,
+          "year": 2030,
+          "month": 9,
+          "gdp": 14867.075904061914,
+          "unemployment": 0.11605750993047928,
+          "inflation": -0.0001765554520012304,
+          "debt": 330595.63103719783,
+          "debt_gdp": 1.8530635141399596,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.17765698232780194,
+          "gini": 0.3693281866640603,
+          "trust": 0.7390156243731401,
+          "emissions": 5209.6413804377635,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10008963.51310687
+        },
+        {
+          "t": 9,
+          "year": 2030,
+          "month": 10,
+          "gdp": 14757.665432316311,
+          "unemployment": 0.1170994497167491,
+          "inflation": 0.0013174933995261874,
+          "debt": 332417.4737690376,
+          "debt_gdp": 1.8770893183930837,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.18846401770911697,
+          "gini": 0.3725090118222514,
+          "trust": 0.7581052280063617,
+          "emissions": 5173.601267656161,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10010084.517020337
+        },
+        {
+          "t": 10,
+          "year": 2030,
+          "month": 11,
+          "gdp": 14667.253225294671,
+          "unemployment": 0.12091685362558638,
+          "inflation": -0.0029319608685242074,
+          "debt": 334167.1213959786,
+          "debt_gdp": 1.8986008960632836,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.20037234462461728,
+          "gini": 0.3760540055159398,
+          "trust": 0.776342443020632,
+          "emissions": 5137.904063156214,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10011205.646486243
+        },
+        {
+          "t": 11,
+          "year": 2030,
+          "month": 12,
+          "gdp": 14580.171019088477,
+          "unemployment": 0.12586626272801632,
+          "inflation": -0.004311523622973341,
+          "debt": 335966.3420570259,
+          "debt_gdp": 1.9202240587414696,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2137047421542528,
+          "gini": 0.38006963927323373,
+          "trust": 0.7937678470156445,
+          "emissions": 5089.340942912231,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10012326.90151865
+        },
+        {
+          "t": 12,
+          "year": 2031,
+          "month": 1,
+          "gdp": 14500.190490615336,
+          "unemployment": 0.12624751664216877,
+          "inflation": -0.0034595542954121293,
+          "debt": 337823.04655726475,
+          "debt_gdp": 1.9414862559673907,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.227123168025456,
+          "gini": 0.38411205928887165,
+          "trust": 0.8104200295477328,
+          "emissions": 5066.993420575888,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10013448.28213162
+        },
+        {
+          "t": 13,
+          "year": 2031,
+          "month": 2,
+          "gdp": 14430.312133909541,
+          "unemployment": 0.1296359477687406,
+          "inflation": -0.004257425757190619,
+          "debt": 339723.0552855386,
+          "debt_gdp": 1.9618601693723892,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2415275017893859,
+          "gini": 0.3884810738390688,
+          "trust": 0.8263356907153068,
+          "emissions": 5043.0729944523855,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10014569.788339218
+        },
+        {
+          "t": 14,
+          "year": 2031,
+          "month": 3,
+          "gdp": 14366.567553651179,
+          "unemployment": 0.1312300225450044,
+          "inflation": -0.004500534863973248,
+          "debt": 341657.92104859406,
+          "debt_gdp": 1.9817881560359425,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2563790101131422,
+          "gini": 0.39299707671767126,
+          "trust": 0.8415497348313502,
+          "emissions": 5019.048947254658,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10015691.420155512
+        },
+        {
+          "t": 15,
+          "year": 2031,
+          "month": 4,
+          "gdp": 14307.881286684911,
+          "unemployment": 0.13295479253183867,
+          "inflation": -0.00355088913512437,
+          "debt": 343676.9272893744,
+          "debt_gdp": 2.0016760949389267,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2717249973286772,
+          "gini": 0.3976763757532485,
+          "trust": 0.8560953594283026,
+          "emissions": 5001.435828096262,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10016813.177594569
+        },
+        {
+          "t": 16,
+          "year": 2031,
+          "month": 5,
+          "gdp": 14255.282957783427,
+          "unemployment": 0.13837620168090975,
+          "inflation": -0.006358295665497505,
+          "debt": 345703.67954449885,
+          "debt_gdp": 2.020909725002124,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.2886410622413096,
+          "gini": 0.40287527768468323,
+          "trust": 0.8700041398283844,
+          "emissions": 4958.717187506649,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10017935.06067046
+        },
+        {
+          "t": 17,
+          "year": 2031,
+          "month": 6,
+          "gdp": 14202.871437838801,
+          "unemployment": 0.13603791881527963,
+          "inflation": -0.004058377321335197,
+          "debt": 347795.4755870452,
+          "debt_gdp": 2.04064061452426,
+          "financing_spread": 0.009930192599262179,
+          "creditor_stance": 0.0,
+          "poverty": 0.30484020328316574,
+          "gini": 0.40783417572512015,
+          "trust": 0.8833061095007796,
+          "emissions": 4947.139000367868,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10019057.069397256
+        },
+        {
+          "t": 18,
+          "year": 2031,
+          "month": 7,
+          "gdp": 14160.502066237063,
+          "unemployment": 0.13939498997435742,
+          "inflation": -0.005939145078799055,
+          "debt": 349877.1678049965,
+          "debt_gdp": 2.058996956042552,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.32202963138358487,
+          "gini": 0.41312204716580064,
+          "trust": 0.8960298364160261,
+          "emissions": 4934.575913483875,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10020179.203789027
+        },
+        {
+          "t": 19,
+          "year": 2031,
+          "month": 8,
+          "gdp": 14120.214221372224,
+          "unemployment": 0.13844520993550677,
+          "inflation": -0.006808868738581053,
+          "debt": 351912.61905182723,
+          "debt_gdp": 2.0768843253995843,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.338917313502027,
+          "gini": 0.4183082158144673,
+          "trust": 0.9082024955974518,
+          "emissions": 4922.093001808456,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10021301.463859852
+        },
+        {
+          "t": 20,
+          "year": 2031,
+          "month": 9,
+          "gdp": 14082.997063239654,
+          "unemployment": 0.1395921930336165,
+          "inflation": -0.0057231279090991915,
+          "debt": 354024.1475878804,
+          "debt_gdp": 2.094867460847385,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.35613675705846365,
+          "gini": 0.42360414937636964,
+          "trust": 0.9198499380595092,
+          "emissions": 4912.975453367986,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10022423.849623805
+        },
+        {
+          "t": 21,
+          "year": 2031,
+          "month": 10,
+          "gdp": 14049.805528667024,
+          "unemployment": 0.13985961626590562,
+          "inflation": -0.005466458470927351,
+          "debt": 356161.0769545725,
+          "debt_gdp": 2.112491143429391,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.37342056700036724,
+          "gini": 0.42892048102781294,
+          "trust": 0.9309967563133725,
+          "emissions": 4901.30002843291,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10023546.361094963
+        },
+        {
+          "t": 22,
+          "year": 2031,
+          "month": 11,
+          "gdp": 14019.799604769612,
+          "unemployment": 0.1399526462875339,
+          "inflation": -0.005041219816487039,
+          "debt": 358324.73679753474,
+          "debt_gdp": 2.1298731490405345,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.390722721336374,
+          "gini": 0.43424228983646496,
+          "trust": 0.9416663466111532,
+          "emissions": 4894.286030355422,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10024668.998287404
+        },
+        {
+          "t": 23,
+          "year": 2031,
+          "month": 12,
+          "gdp": 13993.820566244245,
+          "unemployment": 0.1405488206206801,
+          "inflation": -0.005894202217611814,
+          "debt": 360469.4560495667,
+          "debt_gdp": 2.1465990074164565,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.4081905501290681,
+          "gini": 0.439618444941129,
+          "trust": 0.95,
+          "emissions": 4884.65516686151,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10025791.761215212
+        },
+        {
+          "t": 24,
+          "year": 2032,
+          "month": 1,
+          "gdp": 13972.783966331064,
+          "unemployment": 0.1407810447412542,
+          "inflation": -0.008774064322743528,
+          "debt": 362496.33805476327,
+          "debt_gdp": 2.161919073823784,
+          "financing_spread": 0.018324044138074973,
+          "creditor_stance": -0.16787703077625582,
+          "poverty": 0.42571536258380094,
+          "gini": 0.4450127490281971,
+          "trust": 0.95,
+          "emissions": 4875.421263144346,
+          "damage": 0.0,
+          "infected": 0.0,
+          "deaths": 0.0,
+          "population": 10026914.649892468
+        }
+      ],
+      "integrity": {
+        "hard_violations": 0,
+        "rejected_actions": 0,
+        "llm_calls": 4
+      }
+    }
+  ],
+  "summary": {
+    "robust_scores": {
+      "rule_based": 23.688129813438135,
+      "hold_policy": 15.733336550878398,
+      "simple_mpc": 23.718187690597805,
+      "composer-2.5": 15.309278270845248,
+      "gpt-5.2": 15.733336550878398,
+      "gemini-3.7-flash-high": 15.733336550878398
+    },
+    "mean_utility": {
+      "rule_based": 0.23688129813438136,
+      "hold_policy": 0.157333365508784,
+      "simple_mpc": 0.23718187690597806,
+      "composer-2.5": 0.15309278270845247,
+      "gpt-5.2": 0.157333365508784,
+      "gemini-3.7-flash-high": 0.157333365508784
+    },
+    "mean_dims": {
+      "rule_based": {
+        "economic": 0.027288169730922185,
+        "human": 0.8036169258673753,
+        "stability": 0.5990501889133194,
+        "equity": 0.006159993402610584,
+        "resilience": 0.8645057759666532,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.598247072117099
+      },
+      "hold_policy": {
+        "economic": 0.03444098497910126,
+        "human": 0.7962547736163847,
+        "stability": 0.732039563491623,
+        "equity": 0.007047013494448022,
+        "resilience": 0.02954997060444051,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.5708493449643276
+      },
+      "simple_mpc": {
+        "economic": 0.027288169730922185,
+        "human": 0.8107821243338479,
+        "stability": 0.5990501889133194,
+        "equity": 0.006159993402610584,
+        "resilience": 0.8645057759666532,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.598247072117099
+      },
+      "composer-2.5": {
+        "economic": 0.027802403301468447,
+        "human": 0.8107821243338479,
+        "stability": 0.6168045596483472,
+        "equity": 0.0071761296572364144,
+        "resilience": 0.027965199615510524,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.7063838148941756
+      },
+      "gpt-5.2": {
+        "economic": 0.03444098497910126,
+        "human": 0.7962547736163847,
+        "stability": 0.732039563491623,
+        "equity": 0.007047013494448022,
+        "resilience": 0.02954997060444051,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.5708493449643276
+      },
+      "gemini-3.7-flash-high": {
+        "economic": 0.03444098497910126,
+        "human": 0.7962547736163847,
+        "stability": 0.732039563491623,
+        "equity": 0.007047013494448022,
+        "resilience": 0.02954997060444051,
+        "legitimacy": 0.9999999999993333,
+        "environment": 0.5708493449643276
+      }
+    },
+    "pareto_frontier": [
+      "hold_policy",
+      "simple_mpc",
+      "composer-2.5",
+      "gpt-5.2",
+      "gemini-3.7-flash-high"
+    ],
+    "weight_sensitivity": {
+      "rule_based": {
+        "mean_rank": 2.506,
+        "rank_interval": [
+          2,
+          6
+        ],
+        "p_top1": 0.0
+      },
+      "hold_policy": {
+        "mean_rank": 2.962,
+        "rank_interval": [
+          1,
+          4
+        ],
+        "p_top1": 0.11
+      },
+      "simple_mpc": {
+        "mean_rank": 1.496,
+        "rank_interval": [
+          1,
+          5
+        ],
+        "p_top1": 0.85
+      },
+      "composer-2.5": {
+        "mean_rank": 5.112,
+        "rank_interval": [
+          1,
+          6
+        ],
+        "p_top1": 0.04
+      },
+      "gpt-5.2": {
+        "mean_rank": 3.962,
+        "rank_interval": [
+          2,
+          5
+        ],
+        "p_top1": 0.0
+      },
+      "gemini-3.7-flash-high": {
+        "mean_rank": 4.962,
+        "rank_interval": [
+          3,
+          6
+        ],
+        "p_top1": 0.0
+      }
+    }
+  }
+}

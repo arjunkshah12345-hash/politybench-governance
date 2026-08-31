@@ -306,6 +306,57 @@ def benchmark_official(
     console.print(f"Official harness wrote {path}")
 
 
+@app.command("bench-run")
+def bench_run(
+    scenario: str = "macro_fiscal_crisis",
+    fidelity: str = "F0",
+    seeds: int = 1,
+    baselines: str = "rule_based,hold_policy,simple_mpc",
+    llm_models: str = "composer-2.5,gpt-5.2,gemini-3.7-flash-high",
+    llm_interval: int = 6,
+    out: Path = Path("packages/demo/web/public/bench_live.json"),
+    no_llm: bool = False,
+):
+    """Run live country benchmark: each agent/model governs a synthetic nation."""
+    from politybench_core.bench.runner import run_country_bench
+
+    bl = [a.strip() for a in baselines.split(",") if a.strip()]
+    models = [] if no_llm else [m.strip() for m in llm_models.split(",") if m.strip()]
+
+    console.print(f"[bold]Country bench[/bold] · {scenario} · F{fidelity[-1]} · seeds={seeds}")
+    console.print(f"Baselines: {bl}")
+    console.print(f"LLM models: {models or '(none)'} · interval={llm_interval}mo")
+
+    payload = run_country_bench(
+        scenario=scenario,
+        fidelity=fidelity,
+        seeds=seeds,
+        baselines=bl,
+        llm_models=models,
+        llm_interval=llm_interval,
+        out_path=out,
+    )
+
+    table = Table(title="Country benchmark results")
+    table.add_column("Agent / Model")
+    table.add_column("Country")
+    table.add_column("Robust")
+    table.add_column("Utility")
+    table.add_column("LLM calls")
+    for c in payload["countries"]:
+        ev = c["evaluation"]
+        table.add_row(
+            c["agent_id"],
+            c["country_name"],
+            f"{ev.get('robust_score_single', 0):.1f}",
+            f"{ev.get('utility', 0):.3f}",
+            str(c["integrity"].get("llm_calls", 0)),
+        )
+    console.print(table)
+    console.print(f"Pareto: {payload['summary']['pareto_frontier']}")
+    console.print(f"[green]Wrote {out}[/green]")
+
+
 @app.command("serve")
 def serve(host: str = "127.0.0.1", port: int = 8765):
     import uvicorn
