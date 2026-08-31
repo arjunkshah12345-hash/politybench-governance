@@ -1,5 +1,8 @@
+import { useEffect, useMemo, useState } from "react";
 import type { CountryReport } from "../types";
 import { CitizenGrid, CitizenLegend, MoodBar } from "./CitizenGrid";
+import { DimRadar, MonthScrubber, VoxelTown } from "./VoxelTown";
+import { narrativeFor } from "./Narrative";
 
 function MiniChart({ trajectory, field, color }: { trajectory: CountryReport["trajectory"]; field: string; color: string }) {
   const vals = trajectory.map((r) => Number(r[field] ?? 0));
@@ -44,7 +47,10 @@ export function CountryCard({
     >
       <span className="rank-badge">{RANK_BADGE[country.rank - 1] || `#${country.rank}`}</span>
       <span className={`grade-pill grade-${country.grade}`}>{country.grade}</span>
-      <div className="country-flag" style={{ background: `linear-gradient(180deg, ${c1} 33%, ${c2} 33%, ${c2} 66%, ${c3} 66%)` }} />
+      <div
+        className="country-flag"
+        style={{ background: `linear-gradient(180deg, ${c1} 33%, ${c2} 33%, ${c2} 66%, ${c3} 66%)` }}
+      />
       <div className="country-card__head">
         <span className="country-leader">{country.sprite}</span>
         <div>
@@ -57,22 +63,35 @@ export function CountryCard({
         </div>
       </div>
 
+      <VoxelTown
+        terrain={country.terrain}
+        damage={o.damage}
+        trust={o.trust}
+        unemployment={o.unemployment_pct / 100}
+        poverty={o.poverty_pct / 100}
+        debtGdp={o.debt_gdp}
+      />
+
       <MoodBar summary={country.mood_summary || {}} />
-
-      <div className={`country-voxel-map terrain-${country.terrain}`} aria-hidden>
-        <div className="voxel-block house" />
-        <div className="voxel-block tree" />
-        <div className="voxel-block field" />
-        <div className="voxel-block citizens-silhouette" />
-      </div>
-
       <CitizenGrid citizens={country.citizens} size={40} />
 
       <div className="country-stats">
-        <div><span>GDP</span><strong>{o.gdp_index}%</strong></div>
-        <div><span>Jobs</span><strong>{(100 - o.unemployment_pct).toFixed(0)}%</strong></div>
-        <div><span>Trust</span><strong>{(o.trust * 100).toFixed(0)}</strong></div>
-        <div><span>Debt</span><strong>{o.debt_gdp.toFixed(1)}×</strong></div>
+        <div>
+          <span>GDP</span>
+          <strong>{o.gdp_index}%</strong>
+        </div>
+        <div>
+          <span>Jobs</span>
+          <strong>{(100 - o.unemployment_pct).toFixed(0)}%</strong>
+        </div>
+        <div>
+          <span>Trust</span>
+          <strong>{(o.trust * 100).toFixed(0)}</strong>
+        </div>
+        <div>
+          <span>Debt</span>
+          <strong>{o.debt_gdp.toFixed(1)}×</strong>
+        </div>
       </div>
 
       <div className="country-sparklines">
@@ -88,9 +107,37 @@ export function CountryCard({
   );
 }
 
-export function CountryDetail({ country }: { country: CountryReport }) {
+export function CountryDetail({
+  country,
+  month: controlledMonth,
+  onMonthChange,
+}: {
+  country: CountryReport;
+  month?: number;
+  onMonthChange?: (m: number) => void;
+}) {
   const o = country.overview;
   const dims = country.evaluation.dims;
+  const [localMonth, setLocalMonth] = useState(() => Math.max(0, country.trajectory.length - 1));
+  const month = controlledMonth ?? localMonth;
+  const setMonth = onMonthChange ?? setLocalMonth;
+
+  useEffect(() => {
+    if (controlledMonth == null) {
+      setLocalMonth(Math.max(0, country.trajectory.length - 1));
+    }
+  }, [country.agent_id, country.trajectory.length, controlledMonth]);
+
+  const snap = useMemo(() => {
+    const t = country.trajectory[Math.min(month, Math.max(0, country.trajectory.length - 1))];
+    return t || {};
+  }, [country.trajectory, month]);
+
+  const liveUnemp = Number(snap.unemployment ?? o.unemployment_pct / 100);
+  const liveTrust = Number(snap.trust ?? o.trust);
+  const liveDebt = Number(snap.debt_gdp ?? o.debt_gdp);
+  const liveDamage = Number(snap.damage ?? o.damage);
+  const livePoverty = Number(snap.poverty ?? o.poverty_pct / 100);
 
   return (
     <div className="country-detail">
@@ -102,12 +149,28 @@ export function CountryDetail({ country }: { country: CountryReport }) {
             <span className={`grade-pill grade-${country.grade}`}>{country.grade}</span>
             <span className="rank-inline">Rank #{country.rank}</span>
           </h2>
-          <p>{country.leader_title} · {country.motto}</p>
+          <p>
+            {country.leader_title} · {country.motto}
+          </p>
           <p className="detail-meta">
-            Agent <code>{country.agent_id}</code> · seed {country.seed} · {country.scenario.replace(/_/g, " ")}
+            Agent <code>{country.agent_id}</code> · seed {country.seed} ·{" "}
+            {country.scenario.replace(/_/g, " ")}
           </p>
         </div>
       </header>
+
+      <p className="narrative-box">{narrativeFor(country)}</p>
+
+      <VoxelTown
+        terrain={country.terrain}
+        damage={liveDamage}
+        trust={liveTrust}
+        unemployment={liveUnemp}
+        poverty={livePoverty}
+        debtGdp={liveDebt}
+      />
+
+      <MonthScrubber trajectory={country.trajectory} month={month} onChange={setMonth} />
 
       <div className="detail-grid">
         <section className="detail-panel">
@@ -116,6 +179,11 @@ export function CountryDetail({ country }: { country: CountryReport }) {
           <MoodBar summary={country.mood_summary || {}} />
           <CitizenGrid citizens={country.citizens} />
           <CitizenLegend />
+        </section>
+
+        <section className="detail-panel">
+          <h4>Capability radar</h4>
+          <DimRadar dims={dims} />
         </section>
 
         <section className="detail-panel">

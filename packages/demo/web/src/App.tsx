@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDialKit } from "dialkit";
-import type { BenchLive, CountryReport } from "./types";
+import type { BenchLive } from "./types";
 import { CountryCard, CountryDetail } from "./components/CountryCard";
 import { CompareBoard, HeadToHead, MultiCountryChart } from "./components/CompareBoard";
+import { Podium } from "./components/Narrative";
 
 export default function App() {
   const theme = useDialKit("World Theme", {
@@ -16,7 +17,9 @@ export default function App() {
   const [bench, setBench] = useState<BenchLive | null>(null);
   const [selectedId, setSelectedId] = useState<string>("");
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<"world" | "compare">("world");
+  const [view, setView] = useState<"world" | "compare" | "replay">("world");
+  const [playing, setPlaying] = useState(false);
+  const [playMonth, setPlayMonth] = useState(0);
 
   const load = () => {
     setLoading(true);
@@ -41,12 +44,38 @@ export default function App() {
     [countries, selectedId]
   );
 
+  const maxMonth = useMemo(() => {
+    if (!selected?.trajectory?.length) return 0;
+    return selected.trajectory.length - 1;
+  }, [selected]);
+
+  useEffect(() => {
+    if (!playing || !selected) return;
+    const id = setInterval(() => {
+      setPlayMonth((m) => {
+        if (m >= maxMonth) {
+          setPlaying(false);
+          return maxMonth;
+        }
+        return m + 1;
+      });
+    }, 280);
+    return () => clearInterval(id);
+  }, [playing, selected, maxMonth]);
+
+  useEffect(() => {
+    setPlayMonth(0);
+    setPlaying(false);
+  }, [selectedId]);
+
   const cssVars = {
     "--sky-top": theme.skyTop,
     "--grass": theme.grass,
     "--panel-bg": theme.panelBg,
     "--accent": theme.accent,
   } as React.CSSProperties;
+
+  const winner = countries.find((c) => c.rank === 1);
 
   return (
     <div className="pixel-world bench-world" style={cssVars}>
@@ -58,19 +87,33 @@ export default function App() {
           <h1 className="pixel-title">
             POLITY<span className="gold">BENCH</span>
           </h1>
-          <p className="pixel-subtitle">Each model runs a nation · citizens · policy · outcomes</p>
+          <p className="pixel-subtitle">
+            {winner
+              ? `Champion: ${winner.sprite} ${winner.country_name} (${winner.evaluation.robust_score_single.toFixed(1)})`
+              : "Each model runs a nation · citizens · policy · outcomes"}
+          </p>
         </div>
         <div className="bench-actions">
           <button type="button" className="pixel-btn refresh" onClick={load}>
             ↻ Reload
           </button>
           <div className="view-tabs">
-            <button type="button" className={view === "world" ? "active" : ""} onClick={() => setView("world")}>
-              World
-            </button>
-            <button type="button" className={view === "compare" ? "active" : ""} onClick={() => setView("compare")}>
-              Compare
-            </button>
+            {(
+              [
+                ["world", "World"],
+                ["compare", "Compare"],
+                ["replay", "Replay"],
+              ] as const
+            ).map(([id, label]) => (
+              <button
+                key={id}
+                type="button"
+                className={view === id ? "active" : ""}
+                onClick={() => setView(id)}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </div>
       </header>
@@ -85,8 +128,12 @@ export default function App() {
         </div>
       )}
 
+      {countries.length > 0 && view === "world" && <Podium countries={countries} />}
+
       {!bench && !loading && (
-        <p className="empty-hint">Run <code>politybench bench-run</code> then reload.</p>
+        <p className="empty-hint">
+          Run <code>politybench bench-run</code> then reload.
+        </p>
       )}
 
       {view === "compare" && countries.length > 0 && (
@@ -100,6 +147,48 @@ export default function App() {
           <div className="multi-chart-wrap">
             <h3 className="section-title">Trust paths</h3>
             <MultiCountryChart countries={countries} field="trust" />
+          </div>
+          <div className="multi-chart-wrap">
+            <h3 className="section-title">Debt / GDP paths</h3>
+            <MultiCountryChart countries={countries} field="debt_gdp" />
+          </div>
+        </section>
+      )}
+
+      {view === "replay" && selected && (
+        <section className="replay-section">
+          <div className="replay-picker">
+            {countries.map((c) => (
+              <button
+                key={c.agent_id}
+                type="button"
+                className={`pixel-btn ${selectedId === c.agent_id ? "active" : ""}`}
+                onClick={() => setSelectedId(c.agent_id)}
+              >
+                {c.sprite} {c.country_name}
+              </button>
+            ))}
+          </div>
+          <div className="replay-stage">
+            <div className="replay-controls">
+              <button type="button" className="pixel-btn active" onClick={() => setPlaying((p) => !p)}>
+                {playing ? "❚❚ Pause" : "▶ Play term"}
+              </button>
+              <button
+                type="button"
+                className="pixel-btn"
+                onClick={() => {
+                  setPlayMonth(0);
+                  setPlaying(true);
+                }}
+              >
+                ↺ Restart
+              </button>
+              <span className="muted">
+                Month {playMonth}/{maxMonth} · town + stats animate with the scrubber
+              </span>
+            </div>
+            <CountryDetail country={selected} month={playMonth} onMonthChange={setPlayMonth} />
           </div>
         </section>
       )}
