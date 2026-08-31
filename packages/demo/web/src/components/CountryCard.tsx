@@ -170,7 +170,12 @@ export function CountryDetail({
         debtGdp={liveDebt}
       />
 
-      <MonthScrubber trajectory={country.trajectory} month={month} onChange={setMonth} />
+      <MonthScrubber
+        trajectory={country.trajectory}
+        month={month}
+        onChange={setMonth}
+        events={country.timeline}
+      />
 
       <div className="detail-grid">
         <section className="detail-panel">

@@ -110,27 +110,45 @@ export function MonthScrubber({
   trajectory,
   month,
   onChange,
+  events = [],
 }: {
   trajectory: Array<Record<string, number>>;
   month: number;
   onChange: (m: number) => void;
+  events?: Array<{ month: number; type: string; label: string }>;
 }) {
   if (!trajectory.length) return null;
   const max = trajectory.length - 1;
   const row = trajectory[Math.min(month, max)] || trajectory[0];
+  const marks = events.filter((e) => e.month >= 0 && e.month <= max);
+
   return (
     <div className="month-scrubber">
       <div className="scrub-controls">
         <button type="button" onClick={() => onChange(Math.max(0, month - 1))} disabled={month <= 0}>
           ◀
         </button>
-        <input
-          type="range"
-          min={0}
-          max={max}
-          value={month}
-          onChange={(e) => onChange(Number(e.target.value))}
-        />
+        <div className="scrub-track-wrap">
+          <input
+            type="range"
+            min={0}
+            max={max}
+            value={month}
+            onChange={(e) => onChange(Number(e.target.value))}
+          />
+          <div className="scrub-marks">
+            {marks.map((e, i) => (
+              <button
+                key={`${e.month}-${e.type}-${i}`}
+                type="button"
+                className={`scrub-mark evt-${e.type}`}
+                style={{ left: `${(e.month / Math.max(max, 1)) * 100}%` }}
+                title={`M${e.month}: ${e.label}`}
+                onClick={() => onChange(e.month)}
+              />
+            ))}
+          </div>
+        </div>
         <button type="button" onClick={() => onChange(Math.min(max, month + 1))} disabled={month >= max}>
           ▶
         </button>

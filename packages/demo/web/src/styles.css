@@ -1550,6 +1550,225 @@ body {
   margin-bottom: 0.75rem;
 }
 
+/* ── Duel arena ── */
+.duel-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+}
+.duel-pickers {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+.duel-pickers label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+}
+.duel-pickers select {
+  font-family: "VT323", monospace;
+  font-size: 1.1rem;
+  padding: 0.25rem 0.4rem;
+  border: 3px solid #3d2914;
+  background: var(--panel-bg);
+}
+.duel-arena {
+  background: var(--panel-bg);
+  border: 4px solid #3d2914;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.28);
+  padding: 0.85rem;
+}
+.duel-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.65rem;
+}
+.duel-tug {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.15rem;
+}
+.tug-track {
+  flex: 1;
+  height: 14px;
+  background: #2a1808;
+  border: 2px solid #3d2914;
+  overflow: hidden;
+}
+.tug-left {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #58d68d);
+  transition: width 0.2s linear;
+}
+.tug-label {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #777;
+  text-align: center;
+}
+.duel-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0.65rem;
+  align-items: start;
+}
+.duel-vs {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  align-self: center;
+  padding: 0.5rem;
+  background: #3d2914;
+  color: var(--accent);
+  border: 2px solid #000;
+}
+.arena-panel {
+  border: 3px solid rgba(61, 41, 20, 0.35);
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.35);
+}
+.arena-panel.rank-1 { border-color: #e8a838; }
+.arena-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.45rem;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+.arena-head h3 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.4rem;
+  margin: 0;
+  line-height: 1.4;
+}
+.arena-head p { margin: 0.15rem 0 0; font-size: 0.85rem; color: #666; }
+.arena-sprite { font-size: 1.75rem; }
+.arena-score {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  background: #2d6b2d;
+  color: #fff;
+  padding: 0.35rem;
+  border: 2px solid #1a4020;
+}
+.live-stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  margin: 0.4rem 0;
+}
+.live-stat {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(61, 41, 20, 0.2);
+  padding: 0.2rem;
+}
+.live-stat span {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.28rem;
+  color: #888;
+}
+.live-stat strong { font-size: 1rem; }
+.live-stat.warn { border-color: #c0392b; background: rgba(192, 57, 43, 0.1); }
+.arena-event {
+  margin: 0.35rem 0;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+  padding: 0.35rem;
+  background: #2a1808;
+  color: #ffe566;
+  border: 2px solid #000;
+  animation: event-flash 0.6s ease;
+}
+@keyframes event-flash {
+  from { transform: scale(1.04); background: #c0392b; }
+  to { transform: scale(1); }
+}
+.arena-blurb {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.35rem 0 0;
+  line-height: 1.35;
+}
+
+/* ── Game HUD ── */
+.game-hud {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem;
+  background: rgba(42, 24, 8, 0.92);
+  border-bottom: 3px solid #000;
+  backdrop-filter: blur(4px);
+}
+.hud-cell {
+  background: #1a1008;
+  border: 2px solid #e8a838;
+  padding: 0.25rem 0.55rem;
+  min-width: 4.5rem;
+  text-align: center;
+}
+.hud-cell span {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.28rem;
+  color: #e8a838;
+}
+.hud-cell strong {
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.scrub-track-wrap {
+  flex: 1;
+  position: relative;
+  padding-bottom: 10px;
+}
+.scrub-track-wrap input[type="range"] { width: 100%; }
+.scrub-marks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 8px;
+  pointer-events: none;
+}
+.scrub-mark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+  border: 1px solid #000;
+  background: #e74c3c;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  cursor: pointer;
+  padding: 0;
+}
+.scrub-mark.evt-disaster { background: #c0392b; }
+.scrub-mark.evt-fiscal { background: #d35400; }
+.scrub-mark.evt-epidemic { background: #8e44ad; }
+.scrub-mark.evt-recession { background: #e67e22; }
+.scrub-mark.evt-unrest { background: #922b21; }
+.scrub-mark.evt-inauguration,
+.scrub-mark.evt-term_end { background: #27ae60; }
+
+@media (max-width: 900px) {
+  .duel-grid { grid-template-columns: 1fr; }
+  .duel-vs { justify-self: center; }
+}
+
 @media (max-width: 768px) {
   .detail-grid { grid-template-columns: 1fr; }
   .detail-panel.span-2 { grid-column: span 1; }

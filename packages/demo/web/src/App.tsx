@@ -4,6 +4,7 @@ import type { BenchLive } from "./types";
 import { CountryCard, CountryDetail } from "./components/CountryCard";
 import { CompareBoard, HeadToHead, MultiCountryChart } from "./components/CompareBoard";
 import { Podium } from "./components/Narrative";
+import { DuelArena, GameHUD } from "./components/DuelArena";
 
 export default function App() {
   const theme = useDialKit("World Theme", {
@@ -11,13 +12,14 @@ export default function App() {
     grass: "#5a9e2f",
     panelBg: "#f5e6c8",
     accent: "#e8a838",
-    scanlines: [0.03, 0, 0.18],
+    scanlines: [0.025, 0, 0.15],
   });
 
   const [bench, setBench] = useState<BenchLive | null>(null);
-  const [selectedId, setSelectedId] = useState<string>("");
+  const [selectedId, setSelectedId] = useState("");
+  const [duelRightId, setDuelRightId] = useState("");
   const [loading, setLoading] = useState(true);
-  const [view, setView] = useState<"world" | "compare" | "replay">("world");
+  const [view, setView] = useState<"world" | "duel" | "compare" | "replay">("world");
   const [playing, setPlaying] = useState(false);
   const [playMonth, setPlayMonth] = useState(0);
 
@@ -27,8 +29,10 @@ export default function App() {
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((j: BenchLive) => {
         setBench(j);
-        const top = [...j.countries].sort((a, b) => a.rank - b.rank)[0];
-        if (top) setSelectedId(top.agent_id);
+        const sorted = [...j.countries].sort((a, b) => a.rank - b.rank);
+        if (sorted[0]) setSelectedId(sorted[0].agent_id);
+        if (sorted[1]) setDuelRightId(sorted[1].agent_id);
+        else if (sorted[0]) setDuelRightId(sorted[0].agent_id);
       })
       .catch(() => setBench(null))
       .finally(() => setLoading(false));
@@ -43,14 +47,19 @@ export default function App() {
     () => countries.find((c) => c.agent_id === selectedId) || countries[0],
     [countries, selectedId]
   );
+  const duelRight = useMemo(
+    () => countries.find((c) => c.agent_id === duelRightId) || countries[1] || countries[0],
+    [countries, duelRightId]
+  );
 
   const maxMonth = useMemo(() => {
     if (!selected?.trajectory?.length) return 0;
-    return selected.trajectory.length - 1;
-  }, [selected]);
+    const other = duelRight?.trajectory?.length || 0;
+    return Math.max(selected.trajectory.length, other) - 1;
+  }, [selected, duelRight]);
 
   useEffect(() => {
-    if (!playing || !selected) return;
+    if (!playing) return;
     const id = setInterval(() => {
       setPlayMonth((m) => {
         if (m >= maxMonth) {
@@ -59,14 +68,33 @@ export default function App() {
         }
         return m + 1;
       });
-    }, 280);
+    }, 220);
     return () => clearInterval(id);
-  }, [playing, selected, maxMonth]);
+  }, [playing, maxMonth]);
 
   useEffect(() => {
     setPlayMonth(0);
     setPlaying(false);
-  }, [selectedId]);
+  }, [selectedId, duelRightId, view]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.code === "Space") {
+        e.preventDefault();
+        setPlaying((p) => !p);
+      } else if (e.code === "ArrowRight") {
+        setPlayMonth((m) => Math.min(maxMonth, m + 1));
+      } else if (e.code === "ArrowLeft") {
+        setPlayMonth((m) => Math.max(0, m - 1));
+      } else if (e.key === "1") setView("world");
+      else if (e.key === "2") setView("duel");
+      else if (e.key === "3") setView("compare");
+      else if (e.key === "4") setView("replay");
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [maxMonth]);
 
   const cssVars = {
     "--sky-top": theme.skyTop,
@@ -81,6 +109,10 @@ export default function App() {
     <div className="pixel-world bench-world" style={cssVars}>
       <div className="crt-overlay" style={{ opacity: theme.scanlines }} />
 
+      {selected && (view === "replay" || view === "duel") && (
+        <GameHUD country={selected} month={playMonth} />
+      )}
+
       <header className="bench-header">
         <div>
           <p className="sample-badge">◆ COUNTRY GOVERNANCE BENCH ◆</p>
@@ -89,8 +121,8 @@ export default function App() {
           </h1>
           <p className="pixel-subtitle">
             {winner
-              ? `Champion: ${winner.sprite} ${winner.country_name} (${winner.evaluation.robust_score_single.toFixed(1)})`
-              : "Each model runs a nation · citizens · policy · outcomes"}
+              ? `Champion: ${winner.sprite} ${winner.country_name} · ${winner.evaluation.robust_score_single.toFixed(1)} robust`
+              : "Each model runs a nation"}
           </p>
         </div>
         <div className="bench-actions">
@@ -101,7 +133,8 @@ export default function App() {
             {(
               [
                 ["world", "World"],
-                ["compare", "Compare"],
+                ["duel", "Duel"],
+                ["compare", "Board"],
                 ["replay", "Replay"],
               ] as const
             ).map(([id, label]) => (
@@ -123,8 +156,7 @@ export default function App() {
           <span>{bench.scenario.replace(/_/g, " ")}</span>
           <span>F{bench.fidelity.replace("F", "")}</span>
           <span>{bench.countries.length} nations</span>
-          <span>LLM every {bench.llm_interval_months}mo</span>
-          <span>{new Date(bench.generated_at).toLocaleString()}</span>
+          <span>keys 1–4 · space play</span>
         </div>
       )}
 
@@ -136,12 +168,47 @@ export default function App() {
         </p>
       )}
 
+      {view === "duel" && selected && duelRight && (
+        <section className="duel-section">
+          <div className="duel-pickers">
+            <label>
+              Left
+              <select value={selectedId} onChange={(e) => setSelectedId(e.target.value)}>
+                {countries.map((c) => (
+                  <option key={c.agent_id} value={c.agent_id}>
+                    #{c.rank} {c.country_name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Right
+              <select value={duelRightId} onChange={(e) => setDuelRightId(e.target.value)}>
+                {countries.map((c) => (
+                  <option key={c.agent_id} value={c.agent_id}>
+                    #{c.rank} {c.country_name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <DuelArena
+            left={selected}
+            right={duelRight}
+            month={playMonth}
+            onMonthChange={setPlayMonth}
+            playing={playing}
+            onTogglePlay={() => setPlaying((p) => !p)}
+          />
+        </section>
+      )}
+
       {view === "compare" && countries.length > 0 && (
         <section className="compare-section">
           <CompareBoard countries={countries} />
           {bench && <HeadToHead bench={bench} />}
           <div className="multi-chart-wrap">
-            <h3 className="section-title">GDP paths (all nations)</h3>
+            <h3 className="section-title">GDP paths</h3>
             <MultiCountryChart countries={countries} field="gdp" />
           </div>
           <div className="multi-chart-wrap">
@@ -149,7 +216,7 @@ export default function App() {
             <MultiCountryChart countries={countries} field="trust" />
           </div>
           <div className="multi-chart-wrap">
-            <h3 className="section-title">Debt / GDP paths</h3>
+            <h3 className="section-title">Debt / GDP</h3>
             <MultiCountryChart countries={countries} field="debt_gdp" />
           </div>
         </section>
@@ -169,27 +236,25 @@ export default function App() {
               </button>
             ))}
           </div>
-          <div className="replay-stage">
-            <div className="replay-controls">
-              <button type="button" className="pixel-btn active" onClick={() => setPlaying((p) => !p)}>
-                {playing ? "❚❚ Pause" : "▶ Play term"}
-              </button>
-              <button
-                type="button"
-                className="pixel-btn"
-                onClick={() => {
-                  setPlayMonth(0);
-                  setPlaying(true);
-                }}
-              >
-                ↺ Restart
-              </button>
-              <span className="muted">
-                Month {playMonth}/{maxMonth} · town + stats animate with the scrubber
-              </span>
-            </div>
-            <CountryDetail country={selected} month={playMonth} onMonthChange={setPlayMonth} />
+          <div className="replay-controls">
+            <button type="button" className="pixel-btn active" onClick={() => setPlaying((p) => !p)}>
+              {playing ? "❚❚ Pause" : "▶ Play term"}
+            </button>
+            <button
+              type="button"
+              className="pixel-btn"
+              onClick={() => {
+                setPlayMonth(0);
+                setPlaying(true);
+              }}
+            >
+              ↺ Restart
+            </button>
+            <span className="muted">
+              Month {playMonth}/{maxMonth}
+            </span>
           </div>
+          <CountryDetail country={selected} month={playMonth} onMonthChange={setPlayMonth} />
         </section>
       )}
 
@@ -204,7 +269,12 @@ export default function App() {
                   key={`${c.agent_id}-${c.seed}`}
                   country={c}
                   selected={selected?.agent_id === c.agent_id}
-                  onSelect={() => setSelectedId(c.agent_id)}
+                  onSelect={() => {
+                    setSelectedId(c.agent_id);
+                    setView("replay");
+                    setPlayMonth(0);
+                    setPlaying(true);
+                  }}
                 />
               ))}
             </div>
@@ -212,7 +282,7 @@ export default function App() {
 
           {selected && (
             <section className="nation-detail-wrap">
-              <h2 className="section-title">📋 {selected.country_name} — national dossier</h2>
+              <h2 className="section-title">📋 {selected.country_name}</h2>
               <CountryDetail country={selected} />
             </section>
           )}
@@ -220,7 +290,7 @@ export default function App() {
       )}
 
       <footer className="pixel-footer">
-        <span>politybench bench-run · Cursor LLM vs rule-based executives</span>
+        <span>click a nation → auto-replay · Duel for head-to-head</span>
         <span className="blink">▮</span>
         <span>research sim only</span>
       </footer>
