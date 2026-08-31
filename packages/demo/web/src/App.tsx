@@ -5,6 +5,7 @@ import { CountryCard, CountryDetail } from "./components/CountryCard";
 import { CompareBoard, HeadToHead, MultiCountryChart } from "./components/CompareBoard";
 import { Podium } from "./components/Narrative";
 import { DuelArena, GameHUD } from "./components/DuelArena";
+import { DuelWinner, NewsTicker, OverworldMap, TermEndSplash } from "./components/Overworld";
 
 export default function App() {
   const theme = useDialKit("World Theme", {
@@ -22,6 +23,8 @@ export default function App() {
   const [view, setView] = useState<"world" | "duel" | "compare" | "replay">("world");
   const [playing, setPlaying] = useState(false);
   const [playMonth, setPlayMonth] = useState(0);
+  const [showTermEnd, setShowTermEnd] = useState(false);
+  const [showDuelEnd, setShowDuelEnd] = useState(false);
 
   const load = () => {
     setLoading(true);
@@ -64,18 +67,22 @@ export default function App() {
       setPlayMonth((m) => {
         if (m >= maxMonth) {
           setPlaying(false);
+          if (view === "replay") setShowTermEnd(true);
+          if (view === "duel") setShowDuelEnd(true);
           return maxMonth;
         }
         return m + 1;
       });
     }, 220);
     return () => clearInterval(id);
-  }, [playing, maxMonth]);
+  }, [playing, maxMonth, view]);
 
   useEffect(() => {
     setPlayMonth(0);
     setPlaying(false);
-  }, [selectedId, duelRightId, view]);
+    setShowTermEnd(false);
+    setShowDuelEnd(false);
+  }, [selectedId, duelRightId]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -152,12 +159,15 @@ export default function App() {
       </header>
 
       {bench && (
-        <div className="bench-meta-bar">
-          <span>{bench.scenario.replace(/_/g, " ")}</span>
-          <span>F{bench.fidelity.replace("F", "")}</span>
-          <span>{bench.countries.length} nations</span>
-          <span>keys 1–4 · space play</span>
-        </div>
+        <>
+          <NewsTicker countries={countries} month={playMonth} />
+          <div className="bench-meta-bar">
+            <span>{bench.scenario.replace(/_/g, " ")}</span>
+            <span>F{bench.fidelity.replace("F", "")}</span>
+            <span>{bench.countries.length} nations</span>
+            <span>keys 1–4 · space play</span>
+          </div>
+        </>
       )}
 
       {countries.length > 0 && view === "world" && <Podium countries={countries} />}
@@ -260,6 +270,18 @@ export default function App() {
 
       {view === "world" && (
         <main className="bench-layout">
+          {countries.length > 0 && (
+            <OverworldMap
+              countries={countries}
+              selectedId={selectedId}
+              onSelect={(id) => {
+                setSelectedId(id);
+                setView("replay");
+                setPlayMonth(0);
+                setPlaying(true);
+              }}
+            />
+          )}
           <section className="nations-grid">
             <h2 className="section-title">🌍 Nations under test</h2>
             {loading && <p className="muted">Loading bench…</p>}
@@ -287,6 +309,13 @@ export default function App() {
             </section>
           )}
         </main>
+      )}
+
+      {showTermEnd && selected && view === "replay" && (
+        <TermEndSplash country={selected} onClose={() => setShowTermEnd(false)} />
+      )}
+      {showDuelEnd && selected && duelRight && view === "duel" && (
+        <DuelWinner left={selected} right={duelRight} onClose={() => setShowDuelEnd(false)} />
       )}
 
       <footer className="pixel-footer">

@@ -6,6 +6,7 @@ export function VoxelTown({
   unemployment = 0.1,
   poverty = 0.15,
   debtGdp = 1,
+  calendarMonth = 6,
 }: {
   terrain: string;
   damage?: number;
@@ -13,13 +14,24 @@ export function VoxelTown({
   unemployment?: number;
   poverty?: number;
   debtGdp?: number;
+  calendarMonth?: number;
 }) {
   const ruined = damage > 0.15;
   const boom = trust > 0.7 && unemployment < 0.1 && poverty < 0.2;
   const crisis = debtGdp > 1.5 || unemployment > 0.15;
+  const season =
+    calendarMonth <= 2 || calendarMonth === 12
+      ? "winter"
+      : calendarMonth <= 5
+        ? "spring"
+        : calendarMonth <= 8
+          ? "summer"
+          : "autumn";
 
   return (
-    <div className={`voxel-town-scene terrain-${terrain} ${ruined ? "ruined" : ""} ${boom ? "boom" : ""} ${crisis ? "crisis" : ""}`}>
+    <div
+      className={`voxel-town-scene terrain-${terrain} season-${season} ${ruined ? "ruined" : ""} ${boom ? "boom" : ""} ${crisis ? "crisis" : ""}`}
+    >
       <div className="vt-sky">
         <span className="vt-sun" />
         <span className="vt-cloud c1" />

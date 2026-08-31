@@ -1491,6 +1491,130 @@ body {
 }
 .vt-banner.boom { background: #2d6b2d; }
 
+.voxel-town-scene.season-winter { background: linear-gradient(180deg, #c5d8ea 0%, #e8f0f8 55%, #d0d8c8 55%, #b8c4a8 100%); }
+.voxel-town-scene.season-spring { background: linear-gradient(180deg, #9ed4ff 0%, #d4f0c8 55%, #7cb342 55%, #6b8e23 100%); }
+.voxel-town-scene.season-autumn { background: linear-gradient(180deg, #f0c878 0%, #e8a050 55%, #c47a3a 55%, #8b5a2b 100%); }
+.voxel-town-scene.season-winter .vt-tree::before { border-bottom-color: #e8eef0; }
+
+.country-card .voxel-town-scene { height: 88px; margin: 0.25rem 0.5rem; }
+
+/* Overworld map */
+.overworld { margin-bottom: 1.25rem; }
+.overworld-sea {
+  position: relative;
+  height: 280px;
+  border: 4px solid #3d2914;
+  background:
+    repeating-linear-gradient(90deg, #2a6f9e 0 8px, #246890 8px 16px),
+    #2a6f9e;
+  overflow: hidden;
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.28);
+}
+.ow-wave {
+  position: absolute;
+  left: 0; right: 0; height: 6px;
+  background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(255,255,255,0.15) 10px 12px);
+  animation: cloud-drift 18s linear infinite;
+  opacity: 0.4;
+}
+.ow-wave.w1 { top: 30%; }
+.ow-wave.w2 { top: 70%; animation-duration: 24s; }
+.ow-island {
+  position: absolute;
+  width: 108px;
+  padding: 0.45rem 0.35rem 0.35rem;
+  border: 3px solid #2a1808;
+  background: #5a9e2f;
+  cursor: pointer;
+  color: #1a1008;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.35);
+  text-align: center;
+  transform: rotate(-2deg);
+}
+.ow-island.terrain-coast { background: #6bb3a0; }
+.ow-island.terrain-hills { background: #7a9e4a; }
+.ow-island.terrain-mountain { background: #8a8a78; }
+.ow-island.terrain-forest { background: #3d7a3d; }
+.ow-island.terrain-islands { background: #4aa3c4; }
+.ow-island.selected { outline: 3px solid #ffe566; transform: rotate(0) scale(1.06); z-index: 2; }
+.ow-island.crisis { box-shadow: 4px 4px 0 rgba(192,57,43,0.6); }
+.ow-flag { display: block; height: 6px; margin-bottom: 0.2rem; }
+.ow-sprite { font-size: 1.2rem; }
+.ow-name {
+  display: block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.28rem;
+  line-height: 1.45;
+  margin-top: 0.2rem;
+}
+.ow-rank { display: block; font-size: 0.75rem; color: #2a1808; }
+.ow-compass {
+  position: absolute;
+  right: 10px; top: 10px;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  color: #ffe;
+  border: 2px solid #fff;
+  padding: 0.25rem;
+}
+.ow-hint { text-align: center; color: #555; font-size: 0.9rem; margin: 0.4rem 0 0; }
+
+.news-ticker {
+  display: flex;
+  align-items: stretch;
+  background: #1a1008;
+  border-bottom: 3px solid #e8a838;
+  overflow: hidden;
+  height: 28px;
+}
+.ticker-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+  background: #c0392b;
+  color: #fff;
+  padding: 0.45rem 0.55rem;
+  display: flex;
+  align-items: center;
+}
+.ticker-track { flex: 1; overflow: hidden; position: relative; }
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  color: #ffe566;
+  font-size: 1.05rem;
+  padding: 0.25rem 0;
+  animation: ticker-scroll 28s linear infinite;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.term-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.term-card {
+  background: var(--panel-bg);
+  border: 4px solid #3d2914;
+  box-shadow: 8px 8px 0 #000;
+  padding: 1.25rem 1.4rem;
+  max-width: 420px;
+  text-align: center;
+}
+.term-card h2 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  line-height: 1.5;
+}
+.term-grade { font-size: 1.1rem; color: #2d6b2d; }
+
 .country-card .voxel-town-scene { height: 88px; margin: 0.25rem 0.5rem; }
 
 /* ── Month scrubber ── */

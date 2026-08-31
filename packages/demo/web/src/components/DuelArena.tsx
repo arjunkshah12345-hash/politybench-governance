@@ -54,6 +54,7 @@ function NationArenaPanel({
         unemployment={unemp}
         poverty={poverty}
         debtGdp={debt}
+        calendarMonth={Number(snap.month || 6)}
       />
 
       <div className="live-stat-row">

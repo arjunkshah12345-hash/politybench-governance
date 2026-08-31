@@ -70,6 +70,7 @@ export function CountryCard({
         unemployment={o.unemployment_pct / 100}
         poverty={o.poverty_pct / 100}
         debtGdp={o.debt_gdp}
+        calendarMonth={Number(country.trajectory.at(-1)?.month || 6)}
       />
 
       <MoodBar summary={country.mood_summary || {}} />
@@ -168,6 +169,7 @@ export function CountryDetail({
         unemployment={liveUnemp}
         poverty={livePoverty}
         debtGdp={liveDebt}
+        calendarMonth={Number(snap.month || 6)}
       />
 
       <MonthScrubber
