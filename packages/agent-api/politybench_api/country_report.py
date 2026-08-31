@@ -102,9 +102,46 @@ def _meta(agent_name: str) -> dict[str, Any]:
     }
 
 
-def _citizen_grid(trajectory: list[dict[str, Any]], grid_size: int = 64) -> list[dict[str, Any]]:
+def _citizen_grid(
+    trajectory: list[dict[str, Any]],
+    state=None,
+    grid_size: int = 64,
+) -> list[dict[str, Any]]:
+    if state and getattr(state, "households", None):
+        citizens: list[dict[str, Any]] = []
+        total_w = sum(h.weight for h in state.households) or 1.0
+        last = trajectory[-1] if trajectory else {}
+        unemp_national = float(last.get("unemployment", 0.08))
+        trust_national = float(last.get("trust", 0.5))
+        for h in state.households:
+            share = int(round(grid_size * (h.weight / total_w)))
+            emp = h.employment_rate * (1 - unemp_national * 0.5)
+            for _ in range(max(1, share)):
+                if len(citizens) >= grid_size:
+                    break
+                t = (h.trust + trust_national) / 2
+                if t > 0.65 and emp > 0.5:
+                    mood = "happy"
+                elif emp < 0.45:
+                    mood = "worried"
+                elif t < 0.35:
+                    mood = "angry"
+                else:
+                    mood = "neutral"
+                citizens.append(
+                    {
+                        "mood": mood,
+                        "employed": emp > 0.5,
+                        "cohort": h.income_decile,
+                        "region": h.region_id,
+                    }
+                )
+        while len(citizens) < grid_size:
+            citizens.append(citizens[len(citizens) % max(len(citizens), 1)])
+        return citizens[:grid_size]
+
     if not trajectory:
-        return [{"mood": "neutral", "employed": True} for _ in range(grid_size)]
+        return [{"mood": "neutral", "employed": True, "cohort": 5} for _ in range(grid_size)]
     last = trajectory[-1]
     trust = float(last.get("trust", 0.5))
     unemp = float(last.get("unemployment", 0.08))
@@ -112,9 +149,8 @@ def _citizen_grid(trajectory: list[dict[str, Any]], grid_size: int = 64) -> list
     infected = float(last.get("infected", 0))
     pop = float(last.get("population", 10_000_000))
 
-    citizens: list[dict[str, Any]] = []
+    citizens = []
     for i in range(grid_size):
-        # deterministic pseudo-sample
         r = (i * 17 + 3) % 100 / 100.0
         employed = r > unemp
         if infected > 100 and r < min(0.25, infected / max(pop, 1)):
@@ -127,8 +163,89 @@ def _citizen_grid(trajectory: list[dict[str, Any]], grid_size: int = 64) -> list
             mood = "angry"
         else:
             mood = "neutral"
-        citizens.append({"mood": mood, "employed": employed, "cohort": i % 10})
+        citizens.append({"mood": mood, "employed": employed, "cohort": (i % 10) + 1})
     return citizens
+
+
+def _mood_summary(citizens: list[dict[str, Any]]) -> dict[str, float]:
+    counts: dict[str, int] = {}
+    for c in citizens:
+        counts[c["mood"]] = counts.get(c["mood"], 0) + 1
+    n = len(citizens) or 1
+    return {k: round(v / n, 3) for k, v in counts.items()}
+
+
+def _policy_log(action_log: list[dict[str, Any]], llm_log: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:
+    entries: list[dict[str, Any]] = []
+    if llm_log:
+        for item in llm_log[-8:]:
+            act = item.get("action") or {}
+            fiscal = act.get("fiscal") or {}
+            tax = act.get("tax") or {}
+            label_parts = []
+            if fiscal.get("spending_multiplier"):
+                label_parts.append(f"spend×{fiscal['spending_multiplier']:.2f}")
+            if fiscal.get("transfer_multiplier"):
+                label_parts.append(f"xfer×{fiscal['transfer_multiplier']:.2f}")
+            if tax.get("income_tax_rate"):
+                label_parts.append(f"tax={tax['income_tax_rate']:.2f}")
+            entries.append(
+                {
+                    "month": item.get("month"),
+                    "source": item.get("source", "llm"),
+                    "label": " · ".join(label_parts) or "policy review",
+                    "debt_gdp": (item.get("summary") or {}).get("debt_gdp"),
+                    "unemployment": (item.get("summary") or {}).get("unemployment"),
+                }
+            )
+        return entries
+    for i, act in enumerate(action_log[-8:]):
+        fiscal = act.get("fiscal") or {}
+        tax = act.get("tax") or {}
+        parts = []
+        if fiscal:
+            parts.append("fiscal")
+        if tax:
+            parts.append("tax")
+        if act.get("health"):
+            parts.append("health")
+        entries.append({"month": i, "source": "agent", "label": "+".join(parts) or "monthly bundle"})
+    return entries
+
+
+def _grade(utility: float, hard_violations: int, rank: int = 0, n: int = 1) -> str:
+    if hard_violations > 0:
+        return "F"
+    # Relative grades within a crisis cohort (absolute U is often <0.4 under fiscal stress)
+    if n <= 1:
+        if utility >= 0.5:
+            return "A"
+        if utility >= 0.35:
+            return "B"
+        if utility >= 0.25:
+            return "C"
+        if utility >= 0.15:
+            return "D"
+        return "F"
+    pct = rank / max(n, 1)
+    if pct <= 0.2:
+        return "A"
+    if pct <= 0.4:
+        return "B"
+    if pct <= 0.6:
+        return "C"
+    if pct <= 0.8:
+        return "D"
+    return "F"
+
+
+def _downsample_trajectory(traj: list[dict[str, Any]], step: int = 2) -> list[dict[str, Any]]:
+    if len(traj) <= 30:
+        return traj
+    out = [traj[0]] + [traj[i] for i in range(step, len(traj) - 1, step)]
+    if traj[-1] not in out:
+        out.append(traj[-1])
+    return out
 
 
 def _extract_events(trajectory: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -246,6 +363,9 @@ def build_country_report(
     rejected_count: int = 0,
     model: str | None = None,
     llm_calls: int = 0,
+    action_log: list[dict[str, Any]] | None = None,
+    policy_log: list[dict[str, Any]] | None = None,
+    rank: int = 0,
 ) -> dict[str, Any]:
     meta = _meta(agent_name)
     regions = []
@@ -267,18 +387,25 @@ def build_country_report(
             {"name": "Interior", "population_share": 0.25, "gdp_share": 0.2, "damage": 0.1, "services": 0.8},
         ]
 
+    citizens = _citizen_grid(trajectory, state=state)
+    utility = float(evaluation.get("utility", 0))
+
     return {
         "agent_id": agent_name,
         "model": model or agent_name,
         "seed": seed,
         "scenario": scenario,
+        "rank": rank,
+        "grade": _grade(utility, hard_violations, rank=rank or 1, n=1),
         **meta,
         "overview": _overview_stats(trajectory, state),
         "evaluation": evaluation,
-        "citizens": _citizen_grid(trajectory),
+        "citizens": citizens,
+        "mood_summary": _mood_summary(citizens),
         "regions": regions,
         "timeline": _extract_events(trajectory),
-        "trajectory": trajectory,
+        "policy_log": _policy_log(action_log or [], policy_log),
+        "trajectory": _downsample_trajectory(trajectory),
         "integrity": {
             "hard_violations": hard_violations,
             "rejected_actions": rejected_count,

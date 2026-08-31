@@ -1,5 +1,5 @@
 import type { CountryReport } from "../types";
-import { CitizenGrid, CitizenLegend } from "./CitizenGrid";
+import { CitizenGrid, CitizenLegend, MoodBar } from "./CitizenGrid";
 
 function MiniChart({ trajectory, field, color }: { trajectory: CountryReport["trajectory"]; field: string; color: string }) {
   const vals = trajectory.map((r) => Number(r[field] ?? 0));
@@ -21,6 +21,8 @@ function MiniChart({ trajectory, field, color }: { trajectory: CountryReport["tr
   );
 }
 
+const RANK_BADGE = ["🥇", "🥈", "🥉"];
+
 export function CountryCard({
   country,
   selected,
@@ -40,6 +42,8 @@ export function CountryCard({
       className={`country-card ${selected ? "selected" : ""} terrain-${country.terrain}`}
       onClick={onSelect}
     >
+      <span className="rank-badge">{RANK_BADGE[country.rank - 1] || `#${country.rank}`}</span>
+      <span className={`grade-pill grade-${country.grade}`}>{country.grade}</span>
       <div className="country-flag" style={{ background: `linear-gradient(180deg, ${c1} 33%, ${c2} 33%, ${c2} 66%, ${c3} 66%)` }} />
       <div className="country-card__head">
         <span className="country-leader">{country.sprite}</span>
@@ -53,13 +57,16 @@ export function CountryCard({
         </div>
       </div>
 
-      <div className="country-voxel-map" aria-hidden>
+      <MoodBar summary={country.mood_summary || {}} />
+
+      <div className={`country-voxel-map terrain-${country.terrain}`} aria-hidden>
         <div className="voxel-block house" />
         <div className="voxel-block tree" />
         <div className="voxel-block field" />
+        <div className="voxel-block citizens-silhouette" />
       </div>
 
-      <CitizenGrid citizens={country.citizens.slice(0, 32)} />
+      <CitizenGrid citizens={country.citizens} size={40} />
 
       <div className="country-stats">
         <div><span>GDP</span><strong>{o.gdp_index}%</strong></div>
@@ -90,7 +97,11 @@ export function CountryDetail({ country }: { country: CountryReport }) {
       <header className="detail-header">
         <span className="detail-leader">{country.sprite}</span>
         <div>
-          <h2>{country.country_name}</h2>
+          <h2>
+            {country.country_name}{" "}
+            <span className={`grade-pill grade-${country.grade}`}>{country.grade}</span>
+            <span className="rank-inline">Rank #{country.rank}</span>
+          </h2>
           <p>{country.leader_title} · {country.motto}</p>
           <p className="detail-meta">
             Agent <code>{country.agent_id}</code> · seed {country.seed} · {country.scenario.replace(/_/g, " ")}
@@ -100,8 +111,9 @@ export function CountryDetail({ country }: { country: CountryReport }) {
 
       <div className="detail-grid">
         <section className="detail-panel">
-          <h4>Population</h4>
-          <p className="big-num">{(o.population / 1_000_000).toFixed(1)}M</p>
+          <h4>Population mood</h4>
+          <p className="big-num">{(o.population / 1_000_000).toFixed(1)}M citizens</p>
+          <MoodBar summary={country.mood_summary || {}} />
           <CitizenGrid citizens={country.citizens} />
           <CitizenLegend />
         </section>
@@ -115,6 +127,7 @@ export function CountryDetail({ country }: { country: CountryReport }) {
                 <th>Pop</th>
                 <th>GDP</th>
                 <th>Damage</th>
+                <th>Services</th>
               </tr>
             </thead>
             <tbody>
@@ -124,6 +137,7 @@ export function CountryDetail({ country }: { country: CountryReport }) {
                   <td>{(r.population_share * 100).toFixed(0)}%</td>
                   <td>{(r.gdp_share * 100).toFixed(0)}%</td>
                   <td>{(r.damage * 100).toFixed(0)}%</td>
+                  <td>{(r.services * 100).toFixed(0)}%</td>
                 </tr>
               ))}
             </tbody>
@@ -144,7 +158,27 @@ export function CountryDetail({ country }: { country: CountryReport }) {
         </section>
 
         <section className="detail-panel">
-          <h4>Timeline</h4>
+          <h4>Policy log</h4>
+          {country.policy_log?.length ? (
+            <ul className="policy-log">
+              {country.policy_log.map((p, i) => (
+                <li key={i}>
+                  <span className="evt-month">M{p.month ?? i}</span>
+                  <span className={`src-${p.source}`}>{p.source}</span>
+                  <span>{p.label}</span>
+                  {p.debt_gdp != null && (
+                    <small> debt {(Number(p.debt_gdp) * 100).toFixed(0)}% GDP</small>
+                  )}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="muted">Monthly policy bundles recorded from simulation.</p>
+          )}
+        </section>
+
+        <section className="detail-panel">
+          <h4>Crisis timeline</h4>
           <ul className="timeline">
             {country.timeline.map((e, i) => (
               <li key={i} className={`evt-${e.type}`}>

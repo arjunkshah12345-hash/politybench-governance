@@ -5,17 +5,17 @@
     "rule_based": 23.688129813438135,
     "hold_policy": 15.733336550878398,
     "simple_mpc": 23.718187690597805,
-    "composer-2.5": 15.309278270845248,
-    "gpt-5.2": 15.733336550878398,
-    "gemini-3.7-flash-high": 15.733336550878398
+    "composer-2.5": 24.07979256564555,
+    "gpt-5.2": 23.77143198463026,
+    "gemini-3.7-flash-high": 23.77143198463026
   },
   "mean_utility": {
     "rule_based": 0.23688129813438136,
     "hold_policy": 0.157333365508784,
     "simple_mpc": 0.23718187690597806,
-    "composer-2.5": 0.15309278270845247,
-    "gpt-5.2": 0.157333365508784,
-    "gemini-3.7-flash-high": 0.157333365508784
+    "composer-2.5": 0.2407979256564555,
+    "gpt-5.2": 0.23771431984630262,
+    "gemini-3.7-flash-high": 0.23771431984630262
   },
   "mean_dims": {
     "rule_based": {
@@ -46,31 +46,31 @@
       "environment": 0.598247072117099
     },
     "composer-2.5": {
-      "economic": 0.027802403301468447,
+      "economic": 0.0278228497375652,
       "human": 0.8107821243338479,
-      "stability": 0.6168045596483472,
-      "equity": 0.0071761296572364144,
-      "resilience": 0.027965199615510524,
+      "stability": 0.6109641269266118,
+      "equity": 0.006366163461343811,
+      "resilience": 0.8242286273186334,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.7063838148941756
+      "environment": 0.6491158639853822
     },
     "gpt-5.2": {
-      "economic": 0.03444098497910126,
-      "human": 0.7962547736163847,
-      "stability": 0.732039563491623,
-      "equity": 0.007047013494448022,
-      "resilience": 0.02954997060444051,
+      "economic": 0.027712177525706264,
+      "human": 0.8036169258673753,
+      "stability": 0.6096076780409124,
+      "equity": 0.006308810738030612,
+      "resilience": 0.8372983187956801,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.5708493449643276
+      "environment": 0.5981216681051593
     },
     "gemini-3.7-flash-high": {
-      "economic": 0.03444098497910126,
-      "human": 0.7962547736163847,
-      "stability": 0.732039563491623,
-      "equity": 0.007047013494448022,
-      "resilience": 0.02954997060444051,
+      "economic": 0.027712177525706264,
+      "human": 0.8036169258673753,
+      "stability": 0.6096076780409124,
+      "equity": 0.006308810738030612,
+      "resilience": 0.8372983187956801,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.5708493449643276
+      "environment": 0.5981216681051593
     }
   },
   "pareto_frontier": [
@@ -82,7 +82,7 @@
   ],
   "weight_sensitivity": {
     "rule_based": {
-      "mean_rank": 2.506,
+      "mean_rank": 4.474,
       "rank_interval": [
         2,
         6
@@ -90,44 +90,68 @@
       "p_top1": 0.0
     },
     "hold_policy": {
-      "mean_rank": 2.962,
-      "rank_interval": [
-        1,
-        4
-      ],
-      "p_top1": 0.11
-    },
-    "simple_mpc": {
-      "mean_rank": 1.496,
-      "rank_interval": [
-        1,
-        5
-      ],
-      "p_top1": 0.85
-    },
-    "composer-2.5": {
-      "mean_rank": 5.112,
+      "mean_rank": 5.37,
       "rank_interval": [
         1,
         6
       ],
-      "p_top1": 0.04
+      "p_top1": 0.104
+    },
+    "simple_mpc": {
+      "mean_rank": 3.27,
+      "rank_interval": [
+        1,
+        5
+      ],
+      "p_top1": 0.122
+    },
+    "composer-2.5": {
+      "mean_rank": 1.422,
+      "rank_interval": [
+        1,
+        5
+      ],
+      "p_top1": 0.772
     },
     "gpt-5.2": {
-      "mean_rank": 3.962,
+      "mean_rank": 2.732,
+      "rank_interval": [
+        1,
+        4
+      ],
+      "p_top1": 0.002
+    },
+    "gemini-3.7-flash-high": {
+      "mean_rank": 3.732,
       "rank_interval": [
         2,
         5
       ],
       "p_top1": 0.0
-    },
-    "gemini-3.7-flash-high": {
-      "mean_rank": 4.962,
-      "rank_interval": [
-        3,
-        6
-      ],
-      "p_top1": 0.0
     }
-  }
+  },
+  "best_baseline": {
+    "agent": "simple_mpc",
+    "robust_score": 23.718187690597805
+  },
+  "head_to_head": [
+    {
+      "model": "composer-2.5",
+      "vs_baseline": "simple_mpc",
+      "score_delta": 0.36,
+      "won": true
+    },
+    {
+      "model": "gpt-5.2",
+      "vs_baseline": "simple_mpc",
+      "score_delta": 0.05,
+      "won": true
+    },
+    {
+      "model": "gemini-3.7-flash-high",
+      "vs_baseline": "simple_mpc",
+      "score_delta": 0.05,
+      "won": true
+    }
+  ]
 }

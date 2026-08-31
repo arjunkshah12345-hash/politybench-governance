@@ -312,4 +312,6 @@ def run_episode(env: PolityEnv, agent, max_steps: int | None = None) -> dict[str
         "hard_violations": hard,
         "state": env.kernel.state,
         "rejected": env.kernel.rejected_log,
+        "action_log": env.kernel.action_log,
+        "policy_log": getattr(agent, "policy_log", []),
     }

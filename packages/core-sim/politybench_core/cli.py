@@ -313,7 +313,7 @@ def bench_run(
     seeds: int = 1,
     baselines: str = "rule_based,hold_policy,simple_mpc",
     llm_models: str = "composer-2.5,gpt-5.2,gemini-3.7-flash-high",
-    llm_interval: int = 6,
+    llm_interval: int = 4,
     out: Path = Path("packages/demo/web/public/bench_live.json"),
     no_llm: bool = False,
 ):

@@ -44,7 +44,7 @@ def run_country_bench(
     seeds: int = 1,
     baselines: list[str] | None = None,
     llm_models: list[str] | None = None,
-    llm_interval: int = 3,
+    llm_interval: int = 4,
     out_path: Path | None = None,
     seed_base: int = 41823,
 ) -> dict[str, Any]:
@@ -92,8 +92,54 @@ def run_country_bench(
                 rejected_count=len(out.get("rejected") or []),
                 model=model_id,
                 llm_calls=llm_calls,
+                action_log=out.get("action_log"),
+                policy_log=out.get("policy_log"),
             )
             countries.append(report)
+
+    # Rank by robust score (best first)
+    countries.sort(
+        key=lambda c: c["evaluation"].get("robust_score_single", 0),
+        reverse=True,
+    )
+    n = len(countries)
+    for i, c in enumerate(countries, start=1):
+        c["rank"] = i
+        c["grade"] = (
+            "F"
+            if c["integrity"].get("hard_violations", 0) > 0
+            else (
+                "A"
+                if i / n <= 0.2
+                else "B"
+                if i / n <= 0.4
+                else "C"
+                if i / n <= 0.6
+                else "D"
+                if i / n <= 0.8
+                else "F"
+            )
+        )
+
+    # Head-to-head: LLM vs best baseline
+    baseline_scores = {
+        c["agent_id"]: c["evaluation"]["robust_score_single"]
+        for c in countries
+        if c["agent_id"] in BASELINE_AGENTS
+    }
+    best_baseline = max(baseline_scores.items(), key=lambda x: x[1]) if baseline_scores else ("none", 0)
+    head_to_head = []
+    for c in countries:
+        if c["agent_id"] not in BASELINE_AGENTS:
+            delta = c["evaluation"]["robust_score_single"] - best_baseline[1]
+            head_to_head.append(
+                {
+                    "model": c["agent_id"],
+                    "vs_baseline": best_baseline[0],
+                    "score_delta": round(delta, 2),
+                    "won": delta > 0,
+                }
+            )
 
     mean_dims = {
         a: {k: sum(d[k] for d in dims_acc[a]) / len(dims_acc[a]) for k in dims_acc[a][0]}
@@ -117,6 +163,8 @@ def run_country_bench(
             "mean_dims": mean_dims,
             "pareto_frontier": pareto_frontier(mean_dims),
             "weight_sensitivity": weight_sensitivity(mean_dims, n_draws=500, seed=seed_base),
+            "best_baseline": {"agent": best_baseline[0], "robust_score": best_baseline[1]},
+            "head_to_head": head_to_head,
         },
     }
 

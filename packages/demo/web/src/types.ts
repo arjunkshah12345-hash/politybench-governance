@@ -1,10 +1,12 @@
-export type Citizen = { mood: string; employed: boolean; cohort: number };
+export type Citizen = { mood: string; employed: boolean; cohort: number; region?: string };
 
 export type CountryReport = {
   agent_id: string;
   model: string;
   seed: number;
   scenario: string;
+  rank: number;
+  grade: string;
   country_name: string;
   motto: string;
   leader_title: string;
@@ -22,6 +24,8 @@ export type CountryReport = {
     deaths: number;
     damage: number;
     inflation_pct: number;
+    admin_capacity?: number;
+    corruption?: number;
   };
   evaluation: {
     utility: number;
@@ -29,6 +33,7 @@ export type CountryReport = {
     dims: Record<string, number>;
   };
   citizens: Citizen[];
+  mood_summary?: Record<string, number>;
   regions: Array<{
     name: string;
     population_share: number;
@@ -42,6 +47,13 @@ export type CountryReport = {
     type: string;
     label: string;
     severity: number;
+  }>;
+  policy_log?: Array<{
+    month?: number;
+    source: string;
+    label: string;
+    debt_gdp?: number;
+    unemployment?: number;
   }>;
   trajectory: Array<Record<string, number>>;
   integrity: {
@@ -63,5 +75,12 @@ export type BenchLive = {
     robust_scores: Record<string, number>;
     mean_utility: Record<string, number>;
     pareto_frontier: string[];
+    best_baseline?: { agent: string; robust_score: number };
+    head_to_head?: Array<{
+      model: string;
+      vs_baseline: string;
+      score_delta: number;
+      won: boolean;
+    }>;
   };
 };

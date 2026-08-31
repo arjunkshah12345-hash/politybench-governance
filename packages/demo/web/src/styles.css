@@ -1089,6 +1089,236 @@ body {
 
 .muted { color: #777; }
 
+/* ── Compare board ── */
+.compare-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem 2rem;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel-bg);
+  border: 4px solid #3d2914;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
+  font-size: 0.9rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 2px solid rgba(61, 41, 20, 0.15);
+  text-align: left;
+}
+
+.compare-table th {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.32rem;
+  background: #e8dcc8;
+}
+
+.compare-table .mono {
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+
+.row-gold {
+  background: rgba(244, 208, 63, 0.25);
+}
+
+.grade {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.45rem;
+  padding: 0.15rem 0.35rem;
+  border: 2px solid #3d2914;
+}
+
+.grade-A { background: #58d68d; }
+.grade-B { background: #aed581; }
+.grade-C { background: #f4d03f; }
+.grade-D { background: #f5b041; }
+.grade-F { background: #e74c3c; color: #fff; }
+
+.grade-pill {
+  display: inline-block;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.4rem;
+  padding: 0.15rem 0.35rem;
+  border: 2px solid #3d2914;
+  vertical-align: middle;
+  margin-left: 0.35rem;
+}
+
+.rank-badge {
+  position: absolute;
+  top: 12px;
+  left: 8px;
+  font-size: 1rem;
+  z-index: 2;
+}
+
+.country-card .grade-pill {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  z-index: 2;
+}
+
+.rank-inline {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+  color: #888;
+  margin-left: 0.5rem;
+}
+
+.mood-bar {
+  display: flex;
+  height: 8px;
+  margin: 0 0.75rem 0.35rem;
+  border: 2px solid #3d2914;
+  overflow: hidden;
+}
+
+.mood-segment {
+  min-width: 2px;
+}
+
+.h2h-panel {
+  margin: 1rem 0;
+  background: var(--panel-bg);
+  border: 3px solid #3d2914;
+  padding: 0.75rem 1rem;
+}
+
+.h2h-panel h3 {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.42rem;
+  margin: 0 0 0.5rem;
+}
+
+.h2h-panel ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.h2h-panel .won { color: #2d6b2d; }
+.h2h-panel .lost { color: #c0392b; }
+
+.multi-chart-wrap {
+  margin-top: 1rem;
+  background: var(--panel-bg);
+  border: 3px solid #3d2914;
+  padding: 0.75rem;
+}
+
+.multi-chart {
+  height: 140px;
+}
+
+.multi-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.multi-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  margin-top: 0.35rem;
+}
+
+.bench-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
+}
+
+.view-tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.view-tabs button {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+  padding: 0.4rem 0.6rem;
+  border: 3px solid #3d2914;
+  background: #e8dcc8;
+  cursor: pointer;
+}
+
+.view-tabs button.active {
+  background: var(--accent);
+}
+
+.pixel-btn.refresh {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+}
+
+.bench-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  padding-bottom: 0.75rem;
+}
+
+.bench-meta-bar span {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.35rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0.3rem 0.5rem;
+  border: 2px solid #000;
+}
+
+.empty-hint {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.policy-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.policy-log li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px dashed rgba(61, 41, 20, 0.2);
+}
+
+.policy-log .src-llm { color: #2563eb; font-size: 0.75rem; }
+.policy-log .src-fallback { color: #888; font-size: 0.75rem; }
+
+.voxel-block.citizens-silhouette {
+  width: 24px;
+  height: 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: relative;
+}
+
+.voxel-block.citizens-silhouette::after {
+  content: "👥";
+  font-size: 0.65rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.terrain-forest .voxel-block.tree { height: 30px; }
+.terrain-mountain .voxel-block.house { height: 26px; }
+
 @media (max-width: 768px) {
   .detail-grid { grid-template-columns: 1fr; }
   .detail-panel.span-2 { grid-column: span 1; }
