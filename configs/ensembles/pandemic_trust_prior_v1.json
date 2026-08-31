@@ -1,0 +1,19 @@
+{
+  "ensemble_id": "pandemic_trust_prior_v1",
+  "content_hash": "pandemic_trust_prior_v1_scaffold",
+  "description": "Synthetic trust/epidemic elasticity prior for pandemic_information_stress (validation scaffold, not historical replay).",
+  "calibration_window": "2020-2021 synthetic wave shape",
+  "validation_window": "2022-2023 holdout scaffold",
+  "best_params": {
+    "beta_base": 0.28,
+    "info_amplification": 0.12,
+    "trust_decay_per_wave": 0.08,
+    "trust_recovery_rate": 0.04,
+    "hospital_stress_trust_penalty": 0.06
+  },
+  "particles": [
+    {"beta_base": 0.25, "info_amplification": 0.10, "trust_decay_per_wave": 0.07, "trust_recovery_rate": 0.035, "hospital_stress_trust_penalty": 0.05},
+    {"beta_base": 0.30, "info_amplification": 0.14, "trust_decay_per_wave": 0.09, "trust_recovery_rate": 0.045, "hospital_stress_trust_penalty": 0.07},
+    {"beta_base": 0.27, "info_amplification": 0.11, "trust_decay_per_wave": 0.08, "trust_recovery_rate": 0.04, "hospital_stress_trust_penalty": 0.06}
+  ]
+}

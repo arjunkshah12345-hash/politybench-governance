@@ -104,6 +104,7 @@ def benchmark(
         pareto_frontier,
         robust_score,
         weight_sensitivity,
+        weight_sensitivity_heatmap,
     )
     from politybench_core.rng.streams import common_random_seeds
 
@@ -140,6 +141,7 @@ def benchmark(
         "mean_dims": mean_dims,
         "pareto_frontier": pareto_frontier(mean_dims),
         "weight_sensitivity": weight_sensitivity(mean_dims, n_draws=1000, seed=41823),
+        "weight_heatmap": weight_sensitivity_heatmap(mean_dims),
         "paired_rule_vs_hold": paired_comparison(utilities["rule_based"], utilities["hold_policy"]),
     }
     path = out_dir / f"{scenario}_f{fidelity}_s{seeds}.json"
@@ -194,9 +196,11 @@ def calibrate(
 def calibrate_smoke():
     from calibration.greece.validate import run_greece_validation
     from calibration.japan_geje.validate import run_japan_validation
+    from calibration.pandemic.validate import run_pandemic_validation
 
     g = run_greece_validation()
     j = run_japan_validation()
+    p = run_pandemic_validation()
     console.print(
         "Greece RMSE GDP cal/val:",
         round(g["rmse_gdp_index_calibration"], 2),
@@ -209,6 +213,97 @@ def calibrate_smoke():
         "event_damage=",
         j["event_damage"],
     )
+    console.print(
+        "Pandemic trust RMSE cal/val:",
+        round(p["rmse_trust_calibration"], 3),
+        round(p["rmse_trust_validation"], 3),
+    )
+
+
+@app.command("export-dashboard-data")
+def export_dashboard_data(out_dir: Path = Path("packages/demo/web/public")):
+    """Export benchmark + calibration JSON for the React dashboard."""
+    from calibration.greece.validate import run_greece_validation
+    from calibration.japan_geje.validate import run_japan_validation
+    from calibration.pandemic.validate import run_pandemic_validation
+    from politybench_core.eval.hidden import load_eval_manifest
+    from politybench_datasets import build_all_manifests
+
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cal = {
+        "greece": run_greece_validation(),
+        "japan_geje": run_japan_validation(),
+        "pandemic": run_pandemic_validation(),
+    }
+    (out_dir / "calibration_summary.json").write_text(json.dumps(cal, indent=2))
+    manifests = [str(p) for p in build_all_manifests()]
+    (out_dir / "manifest_links.json").write_text(
+        json.dumps({"manifests": manifests, "eval_manifest": load_eval_manifest()}, indent=2)
+    )
+    console.print(f"Wrote calibration + manifest exports to {out_dir}")
+
+
+@app.command("benchmark-official")
+def benchmark_official(
+    scenario: str = "macro_fiscal_crisis",
+    seeds: int = 8,
+    fidelity: str = "F2",
+    out_dir: Path = Path("benchmarks/official"),
+):
+    """Run benchmark on hidden official seed bank (leaderboard harness)."""
+    from politybench_api import PolityEnv, get_baseline, run_episode
+    from politybench_eval import (
+        evaluate_episode,
+        extras_from_state,
+        pareto_frontier,
+        robust_score,
+        weight_sensitivity,
+        weight_sensitivity_heatmap,
+    )
+    from politybench_core.eval.hidden import list_official_seed_indices, load_eval_manifest, official_seed_for
+
+    manifest = load_eval_manifest()
+    excluded = set(manifest.get("excluded_agents", []))
+    agents = [a for a in ["hold_policy", "rule_based", "random_valid", "simple_mpc"] if a not in excluded]
+    utilities: dict[str, list[float]] = {a: [] for a in agents}
+    dims_acc: dict[str, list[dict[str, float]]] = {a: [] for a in agents}
+
+    indices = list_official_seed_indices(seeds)
+    for idx in indices:
+        seed = official_seed_for(idx)
+        for aname in agents:
+            env = PolityEnv(scenario=scenario, fidelity=fidelity, seed=seed, eval_mode="official")
+            out = run_episode(env, get_baseline(aname, seed=seed))
+            ep = evaluate_episode(
+                out["trajectory"],
+                seed=seed,
+                scenario=scenario,
+                extras=extras_from_state(out["state"]),
+                hard_violations=out["hard_violations"],
+            )
+            utilities[aname].append(ep.utility)
+            dims_acc[aname].append(ep.dims)
+
+    mean_dims = {
+        a: {k: sum(d[k] for d in dims_acc[a]) / len(dims_acc[a]) for k in dims_acc[a][0]}
+        for a in agents
+    }
+    out_dir.mkdir(parents=True, exist_ok=True)
+    summary = {
+        "harness": "official",
+        "scenario": scenario,
+        "seed_indices": indices,
+        "robust_scores": {a: robust_score(utilities[a]) for a in agents},
+        "mean_utility": {a: sum(utilities[a]) / len(utilities[a]) for a in agents},
+        "mean_dims": mean_dims,
+        "pareto_frontier": pareto_frontier(mean_dims),
+        "weight_sensitivity": weight_sensitivity(mean_dims, n_draws=1000, seed=41823),
+        "weight_heatmap": weight_sensitivity_heatmap(mean_dims),
+        "eval_manifest_version": manifest.get("benchmark_version"),
+    }
+    path = out_dir / f"{scenario}_official_f{fidelity}.json"
+    path.write_text(json.dumps(summary, indent=2))
+    console.print(f"Official harness wrote {path}")
 
 
 @app.command("serve")

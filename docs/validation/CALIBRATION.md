@@ -38,3 +38,23 @@ Synthetic `compound_disaster` blends generative timing with calibrated intensity
 Strategic (non-tactical) module: tariffs, trade agreements, creditor program accept/counter/reject.
 Affects partner demand, financing spreads, and export access. Options appear in `diplomatic_inbox`.
 
+## Pandemic trust scaffold (synthetic)
+
+| Phase | Months | Use |
+|-------|--------|-----|
+| Calibration | 0–18 | Trust decline during synthetic wave |
+| Holdout | 24–33 | Recovery scaffold — report only |
+
+Frozen prior: `configs/ensembles/pandemic_trust_prior_v1.json`  
+Synthetic `pandemic_information_stress` samples epidemic/trust elasticities from this prior.
+
+## Official evaluation harness
+
+Hidden seed bank: `configs/official/hidden_seeds.json`  
+Manifest: `configs/official/eval_manifest.json`
+
+```bash
+politybench benchmark-official --scenario macro_fiscal_crisis --seeds 8 --fidelity F2
+politybench export-dashboard-data
+```
+

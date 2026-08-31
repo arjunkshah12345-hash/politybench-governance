@@ -1,0 +1,26 @@
+{
+  "benchmark_version": "0.1.0",
+  "leaderboard_scenarios": [
+    "baseline_development",
+    "macro_fiscal_crisis",
+    "pandemic_information_stress",
+    "compound_disaster"
+  ],
+  "private_ensembles": {
+    "macro_fiscal_crisis": "configs/ensembles/greece_posterior_v1.json",
+    "compound_disaster": "configs/ensembles/japan_geje_posterior_v1.json",
+    "pandemic_information_stress": "configs/ensembles/pandemic_trust_prior_v1.json"
+  },
+  "excluded_agents": ["oracle_privileged"],
+  "training_mode_exposes_latent": true,
+  "fidelity_defaults": {
+    "sandbox": "F0",
+    "standard": "F1",
+    "stress": "F2",
+    "official": "F2"
+  },
+  "notes": [
+    "Historical Greece and Japan GEJE are validation-only, never leaderboard scenarios.",
+    "Official runs always use eval_mode=official (no training_signals)."
+  ]
+}

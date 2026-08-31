@@ -1,0 +1,106 @@
+# Goal Mode board — machine truth for docs/goals/politybench-mvp/
+version: 1
+
+goal:
+  title: "Finish PolityBench MVP remaining work"
+  slug: "politybench-mvp"
+  kind: existing_plan
+  tranche: complete
+  status: done
+  full_outcome_complete: true
+  intake:
+    original_request: "Finish all PolityBench MVP remaining work (/goal)"
+    interpreted_outcome: "Ship hidden eval harness, RL adapters, pandemic validation, dashboard panels, ODD+2D docs, expert protocol, safety tests — green CI"
+    input_shape: existing_plan
+    audience: research users
+    authority: requested
+    proof_type: test
+    completion_proof: "37 pytest pass; calibrate-smoke + benchmark-smoke; dashboard build; private repo"
+    likely_misfire: "Docs-only without harness/adapters"
+    blind_spots_considered:
+      - "Greece holdout GDP RMSE ~16 remains a known model limitation"
+      - "F3 fidelity is scaffolding only"
+    existing_plan_facts:
+      - "Private repo arjunkshah12345-hash/politybench-governance"
+      - "Greece and Japan posteriors already frozen"
+
+rules:
+  pm_owns_state: true
+  one_active_task: true
+  max_write_workers: 1
+  no_implementation_without_worker_or_pm_task: true
+  no_completion_without_judge_or_pm_audit: true
+  planning_is_not_completion: true
+  queued_required_worker_blocks_completion: true
+  continuous_until_full_outcome: true
+  missing_input_or_credentials_do_not_stop_goal: true
+  preserve_and_validate_existing_plan: true
+  intake_misfire_must_be_audited: true
+
+agents:
+  scout: hats
+  worker: hats
+  judge: hats
+
+active_task: null
+
+tasks:
+  - id: T001
+    type: scout
+    assignee: Scout
+    status: done
+    objective: "Map repo purpose, architecture, verification commands, and ranked improvement candidates."
+    receipt:
+      summary: "Mapped gaps: Gymnasium/PettingZoo missing, hidden eval partial, pandemic cal absent, dashboard basic, ODD outline, no red-team tests"
+      evidence: ["BENCHMARK_SPEC.md", "packages/agent-api/", "docs/model-odd/CORE_ODD.md"]
+      verify: "pytest 24 pass baseline"
+      next: T002
+      full_outcome_complete: false
+
+  - id: T002
+    type: judge
+    assignee: Judge
+    status: done
+    objective: "Select first safe Worker slice"
+    receipt:
+      summary: "Prioritized RL adapters + hidden eval + pandemic validation + dashboard export as one tranche"
+      evidence: ["docs/goals/politybench-mvp/state.yaml"]
+      verify: "n/a"
+      next: T003
+      full_outcome_complete: false
+
+  - id: T003
+    type: worker
+    assignee: Worker
+    status: done
+    objective: "Implement remaining MVP slices"
+    allowed_files:
+      - packages/agent-api/politybench_api/gym_adapter.py
+      - packages/agent-api/politybench_api/pettingzoo_adapter.py
+      - packages/core-sim/politybench_core/eval/
+      - configs/official/
+      - calibration/pandemic/
+      - packages/demo/web/src/App.tsx
+      - docs/
+    verify: "pytest -q && politybench calibrate-smoke && npm run build"
+    receipt:
+      summary: "Shipped Gymnasium + PettingZoo adapters, hidden official seed harness, pandemic trust validation, dashboard calibration/heatmap, ODD+2D + expert protocol docs, red-team tests"
+      evidence:
+        - "packages/core-sim/tests/test_remaining.py"
+        - "politybench benchmark-official"
+        - "politybench export-dashboard-data"
+      verify: "37 passed; calibrate-smoke Greece 7.39/16.63 Japan 0.162/0.45 Pandemic 0.358/0.444; dashboard built"
+      next: T004
+      full_outcome_complete: false
+
+  - id: T004
+    type: judge
+    assignee: Judge
+    status: done
+    objective: "Final audit against completion proof"
+    receipt:
+      summary: "All scoped MVP remainders delivered; known limitations documented (Greece holdout, F3 scaffold)"
+      evidence: ["pytest", "politybench calibrate-smoke", "packages/demo/web/dist/"]
+      verify: "full_outcome_complete true for original /goal request"
+      next: none
+      full_outcome_complete: true

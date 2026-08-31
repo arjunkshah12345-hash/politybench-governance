@@ -1,0 +1,251 @@
+{
+  "greece": {
+    "calibration_window": "2009-2013",
+    "validation_window": "2014-2018",
+    "posterior_id": "greece_posterior_v1",
+    "posterior_hash": "7e858b4daef03e95fec1846cdb44251aa48f8ec2f116ac1a057e3a294697caa7",
+    "best_params": {
+      "productivity_drift": -0.00022025276415936026,
+      "cons_income_elas": 0.5449332370370557,
+      "inv_rate_elas": -0.7092760251980317,
+      "tax_activity_elas": -0.3669813086453203,
+      "okun_coef": 0.6048129561755445,
+      "natural_u": 0.0968300391618744,
+      "demand_persist": 0.8782539367283703,
+      "export_shock0": -0.14245633625914667,
+      "demand_shock0": -0.033272011659149045,
+      "banking_shock": -0.07855201876076709,
+      "demand_shock2": -0.06772221440614766,
+      "tax_compliance0": 0.7936488612951575,
+      "spend_share": 0.23663610541748314,
+      "transfer_share": 0.10102037900989483,
+      "austerity_spend": 0.9853832037999771,
+      "austerity_transfer": 0.9936258088907027,
+      "macro_noise": 0.0022192347798161032,
+      "recovery_drift_boost": 0.0013594587175943763
+    },
+    "rmse_gdp_index_calibration": 7.390072840142403,
+    "rmse_gdp_index_validation": 16.63274400329806,
+    "rmse_unemployment_calibration": 2.6549901687315463,
+    "rmse_unemployment_validation": 2.7141731622661607,
+    "rmse_debt_gdp_validation": 0.3204601870813617,
+    "holdout_gdp_ensemble_mean": {
+      "2014": 66.99026022225469,
+      "2015": 66.28573258201249,
+      "2016": 65.92907422049201,
+      "2017": 65.71326169705505,
+      "2018": 65.5781074102846
+    },
+    "holdout_gdp_ensemble_std": {
+      "2014": 5.768217550985622,
+      "2015": 6.026561704871322,
+      "2016": 6.169628203955038,
+      "2017": 6.235143644779017,
+      "2018": 6.263749645391109
+    },
+    "simulated_annual": {
+      "2009": {
+        "gdp": 15099.817628100369,
+        "unemployment": 0.10845554664351803,
+        "inflation": 0.002660548259207322,
+        "debt_gdp": 1.3956973364188021
+      },
+      "2010": {
+        "gdp": 13453.707928456088,
+        "unemployment": 0.154731208004884,
+        "inflation": -0.010556288363741874,
+        "debt_gdp": 1.5322224828236295
+      },
+      "2011": {
+        "gdp": 12333.86806833658,
+        "unemployment": 0.18651409121691492,
+        "inflation": -0.02,
+        "debt_gdp": 1.63876886705351
+      },
+      "2012": {
+        "gdp": 11416.169515942895,
+        "unemployment": 0.21403937588719582,
+        "inflation": -0.02,
+        "debt_gdp": 1.7624058781354692
+      },
+      "2013": {
+        "gdp": 10690.035128063198,
+        "unemployment": 0.234426297995047,
+        "inflation": -0.02,
+        "debt_gdp": 1.893831914762646
+      },
+      "2014": {
+        "gdp": 10502.260806045733,
+        "unemployment": 0.2393734481302191,
+        "inflation": -0.02,
+        "debt_gdp": 1.9676152023112101
+      },
+      "2015": {
+        "gdp": 10406.011066763152,
+        "unemployment": 0.24125117882982672,
+        "inflation": -0.02,
+        "debt_gdp": 2.0395987215629114
+      },
+      "2016": {
+        "gdp": 10356.52801807218,
+        "unemployment": 0.2414769816534893,
+        "inflation": -0.02,
+        "debt_gdp": 2.111928938777879
+      },
+      "2017": {
+        "gdp": 10327.997118092338,
+        "unemployment": 0.2412592575332248,
+        "inflation": -0.02,
+        "debt_gdp": 2.186836065984883
+      },
+      "2018": {
+        "gdp": 10309.895562789607,
+        "unemployment": 0.24027688324736718,
+        "inflation": -0.02,
+        "debt_gdp": 2.265037508718672
+      }
+    },
+    "observed_gdp_index_norm": {
+      "2005": 96.15384615384616,
+      "2006": 100.96153846153845,
+      "2007": 104.8076923076923,
+      "2008": 105.76923076923077,
+      "2009": 100.0,
+      "2010": 94.23076923076923,
+      "2011": 88.46153846153845,
+      "2012": 84.61538461538461,
+      "2013": 81.73076923076923,
+      "2014": 82.6923076923077,
+      "2015": 83.65384615384616,
+      "2016": 84.61538461538461,
+      "2017": 86.53846153846155,
+      "2018": 88.46153846153845
+    },
+    "limitations": [
+      "Simplified fiscal-crisis spine; not a full DSGE/ABM of Greece",
+      "Uses open fixtures patterned on public magnitudes, not a redistributed IMF dump",
+      "Historical replay is validation-only, never a leaderboard scenario",
+      "Posterior selected on 2009\u20132013 only; 2014\u20132018 metrics are held-out"
+    ]
+  },
+  "japan_geje": {
+    "pre_event_window": "2010-01 to 2011-02",
+    "event": "2011-03 synthetic GEJE-intensity shock",
+    "calibration_window": "2011-2013",
+    "validation_window": "2014-2016",
+    "posterior_id": "japan_geje_posterior_v1",
+    "posterior_hash": "40ca41d8648bc74231610eb4a70b3906c9b143aaf2b56c98718d72643f2080a3",
+    "best_params": {
+      "disaster_intensity": 0.6711272230799685,
+      "demand_shock": -0.17432058634544842,
+      "rebuild_efficiency": 0.026946223835382428,
+      "construction_base": 0.14431093759895783,
+      "ramp_per_year": 0.047135157251133354,
+      "ramp_start": 0.36695736715075605,
+      "budget_scale": 374.04001262642464,
+      "spend_scale": 53.6491856935427,
+      "displacement_frac": 0.12609936301550753
+    },
+    "pre_event_mean_damage": 0.0,
+    "event_damage": 0.6463032913712681,
+    "rmse_reconstruction_calibration": 0.16188270626153686,
+    "rmse_reconstruction_holdout": 0.4504331454919438,
+    "rmse_reconstruction_progress": 0.3384494269047635,
+    "simulated_progress": {
+      "2010": 1.0,
+      "2011": 0.35457671761262366,
+      "2012": 0.35620871744958993,
+      "2013": 0.3583548847526944,
+      "2014": 0.3608127582454629,
+      "2015": 0.36339689136559683,
+      "2016": 0.3660190341504217
+    },
+    "observed_progress_scaffold": {
+      "2011": 0.15,
+      "2012": 0.35,
+      "2013": 0.55,
+      "2014": 0.7,
+      "2015": 0.82,
+      "2016": 0.9
+    },
+    "holdout_ensemble_mean": {
+      "2014": 0.3985647297798928,
+      "2015": 0.4017099984872264,
+      "2016": 0.40494116689346793
+    },
+    "peak_displacement_sim": 1224410.4489991576,
+    "fixture_displacement_peak": 470000,
+    "limitations": [
+      "Regional aggregate, not prefecture-resolved Tohoku model",
+      "Reconstruction Agency figures used as trajectory-shape targets via public scaffolds",
+      "Posterior fit on 2011\u20132013 only; 2014\u20132016 is held-out",
+      "Validation case only \u2014 not a leaderboard scenario"
+    ]
+  },
+  "pandemic": {
+    "calibration_window": "months 0-18 synthetic wave",
+    "validation_window": "months 24-33 holdout recovery",
+    "posterior_id": "pandemic_trust_prior_v1",
+    "best_params": {
+      "beta_base": 0.28,
+      "info_amplification": 0.12,
+      "trust_decay_per_wave": 0.08,
+      "trust_recovery_rate": 0.04,
+      "hospital_stress_trust_penalty": 0.06
+    },
+    "rmse_trust_calibration": 0.3578641871096539,
+    "rmse_trust_validation": 0.44380926834245654,
+    "simulated_trust": {
+      "0": 0.4495183632124916,
+      "1": 0.5002408841929766,
+      "2": 0.5486811127192724,
+      "3": 0.5950005882170047,
+      "4": 0.6303454228913502,
+      "5": 0.6635738983172228,
+      "6": 0.7039391396006871,
+      "7": 0.7422096086290612,
+      "8": 0.7785965247816287,
+      "9": 0.8132844548390533,
+      "10": 0.8464349799088972,
+      "11": 0.8781898422403556,
+      "12": 0.9086736464812986,
+      "13": 0.937996179205233,
+      "14": 0.95,
+      "15": 0.95,
+      "16": 0.95,
+      "17": 0.95,
+      "18": 0.95,
+      "19": 0.95,
+      "20": 0.95,
+      "21": 0.95,
+      "22": 0.95,
+      "23": 0.95,
+      "24": 0.95,
+      "25": 0.95,
+      "26": 0.95,
+      "27": 0.95,
+      "28": 0.95,
+      "29": 0.95,
+      "30": 0.95,
+      "31": 0.95,
+      "32": 0.95,
+      "33": 0.95,
+      "34": 0.95,
+      "35": 0.95
+    },
+    "observed_trust_scaffold": {
+      "0": 0.58,
+      "6": 0.52,
+      "12": 0.46,
+      "18": 0.44,
+      "24": 0.48,
+      "30": 0.51,
+      "33": 0.53
+    },
+    "limitations": [
+      "Synthetic trust scaffold \u2014 not country-specific COVID replay",
+      "Aggregate SEIR + trust dynamics only",
+      "Validation case only \u2014 not a leaderboard scenario"
+    ]
+  }
+}

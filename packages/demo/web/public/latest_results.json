@@ -2,53 +2,53 @@
   "scenario": "macro_fiscal_crisis",
   "seeds": 4,
   "robust_scores": {
-    "hold_policy": 27.178170880299113,
-    "rule_based": 21.7444553618851,
-    "random_valid": 28.978070468950136,
-    "simple_mpc": 21.772046909775074
+    "hold_policy": 41.66025039214057,
+    "rule_based": 39.86534449038919,
+    "random_valid": 41.011739844390455,
+    "simple_mpc": 39.915929641562265
   },
   "mean_utility": {
-    "hold_policy": 0.3364183141979693,
-    "rule_based": 0.2826254669157268,
-    "random_valid": 0.3471029061903103,
-    "simple_mpc": 0.28298409048093237
+    "hold_policy": 0.5030255500589462,
+    "rule_based": 0.45257749382706214,
+    "random_valid": 0.4592473726092835,
+    "simple_mpc": 0.4531517695855042
   },
   "mean_dims": {
     "hold_policy": {
-      "economic": 0.2870920260054667,
+      "economic": 0.39994934686974504,
       "human": 0.7962547736163847,
-      "stability": 0.5829715417889838,
-      "equity": 0.2242172566461107,
-      "resilience": 0.1831131326763967,
+      "stability": 0.8206937702744501,
+      "equity": 0.46006565098186397,
+      "resilience": 0.3954626616099742,
       "legitimacy": 0.9894494274645753,
-      "environment": 0.5738985740348728
+      "environment": 0.5745422109914622
     },
     "rule_based": {
-      "economic": 0.20101377608114182,
+      "economic": 0.3586152055765624,
       "human": 0.8036169258673753,
-      "stability": 0.4930931926024046,
-      "equity": 0.12158114614533871,
-      "resilience": 0.4394256947080451,
+      "stability": 0.7404638089259756,
+      "equity": 0.3371272469522351,
+      "resilience": 0.6969772107415311,
       "legitimacy": 0.9911353072391011,
-      "environment": 0.6009074740871492
+      "environment": 0.6019758434012634
     },
     "random_valid": {
-      "economic": 0.2521429561496167,
+      "economic": 0.3867354646208569,
       "human": 0.7962547736163847,
-      "stability": 0.6328562353775437,
-      "equity": 0.14275260569294349,
-      "resilience": 0.33827952153937424,
+      "stability": 0.8095289827828493,
+      "equity": 0.38633993642300396,
+      "resilience": 0.44617203123214527,
       "legitimacy": 0.9908772075135017,
-      "environment": 0.5739324562621759
+      "environment": 0.5745406771524502
     },
     "simple_mpc": {
-      "economic": 0.20101377608114182,
+      "economic": 0.3586152055765624,
       "human": 0.8107821243338479,
-      "stability": 0.4930931926024046,
-      "equity": 0.12158114614533871,
-      "resilience": 0.4394256947080451,
+      "stability": 0.7404638089259756,
+      "equity": 0.3371272469522351,
+      "resilience": 0.6969772107415311,
       "legitimacy": 0.9911353072391011,
-      "environment": 0.6009074740871492
+      "environment": 0.6019758434012634
     }
   },
   "pareto_frontier": [
@@ -58,15 +58,15 @@
   ],
   "weight_sensitivity": {
     "hold_policy": {
-      "mean_rank": 2.333,
+      "mean_rank": 2.383,
       "rank_interval": [
         1,
         4
       ],
-      "p_top1": 0.451
+      "p_top1": 0.459
     },
     "rule_based": {
-      "mean_rank": 3.39,
+      "mean_rank": 2.836,
       "rank_interval": [
         2,
         4
@@ -74,31 +74,208 @@
       "p_top1": 0.0
     },
     "random_valid": {
-      "mean_rank": 1.903,
+      "mean_rank": 2.96,
       "rank_interval": [
         1,
         4
       ],
-      "p_top1": 0.323
+      "p_top1": 0.001
     },
     "simple_mpc": {
-      "mean_rank": 2.374,
+      "mean_rank": 1.821,
       "rank_interval": [
         1,
         3
       ],
-      "p_top1": 0.226
+      "p_top1": 0.54
     }
   },
+  "weight_heatmap": [
+    {
+      "focus_dim": "economic",
+      "weights": {
+        "economic": 0.65,
+        "human": 0.049999999999999996,
+        "stability": 0.049999999999999996,
+        "equity": 0.049999999999999996,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.46355583094036057,
+        "rule_based": 0.4350081487616188,
+        "random_valid": 0.4514442841883297,
+        "simple_mpc": 0.4352114291226651
+      },
+      "rankings": {
+        "hold_policy": 1,
+        "rule_based": 4,
+        "random_valid": 2,
+        "simple_mpc": 3
+      },
+      "winner": "hold_policy"
+    },
+    {
+      "focus_dim": "human",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.65,
+        "stability": 0.049999999999999996,
+        "equity": 0.049999999999999996,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.7161003299611726,
+        "rule_based": 0.7241283058290572,
+        "random_valid": 0.7123465867179419,
+        "simple_mpc": 0.7285396908862575
+      },
+      "rankings": {
+        "hold_policy": 3,
+        "rule_based": 2,
+        "random_valid": 4,
+        "simple_mpc": 1
+      },
+      "winner": "simple_mpc"
+    },
+    {
+      "focus_dim": "stability",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.049999999999999996,
+        "stability": 0.65,
+        "equity": 0.049999999999999996,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.7299043119819827,
+        "rule_based": 0.6876475496601611,
+        "random_valid": 0.7198239749562263,
+        "simple_mpc": 0.6879688890248726
+      },
+      "rankings": {
+        "hold_policy": 1,
+        "rule_based": 4,
+        "random_valid": 2,
+        "simple_mpc": 3
+      },
+      "winner": "hold_policy"
+    },
+    {
+      "focus_dim": "equity",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.049999999999999996,
+        "stability": 0.049999999999999996,
+        "equity": 0.65,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.5064206505926026,
+        "rule_based": 0.4183589541362367,
+        "random_valid": 0.45115262403114853,
+        "simple_mpc": 0.4185544542883277
+      },
+      "rankings": {
+        "hold_policy": 1,
+        "rule_based": 4,
+        "random_valid": 2,
+        "simple_mpc": 3
+      },
+      "winner": "hold_policy"
+    },
+    {
+      "focus_dim": "resilience",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.049999999999999996,
+        "stability": 0.049999999999999996,
+        "equity": 0.049999999999999996,
+        "resilience": 0.65,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.46026465224722235,
+        "rule_based": 0.6618577884465697,
+        "random_valid": 0.4941034074578348,
+        "simple_mpc": 0.6621670761934308
+      },
+      "rankings": {
+        "hold_policy": 4,
+        "rule_based": 2,
+        "random_valid": 3,
+        "simple_mpc": 1
+      },
+      "winner": "simple_mpc"
+    },
+    {
+      "focus_dim": "legitimacy",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.049999999999999996,
+        "stability": 0.049999999999999996,
+        "equity": 0.049999999999999996,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.65,
+        "environment": 0.049999999999999996
+      },
+      "scores": {
+        "hold_policy": 0.821406267513864,
+        "rule_based": 0.8266890404513431,
+        "random_valid": 0.8178450027388117,
+        "simple_mpc": 0.827075354241313
+      },
+      "rankings": {
+        "hold_policy": 3,
+        "rule_based": 2,
+        "random_valid": 4,
+        "simple_mpc": 1
+      },
+      "winner": "simple_mpc"
+    },
+    {
+      "focus_dim": "environment",
+      "weights": {
+        "economic": 0.049999999999999996,
+        "human": 0.049999999999999996,
+        "stability": 0.049999999999999996,
+        "equity": 0.049999999999999996,
+        "resilience": 0.049999999999999996,
+        "legitimacy": 0.049999999999999996,
+        "environment": 0.65
+      },
+      "scores": {
+        "hold_policy": 0.5827202650345928,
+        "rule_based": 0.6033527637289288,
+        "random_valid": 0.5796647125262234,
+        "simple_mpc": 0.6036347119361019
+      },
+      "rankings": {
+        "hold_policy": 3,
+        "rule_based": 2,
+        "random_valid": 4,
+        "simple_mpc": 1
+      },
+      "winner": "simple_mpc"
+    }
+  ],
   "paired_rule_vs_hold": {
-    "paired_mean_diff": -0.05379284728224246,
-    "paired_median_diff": -0.025869539521870134,
+    "paired_mean_diff": -0.05044805623188405,
+    "paired_median_diff": -0.00885287374717822,
     "bootstrap_ci95": [
-      -0.128784628490887,
-      0.006960930515371874
+      -0.1997498728476932,
+      0.05725857789921924
     ],
-    "permutation_p": 0.487,
-    "prob_superiority": 0.5,
-    "effect_size_matched": -0.7313271641549068
+    "permutation_p": 0.626,
+    "prob_superiority": 0.25,
+    "effect_size_matched": -0.39330757330434835
   }
 }

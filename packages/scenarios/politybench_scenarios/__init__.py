@@ -110,6 +110,26 @@ def _shocks_disaster_with_posterior(rng, hidden: dict) -> list[dict[str, Any]]:
     return shocks
 
 
+def _apply_pandemic_posterior(hidden: dict, rng) -> dict:
+    try:
+        import json
+        from pathlib import Path
+
+        path = Path(__file__).resolve().parents[3] / "configs" / "ensembles" / "pandemic_trust_prior_v1.json"
+        posterior = json.loads(path.read_text())
+        import numpy as np
+
+        seed = int(rng.integers(0, 2**31 - 1))
+        particle = posterior["particles"][int(np.random.default_rng(seed).integers(0, len(posterior["particles"])))]
+        hidden["beta"] = float(particle["beta_base"])
+        hidden["info_shock"] = float(particle["info_amplification"]) * 0.1
+        hidden["trust_decay_prior"] = float(particle["trust_decay_per_wave"])
+        hidden["pandemic_posterior_source"] = posterior.get("ensemble_id", "pandemic_trust_prior_v1")
+    except Exception:
+        hidden["pandemic_posterior_source"] = "fallback_priors"
+    return hidden
+
+
 def _apply_greece_posterior(hidden: dict, rng) -> dict:
     """Sample structural elasticities from frozen Greece cal ensemble (not historical shocks)."""
     try:
@@ -182,6 +202,7 @@ def build_scenario(
         hidden["debt_ceiling_ratio"] = float(rng.uniform(1.2, 1.8))
         shocks = _shocks_macro(rng)
     elif name == "pandemic_information_stress":
+        hidden = _apply_pandemic_posterior(hidden, rng)
         state.health.hospital_beds *= float(rng.uniform(0.7, 1.1))
         state.governance.misinformation_pressure = float(rng.uniform(0.15, 0.4))
         state.governance.institutional_trust = float(rng.uniform(0.35, 0.6))

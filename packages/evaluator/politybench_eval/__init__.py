@@ -194,6 +194,33 @@ def pareto_frontier(agents: dict[str, dict[str, float]]) -> list[str]:
     return frontier
 
 
+def weight_sensitivity_heatmap(
+    dims_by_agent: dict[str, dict[str, float]],
+) -> list[dict[str, Any]]:
+    """Rank agents under seven single-dimension-focused weight vectors (dashboard heatmap)."""
+    agents = list(dims_by_agent.keys())
+    rows: list[dict[str, Any]] = []
+    for focus in DIM_ORDER:
+        w_raw = {d: 0.05 for d in DIM_ORDER}
+        w_raw[focus] = 0.65
+        rest = 0.30 / max(1, len(DIM_ORDER) - 1)
+        for d in DIM_ORDER:
+            if d != focus:
+                w_raw[d] = rest
+        scores = {a: episode_utility(dims_by_agent[a], w_raw) for a in agents}
+        order = sorted(agents, key=lambda a: scores[a], reverse=True)
+        rows.append(
+            {
+                "focus_dim": focus,
+                "weights": w_raw,
+                "scores": scores,
+                "rankings": {a: order.index(a) + 1 for a in agents},
+                "winner": order[0],
+            }
+        )
+    return rows
+
+
 def weight_sensitivity(
     dims_by_agent: dict[str, dict[str, float]],
     n_draws: int = 1000,
