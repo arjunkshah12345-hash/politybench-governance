@@ -105,9 +105,16 @@ HTTP: `POST /v1/session/reset`, `POST /v1/session/{id}/actions`, ledger & legal-
 - Robust score ≈ \(100[0.75\mathbb{E}(G)+0.25\mathrm{CVaR}_{0.10}^-(G)]-P\)
 - Paired common-random-number seeds; bootstrap CIs; Pareto + weight sensitivity (≥1000 draws)
 
-## Reproducibility
+## Historical validation
 
-Named hierarchical RNG streams from a master seed. Every run emits a manifest (benchmark version, scenario, seed, stream IDs, trajectory hash).
+Greece and Japan GEJE pipelines live under `calibration/`. Fit the Greece ensemble (calibration window only):
+
+```bash
+politybench calibrate --particles 48 --keep 12
+```
+
+Frozen posterior: `configs/ensembles/greece_posterior_v1.json` — sampled by synthetic `macro_fiscal_crisis` worlds for elasticities (not historical shock replay).
+
 
 ## Safety
 
