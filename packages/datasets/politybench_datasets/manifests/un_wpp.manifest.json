@@ -1,6 +1,6 @@
 {
   "dataset_id": "un_wpp",
-  "frozen_at": "2026-08-31T01:41:59.398046+00:00",
+  "frozen_at": "2026-08-31T01:42:52.531170+00:00",
   "benchmark_version": "0.1.0",
   "series": [
     {
@@ -26,5 +26,5 @@
     }
   ],
   "extra": {},
-  "manifest_sha256": "b00807f8be9edc0055026cc13e4162f8f2e33f03fab0a064a1f738a9d0fc18c6"
+  "manifest_sha256": "8d61f4f591e6fa4a515da72a84fe66b6e972b072fe1248a84a1a5d9c6ee628d8"
 }

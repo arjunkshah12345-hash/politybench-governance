@@ -4,7 +4,7 @@
   "calibration_window": "2011-2013",
   "validation_window": "2014-2016",
   "posterior_id": "japan_geje_posterior_v1",
-  "posterior_hash": "5c146040f0cd3ae78803339b98076c9eb22c65df89b68981f6e0c1f07d9ec370",
+  "posterior_hash": "c528bcae14d014e3ab5db89c9a7e6b3336aab004d0c7e4434f80d0d59d8fb04b",
   "best_params": {
     "disaster_intensity": 0.6711272230799685,
     "demand_shock": -0.17432058634544842,
@@ -17,18 +17,18 @@
     "displacement_frac": 0.12609936301550753
   },
   "pre_event_mean_damage": 0.0,
-  "event_damage": 0.6463030598667315,
-  "rmse_reconstruction_calibration": 0.16176718204823456,
-  "rmse_reconstruction_holdout": 0.44955003037129954,
-  "rmse_reconstruction_progress": 0.33783416863504423,
+  "event_damage": 0.6463032913712681,
+  "rmse_reconstruction_calibration": 0.16188270626153686,
+  "rmse_reconstruction_holdout": 0.4504331454919438,
+  "rmse_reconstruction_progress": 0.3384494269047635,
   "simulated_progress": {
     "2010": 1.0,
-    "2011": 0.3546067347736429,
-    "2012": 0.3563330907192406,
-    "2013": 0.3586839274637649,
-    "2014": 0.3614061201851495,
-    "2015": 0.36425007319539615,
-    "2016": 0.3671474142034836
+    "2011": 0.35457671761262366,
+    "2012": 0.35620871744958993,
+    "2013": 0.3583548847526944,
+    "2014": 0.3608127582454629,
+    "2015": 0.36339689136559683,
+    "2016": 0.3660190341504217
   },
   "observed_progress_scaffold": {
     "2011": 0.15,
@@ -39,9 +39,9 @@
     "2016": 0.9
   },
   "holdout_ensemble_mean": {
-    "2014": 0.3990345062631449,
-    "2015": 0.4024397073705532,
-    "2016": 0.40594709931468737
+    "2014": 0.3985647297798928,
+    "2015": 0.4017099984872264,
+    "2016": 0.40494116689346793
   },
   "peak_displacement_sim": 1224410.4489991576,
   "fixture_displacement_peak": 470000,

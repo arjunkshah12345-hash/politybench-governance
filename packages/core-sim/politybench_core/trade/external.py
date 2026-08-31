@@ -85,8 +85,7 @@ def apply_diplomacy_actions(
                 ext["financing_spread"] = max(0.0, float(ext["financing_spread"]) - 0.015)
                 target = float(act.get("primary_surplus_target", 0.02))
                 ext["conditionality_primary_surplus"] = target
-                # Mild consolidation expectation encoded as spending pressure flag
-                hidden["creditor_spend_pressure"] = 0.98
+                hidden["creditor_spend_pressure"] = True  # one-shot mild consolidation nudge
                 inbox.append(
                     {
                         "from": "creditor_consortium",
@@ -140,26 +139,24 @@ def tick_external_environment(state: CountryState, rng: NamedStream) -> CountryS
     m = state.macro.model_copy(deep=True)
     f = state.fiscal.model_copy(deep=True)
 
-    # Trade volume response
-    openness = float(hidden.get("trade_openness", 0.35))
-    tariff_penalty = 1.0 - 0.5 * (float(ext["tariff_home"]) + float(ext["tariff_partner"]))
-    agree_bonus = 1.05 if ext.get("trade_agreement") else 1.0
-    partner = float(ext["partner_demand"]) * (1.0 + float(rng.normal(0, 0.01)))
+    # Mild partner-demand drift
+    partner = float(ext["partner_demand"]) * (1.0 + float(rng.normal(0, 0.005)))
     ext["partner_demand"] = max(0.5, min(1.4, partner))
 
-    export_mult = tariff_penalty * agree_bonus * float(ext["partner_demand"])
-    m.exports = max(0.0, m.exports * (0.9 + 0.1 * export_mult))
-    # Imports cheaper if home tariff low
-    m.imports = max(0.0, openness * m.consumption * (1.0 + 0.3 * float(ext["tariff_home"])))
+    # Soft trade multipliers (do not rewrite national accounts from scratch)
+    tariff_drag = 0.15 * (float(ext["tariff_home"]) + float(ext["tariff_partner"]) - 0.10)
+    agree_boost = 0.01 if ext.get("trade_agreement") else 0.0
+    demand_term = 0.02 * (float(ext["partner_demand"]) - 1.0)
+    m.exports = max(0.0, m.exports * (1.0 - tariff_drag / 12.0 + agree_boost / 12.0 + demand_term / 12.0))
+    m.imports = max(0.0, m.imports * (1.0 + 0.05 * (float(ext["tariff_home"]) - 0.05) / 12.0))
 
-    # Financing spread feeds policy rate faced by government debt
+    # Financing spread as additive premium on the Taylor rate set this month
     spread = float(ext["financing_spread"])
     m.interest_rate = max(0.0, m.interest_rate + spread)
 
-    # Conditionality: if program active and primary surplus too low, worsen stance
+    # Conditionality monitoring
     if ext.get("program_active") and ext.get("conditionality_primary_surplus") is not None:
         annual_gdp = max(m.gdp * 12.0, 1e-9)
-        # primary balance is monthly; annualize roughly
         pb_ratio = (f.primary_balance * 12.0) / annual_gdp
         target = float(ext["conditionality_primary_surplus"])
         if pb_ratio + 0.01 < target:
@@ -169,18 +166,16 @@ def tick_external_environment(state: CountryState, rng: NamedStream) -> CountryS
             ext["creditor_stance"] = min(1.0, float(ext["creditor_stance"]) + 0.01)
             ext["financing_spread"] = max(0.0, float(ext["financing_spread"]) - 0.001)
 
-    # Optional spend pressure from accepted program
-    if "creditor_spend_pressure" in hidden:
-        f.spending *= float(hidden["creditor_spend_pressure"])
+    # One-shot spend pressure flag (applied once, then cleared) — never compound monthly
+    if hidden.pop("creditor_spend_pressure", None) is not None:
+        f.spending *= 0.99
 
-    # Export promotion cost
     promo = float(hidden.pop("pending_export_promo_cost", 0.0) or 0.0)
     if promo:
         f.spending += promo
         f.cash = max(0.0, f.cash - promo)
 
     hidden["external"] = ext
-    # Surface external summary for observations
     hidden["external_summary"] = {
         "partner_demand": round(float(ext["partner_demand"]), 3),
         "tariff_home": round(float(ext["tariff_home"]), 3),
