@@ -1,0 +1,8 @@
+generated_at: 2026-09-01T01:46:08.604229+00:00
+scenario: macro_fiscal_crisis  fidelity: F0  seeds: 1  llm_interval: 4
+#1 Fable Commonwealth | claude-fable-5-thinking-xhigh | robust=24.07 grade=A
+#2 Grok Territories | cursor-grok-4.6-xhigh | robust=23.98 grade=B
+#3 Horizon Planning State | simple_mpc | robust=23.72 grade=C
+#4 Sol Commonwealth | gpt-5.6-sol-max | robust=23.71 grade=D
+#5 Meridian Federation | rule_based | robust=23.69 grade=F
+#6 Stasis Republic | hold_policy | robust=15.73 grade=F

@@ -3,6 +3,18 @@ import type { CountryReport } from "../types";
 import { CitizenGrid, CitizenLegend, MoodBar } from "./CitizenGrid";
 import { DimRadar, MonthScrubber, VoxelTown } from "./VoxelTown";
 import { narrativeFor } from "./Narrative";
+import { CabinetQuestLog, FloatingDeltas } from "./Fx";
+import {
+  CitizenBubbles,
+  dayPhase,
+  HighlightReel,
+  LeaderPortrait,
+  liveMoodSummary,
+  PolicyFlash,
+  SeasonFlash,
+  weatherFor,
+} from "./Life";
+import { MonthCalendar, RegionHeat, copyBriefing } from "./Stage";
 
 function MiniChart({ trajectory, field, color }: { trajectory: CountryReport["trajectory"]; field: string; color: string }) {
   const vals = trajectory.map((r) => Number(r[field] ?? 0));
@@ -112,10 +124,12 @@ export function CountryDetail({
   country,
   month: controlledMonth,
   onMonthChange,
+  bookmarks = [],
 }: {
   country: CountryReport;
   month?: number;
   onMonthChange?: (m: number) => void;
+  bookmarks?: number[];
 }) {
   const o = country.overview;
   const dims = country.evaluation.dims;
@@ -139,6 +153,10 @@ export function CountryDetail({
   const liveDebt = Number(snap.debt_gdp ?? o.debt_gdp);
   const liveDamage = Number(snap.damage ?? o.damage);
   const livePoverty = Number(snap.poverty ?? o.poverty_pct / 100);
+  const prevSnap = country.trajectory[Math.max(0, month - 1)];
+  const calMonth = Number(snap.month || 6);
+  const weather = weatherFor(calMonth, country.timeline, month);
+  const liveMood = liveMoodSummary(liveUnemp, liveTrust, liveDebt);
 
   return (
     <div className="country-detail">
@@ -158,19 +176,56 @@ export function CountryDetail({
             {country.scenario.replace(/_/g, " ")}
           </p>
         </div>
+        <FloatingDeltas prev={prevSnap} next={snap} />
       </header>
 
+      <LeaderPortrait country={country} month={month} />
+      <div className="detail-actions">
+        <button
+          type="button"
+          className="pixel-btn"
+          onClick={() => {
+            copyBriefing(country)?.then(
+              () => undefined,
+              () => undefined
+            );
+          }}
+        >
+          ⧉ Copy briefing
+        </button>
+      </div>
       <p className="narrative-box">{narrativeFor(country)}</p>
 
-      <VoxelTown
-        terrain={country.terrain}
-        damage={liveDamage}
-        trust={liveTrust}
-        unemployment={liveUnemp}
-        poverty={livePoverty}
-        debtGdp={liveDebt}
-        calendarMonth={Number(snap.month || 6)}
-      />
+      <HighlightReel country={country} onJump={setMonth} />
+      <PolicyFlash country={country} month={month} />
+
+      <div className="detail-top-row">
+        <div className="town-stage">
+          <SeasonFlash calendarMonth={calMonth} />
+          <VoxelTown
+            terrain={country.terrain}
+            damage={liveDamage}
+            trust={liveTrust}
+            unemployment={liveUnemp}
+            poverty={livePoverty}
+            debtGdp={liveDebt}
+            calendarMonth={calMonth}
+            dayPhase={dayPhase(month)}
+            weather={weather}
+          />
+          <CitizenBubbles
+            unemployment={liveUnemp}
+            trust={liveTrust}
+            debtGdp={liveDebt}
+            month={month}
+          />
+        </div>
+        <CabinetQuestLog
+          policyLog={country.policy_log}
+          timeline={country.timeline}
+          month={month}
+        />
+      </div>
 
       <MonthScrubber
         trajectory={country.trajectory}
@@ -178,12 +233,20 @@ export function CountryDetail({
         onChange={setMonth}
         events={country.timeline}
       />
+      <MonthCalendar
+        trajectory={country.trajectory}
+        month={month}
+        onChange={setMonth}
+        events={country.timeline}
+        bookmarks={bookmarks}
+      />
 
       <div className="detail-grid">
         <section className="detail-panel">
-          <h4>Population mood</h4>
+          <h4>Population mood · live</h4>
           <p className="big-num">{(o.population / 1_000_000).toFixed(1)}M citizens</p>
-          <MoodBar summary={country.mood_summary || {}} />
+          <MoodBar summary={liveMood} />
+          <p className="muted tiny-note">Bars shift with this month's macro — not end-of-term snapshot.</p>
           <CitizenGrid citizens={country.citizens} />
           <CitizenLegend />
         </section>
@@ -193,8 +256,13 @@ export function CountryDetail({
           <DimRadar dims={dims} />
         </section>
 
-        <section className="detail-panel">
-          <h4>Regional overview</h4>
+        <section className="detail-panel span-2">
+          <RegionHeat
+            regions={country.regions}
+            unemployment={liveUnemp}
+            damage={liveDamage}
+            trust={liveTrust}
+          />
           <table className="pixel-table">
             <thead>
               <tr>

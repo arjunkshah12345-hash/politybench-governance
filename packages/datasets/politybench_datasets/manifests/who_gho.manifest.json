@@ -1,6 +1,6 @@
 {
   "dataset_id": "who_gho",
-  "frozen_at": "2026-08-31T05:39:34.372296+00:00",
+  "frozen_at": "2026-09-01T01:46:38.428038+00:00",
   "benchmark_version": "0.1.0",
   "series": [
     {
@@ -26,5 +26,5 @@
     }
   ],
   "extra": {},
-  "manifest_sha256": "25b853cbb018aa81da1e1fa7eaa84b211444b81b782f10cc3f0f1b54f294a8c9"
+  "manifest_sha256": "ae72502fb504ba9ffe1a8ed631a8452e43efbd80cdbda7c070ed8351c3547a9a"
 }

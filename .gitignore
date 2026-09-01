@@ -46,3 +46,6 @@ artifacts/
 # Restricted dataset dumps
 data/restricted/
 packages/datasets/restricted/
+
+# Vercel local link
+packages/demo/web/.vercel/

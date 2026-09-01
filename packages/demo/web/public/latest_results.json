@@ -5,17 +5,17 @@
     "rule_based": 23.688129813438135,
     "hold_policy": 15.733336550878398,
     "simple_mpc": 23.718187690597805,
-    "composer-2.5": 24.07979256564555,
-    "gpt-5.2": 23.77143198463026,
-    "gemini-3.7-flash-high": 23.77143198463026
+    "claude-fable-5-thinking-xhigh": 24.07020514846349,
+    "gpt-5.6-sol-max": 23.709737609622284,
+    "cursor-grok-4.6-xhigh": 23.980581922196034
   },
   "mean_utility": {
     "rule_based": 0.23688129813438136,
     "hold_policy": 0.157333365508784,
     "simple_mpc": 0.23718187690597806,
-    "composer-2.5": 0.2407979256564555,
-    "gpt-5.2": 0.23771431984630262,
-    "gemini-3.7-flash-high": 0.23771431984630262
+    "claude-fable-5-thinking-xhigh": 0.2407020514846349,
+    "gpt-5.6-sol-max": 0.23709737609622283,
+    "cursor-grok-4.6-xhigh": 0.23980581922196034
   },
   "mean_dims": {
     "rule_based": {
@@ -45,44 +45,44 @@
       "legitimacy": 0.9999999999993333,
       "environment": 0.598247072117099
     },
-    "composer-2.5": {
-      "economic": 0.0278228497375652,
+    "claude-fable-5-thinking-xhigh": {
+      "economic": 0.027808454431478443,
       "human": 0.8107821243338479,
-      "stability": 0.6109641269266118,
-      "equity": 0.006366163461343811,
-      "resilience": 0.8242286273186334,
+      "stability": 0.6111354610663349,
+      "equity": 0.006339251024156609,
+      "resilience": 0.8312351484747195,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.6491158639853822
+      "environment": 0.644730465743832
     },
-    "gpt-5.2": {
-      "economic": 0.027712177525706264,
-      "human": 0.8036169258673753,
-      "stability": 0.6096076780409124,
-      "equity": 0.006308810738030612,
-      "resilience": 0.8372983187956801,
+    "gpt-5.6-sol-max": {
+      "economic": 0.027639329236727392,
+      "human": 0.8071756061974747,
+      "stability": 0.60778538135186,
+      "equity": 0.006348590699533469,
+      "resilience": 0.8437271434233417,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.5981216681051593
+      "environment": 0.5799120152854391
     },
-    "gemini-3.7-flash-high": {
-      "economic": 0.027712177525706264,
-      "human": 0.8036169258673753,
-      "stability": 0.6096076780409124,
-      "equity": 0.006308810738030612,
-      "resilience": 0.8372983187956801,
+    "cursor-grok-4.6-xhigh": {
+      "economic": 0.027750168215468163,
+      "human": 0.807938893675492,
+      "stability": 0.6083939352753659,
+      "equity": 0.006402837888198523,
+      "resilience": 0.8152767955922798,
       "legitimacy": 0.9999999999993333,
-      "environment": 0.5981216681051593
+      "environment": 0.6404886295717649
     }
   },
   "pareto_frontier": [
     "hold_policy",
     "simple_mpc",
-    "composer-2.5",
-    "gpt-5.2",
-    "gemini-3.7-flash-high"
+    "claude-fable-5-thinking-xhigh",
+    "gpt-5.6-sol-max",
+    "cursor-grok-4.6-xhigh"
   ],
   "weight_sensitivity": {
     "rule_based": {
-      "mean_rank": 4.474,
+      "mean_rank": 4.444,
       "rank_interval": [
         2,
         6
@@ -90,7 +90,7 @@
       "p_top1": 0.0
     },
     "hold_policy": {
-      "mean_rank": 5.37,
+      "mean_rank": 5.394,
       "rank_interval": [
         1,
         6
@@ -98,36 +98,36 @@
       "p_top1": 0.104
     },
     "simple_mpc": {
-      "mean_rank": 3.27,
+      "mean_rank": 3.31,
       "rank_interval": [
         1,
         5
       ],
-      "p_top1": 0.122
+      "p_top1": 0.092
     },
-    "composer-2.5": {
-      "mean_rank": 1.422,
-      "rank_interval": [
-        1,
-        5
-      ],
-      "p_top1": 0.772
-    },
-    "gpt-5.2": {
-      "mean_rank": 2.732,
+    "claude-fable-5-thinking-xhigh": {
+      "mean_rank": 1.428,
       "rank_interval": [
         1,
         4
       ],
-      "p_top1": 0.002
+      "p_top1": 0.732
     },
-    "gemini-3.7-flash-high": {
-      "mean_rank": 3.732,
+    "gpt-5.6-sol-max": {
+      "mean_rank": 3.804,
       "rank_interval": [
-        2,
+        1,
+        6
+      ],
+      "p_top1": 0.024
+    },
+    "cursor-grok-4.6-xhigh": {
+      "mean_rank": 2.62,
+      "rank_interval": [
+        1,
         5
       ],
-      "p_top1": 0.0
+      "p_top1": 0.048
     }
   },
   "best_baseline": {
@@ -136,22 +136,22 @@
   },
   "head_to_head": [
     {
-      "model": "composer-2.5",
+      "model": "claude-fable-5-thinking-xhigh",
       "vs_baseline": "simple_mpc",
-      "score_delta": 0.36,
+      "score_delta": 0.35,
       "won": true
     },
     {
-      "model": "gpt-5.2",
+      "model": "cursor-grok-4.6-xhigh",
       "vs_baseline": "simple_mpc",
-      "score_delta": 0.05,
+      "score_delta": 0.26,
       "won": true
     },
     {
-      "model": "gemini-3.7-flash-high",
+      "model": "gpt-5.6-sol-max",
       "vs_baseline": "simple_mpc",
-      "score_delta": 0.05,
-      "won": true
+      "score_delta": -0.01,
+      "won": false
     }
   ]
 }

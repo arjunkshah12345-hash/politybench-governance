@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDialKit } from "dialkit";
 import type { BenchLive } from "./types";
 import { CountryCard, CountryDetail } from "./components/CountryCard";
@@ -6,6 +6,19 @@ import { CompareBoard, HeadToHead, MultiCountryChart } from "./components/Compar
 import { Podium } from "./components/Narrative";
 import { DuelArena, GameHUD } from "./components/DuelArena";
 import { DuelWinner, NewsTicker, OverworldMap, TermEndSplash } from "./components/Overworld";
+import { playBeep, MonthNarrator, SpeedControl, ToastStack, useScreenShake, useToasts } from "./components/Fx";
+import { BootScreen, Bookmarks, KeyHelp } from "./components/Life";
+import {
+  CrisisVignette,
+  eventMonths,
+  loadPrefs,
+  NextCrisisChip,
+  nextEventMonth,
+  PlayheadSparkline,
+  savePrefs,
+  useAmbientHum,
+  ViewWipe,
+} from "./components/Stage";
 
 export default function App() {
   const theme = useDialKit("World Theme", {
@@ -16,6 +29,7 @@ export default function App() {
     scanlines: [0.025, 0, 0.15],
   });
 
+  const prefs = useMemo(() => loadPrefs(), []);
   const [bench, setBench] = useState<BenchLive | null>(null);
   const [selectedId, setSelectedId] = useState("");
   const [duelRightId, setDuelRightId] = useState("");
@@ -23,8 +37,25 @@ export default function App() {
   const [view, setView] = useState<"world" | "duel" | "compare" | "replay">("world");
   const [playing, setPlaying] = useState(false);
   const [playMonth, setPlayMonth] = useState(0);
+  const [speed, setSpeed] = useState(prefs.speed ?? 1);
+  const [muted, setMuted] = useState(prefs.muted ?? false);
+  const [ambient, setAmbient] = useState(prefs.ambient ?? false);
+  const [cinema, setCinema] = useState(false);
+  const [director, setDirector] = useState(false);
   const [showTermEnd, setShowTermEnd] = useState(false);
   const [showDuelEnd, setShowDuelEnd] = useState(false);
+  const [booting, setBooting] = useState(true);
+  const [showHelp, setShowHelp] = useState(false);
+  const [bookmarks, setBookmarks] = useState<number[]>(prefs.bookmarks ?? []);
+  const { toasts, push } = useToasts();
+  const lastEventMonth = useRef(-1);
+  const [shakeTick, setShakeTick] = useState(0);
+  const shaking = useScreenShake(shakeTick);
+  useAmbientHum(ambient, muted);
+
+  useEffect(() => {
+    savePrefs({ muted, ambient, speed, bookmarks });
+  }, [muted, ambient, speed, bookmarks]);
 
   const load = () => {
     setLoading(true);
@@ -61,32 +92,123 @@ export default function App() {
     return Math.max(selected.trajectory.length, other) - 1;
   }, [selected, duelRight]);
 
+  const beats = useMemo(
+    () => eventMonths(selected, view === "duel" ? duelRight : null),
+    [selected, duelRight, view]
+  );
+
   useEffect(() => {
     if (!playing) return;
+    const ms = Math.max(60, Math.round((director ? 480 : 220) / speed));
     const id = setInterval(() => {
       setPlayMonth((m) => {
         if (m >= maxMonth) {
           setPlaying(false);
+          playBeep("win", muted);
           if (view === "replay") setShowTermEnd(true);
           if (view === "duel") setShowDuelEnd(true);
           return maxMonth;
         }
+        if (director) {
+          const nxt = nextEventMonth(m, beats, 1);
+          if (nxt == null || nxt > maxMonth) {
+            setPlaying(false);
+            playBeep("win", muted);
+            if (view === "replay") setShowTermEnd(true);
+            if (view === "duel") setShowDuelEnd(true);
+            return maxMonth;
+          }
+          playBeep("tick", muted);
+          return nxt;
+        }
+        playBeep("tick", muted);
         return m + 1;
       });
-    }, 220);
+    }, ms);
     return () => clearInterval(id);
-  }, [playing, maxMonth, view]);
+  }, [playing, maxMonth, view, speed, muted, director, beats]);
+
+  useEffect(() => {
+    if (!selected || playMonth === lastEventMonth.current) return;
+    lastEventMonth.current = playMonth;
+    const hits = [
+      ...selected.timeline.filter((e) => Number(e.month) === playMonth),
+      ...(duelRight && view === "duel"
+        ? duelRight.timeline.filter((e) => Number(e.month) === playMonth)
+        : []),
+    ];
+    for (const e of hits) {
+      const warn = e.type === "disaster" || e.type === "epidemic" || e.severity >= 0.6;
+      playBeep(warn ? "warn" : "event", muted);
+      push(`M${e.month} · ${e.label}`, warn ? "warn" : "info");
+      if (warn) setShakeTick((t) => t + 1);
+    }
+  }, [playMonth, selected, duelRight, view, muted, push]);
 
   useEffect(() => {
     setPlayMonth(0);
     setPlaying(false);
     setShowTermEnd(false);
     setShowDuelEnd(false);
+    lastEventMonth.current = -1;
   }, [selectedId, duelRightId]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (booting) {
+        e.preventDefault();
+        setBooting(false);
+        return;
+      }
+      if (e.key === "?" || (e.shiftKey && e.key === "/")) {
+        e.preventDefault();
+        setShowHelp((h) => !h);
+        return;
+      }
+      if (e.key === "b" || e.key === "B") {
+        e.preventDefault();
+        setBookmarks((marks) =>
+          marks.includes(playMonth) ? marks.filter((m) => m !== playMonth) : [...marks, playMonth].sort((a, b) => a - b).slice(-8)
+        );
+        push(`Bookmark M${playMonth}`, "info");
+        return;
+      }
+      if (e.key === "h" || e.key === "H") {
+        e.preventDefault();
+        setCinema((c) => !c);
+        return;
+      }
+      if (e.key === "d" || e.key === "D") {
+        e.preventDefault();
+        setDirector((d) => {
+          const next = !d;
+          push(next ? "Director mode — jump event→event" : "Director off — month scrub", "info");
+          return next;
+        });
+        return;
+      }
+      if (e.key === "n" || e.key === "N") {
+        e.preventDefault();
+        const nxt = nextEventMonth(playMonth, beats, 1);
+        if (nxt != null) setPlayMonth(nxt);
+        return;
+      }
+      if (e.key === "p" || e.key === "P") {
+        e.preventDefault();
+        const prv = nextEventMonth(playMonth, beats, -1);
+        if (prv != null) setPlayMonth(prv);
+        return;
+      }
+      if (e.key === "m" || e.key === "M") {
+        e.preventDefault();
+        setAmbient((a) => {
+          const next = !a;
+          push(next ? "Ambient hum on" : "Ambient hum off", "info");
+          return next;
+        });
+        return;
+      }
       if (e.code === "Space") {
         e.preventDefault();
         setPlaying((p) => !p);
@@ -101,7 +223,7 @@ export default function App() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [maxMonth]);
+  }, [maxMonth, booting, playMonth, push, beats]);
 
   const cssVars = {
     "--sky-top": theme.skyTop,
@@ -111,15 +233,50 @@ export default function App() {
   } as React.CSSProperties;
 
   const winner = countries.find((c) => c.rank === 1);
+  const setViewWipe = (id: typeof view) => setView(id);
+
+  const snapNow = selected?.trajectory[Math.min(playMonth, Math.max(0, (selected?.trajectory.length || 1) - 1))];
+  const vignetteCrisis =
+    !!selected &&
+    (selected.timeline.some(
+      (e) => Number(e.month) === playMonth && (e.type === "disaster" || e.type === "epidemic" || e.severity >= 0.6)
+    ) ||
+      Number(snapNow?.unemployment ?? 0) > 0.18 ||
+      Number(snapNow?.debt_gdp ?? 0) > 1.8);
+  const vignetteBoom =
+    !!selected &&
+    Number(snapNow?.trust ?? 0) > 0.75 &&
+    Number(snapNow?.unemployment ?? 0) < 0.09 &&
+    !vignetteCrisis;
 
   return (
-    <div className="pixel-world bench-world" style={cssVars}>
+    <div
+      className={`pixel-world bench-world ${shaking ? "screen-shake" : ""} ${cinema ? "cinema" : ""} ${director ? "director-on" : ""}`}
+      style={cssVars}
+    >
       <div className="crt-overlay" style={{ opacity: theme.scanlines }} />
+      <CrisisVignette active={vignetteCrisis} kind="crisis" />
+      <CrisisVignette active={vignetteBoom} kind="boom" />
+      {booting && <BootScreen onDone={() => setBooting(false)} />}
+      <KeyHelp open={showHelp} onClose={() => setShowHelp(false)} />
+      <ToastStack toasts={toasts} />
+      <ViewWipe token={view} />
 
       {selected && (view === "replay" || view === "duel") && (
-        <GameHUD country={selected} month={playMonth} />
+        <>
+          <GameHUD country={selected} month={playMonth} />
+          <div className="hud-extras">
+            <PlayheadSparkline trajectory={selected.trajectory} month={playMonth} />
+            <NextCrisisChip
+              month={playMonth}
+              events={selected.timeline}
+              onJump={setPlayMonth}
+            />
+          </div>
+        </>
       )}
 
+      {!cinema && (
       <header className="bench-header">
         <div>
           <p className="sample-badge">◆ COUNTRY GOVERNANCE BENCH ◆</p>
@@ -149,7 +306,7 @@ export default function App() {
                 key={id}
                 type="button"
                 className={view === id ? "active" : ""}
-                onClick={() => setView(id)}
+                onClick={() => setViewWipe(id)}
               >
                 {label}
               </button>
@@ -157,17 +314,49 @@ export default function App() {
           </div>
         </div>
       </header>
+      )}
 
-      {bench && (
+      {bench && !cinema && (
         <>
           <NewsTicker countries={countries} month={playMonth} />
           <div className="bench-meta-bar">
             <span>{bench.scenario.replace(/_/g, " ")}</span>
             <span>F{bench.fidelity.replace("F", "")}</span>
             <span>{bench.countries.length} nations</span>
-            <span>keys 1–4 · space play</span>
+            <span>D director · N/P events · H cinema</span>
+            <button type="button" className="pixel-btn mute-btn" onClick={() => setMuted((m) => !m)}>
+              {muted ? "🔇" : "🔊"}
+            </button>
+            <button
+              type="button"
+              className={`pixel-btn mute-btn ${ambient ? "active" : ""}`}
+              onClick={() => setAmbient((a) => !a)}
+              title="Ambient hum"
+            >
+              ♪
+            </button>
+            <button
+              type="button"
+              className={`pixel-btn mute-btn ${director ? "active" : ""}`}
+              onClick={() => setDirector((d) => !d)}
+              title="Director mode"
+            >
+              ▶▶
+            </button>
+            <button type="button" className="pixel-btn mute-btn" onClick={() => setCinema(true)} title="Cinema">
+              ▢
+            </button>
+            <button type="button" className="pixel-btn mute-btn" onClick={() => setShowHelp(true)}>
+              ?
+            </button>
           </div>
         </>
+      )}
+
+      {cinema && (
+        <button type="button" className="cinema-exit pixel-btn" onClick={() => setCinema(false)}>
+          Exit cinema (H)
+        </button>
       )}
 
       {countries.length > 0 && view === "world" && <Podium countries={countries} />}
@@ -201,6 +390,9 @@ export default function App() {
                 ))}
               </select>
             </label>
+          </div>
+          <div className="replay-controls duel-speed-row">
+            <SpeedControl speed={speed} onChange={setSpeed} />
           </div>
           <DuelArena
             left={selected}
@@ -256,15 +448,41 @@ export default function App() {
               onClick={() => {
                 setPlayMonth(0);
                 setPlaying(true);
+                lastEventMonth.current = -1;
               }}
             >
               ↺ Restart
+            </button>
+            <SpeedControl speed={speed} onChange={setSpeed} />
+            <button
+              type="button"
+              className="pixel-btn"
+              onClick={() => {
+                setBookmarks((marks) =>
+                  marks.includes(playMonth)
+                    ? marks.filter((m) => m !== playMonth)
+                    : [...marks, playMonth].sort((a, b) => a - b).slice(-8)
+                );
+              }}
+            >
+              ★ Mark
             </button>
             <span className="muted">
               Month {playMonth}/{maxMonth}
             </span>
           </div>
-          <CountryDetail country={selected} month={playMonth} onMonthChange={setPlayMonth} />
+          <Bookmarks
+            marks={bookmarks}
+            onJump={setPlayMonth}
+            onClear={() => setBookmarks([])}
+          />
+          <MonthNarrator country={selected} month={playMonth} />
+          <CountryDetail
+            country={selected}
+            month={playMonth}
+            onMonthChange={setPlayMonth}
+            bookmarks={bookmarks}
+          />
         </section>
       )}
 
@@ -318,11 +536,13 @@ export default function App() {
         <DuelWinner left={selected} right={duelRight} onClose={() => setShowDuelEnd(false)} />
       )}
 
+      {!cinema && (
       <footer className="pixel-footer">
         <span>click a nation → auto-replay · Duel for head-to-head</span>
         <span className="blink">▮</span>
         <span>research sim only</span>
       </footer>
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 {
   "benchmark_version": "0.1.0",
   "ensemble_id": "japan_geje_posterior_v1",
-  "frozen_at": "2026-08-31T05:39:34.229609+00:00",
+  "frozen_at": "2026-08-31T05:40:02.627390+00:00",
   "calibration_window": "2011-2013",
   "holdout_window": "2014-2016",
   "n_particles_searched": 6,
@@ -176,5 +176,5 @@
       }
     }
   ],
-  "content_hash": "25babe001460eb538a0d2e4bc873a268c0819ec6ba6e2a7cd69c1851736b4039"
+  "content_hash": "49f9f6410b4cff94007f3d62a7754a21695238abf145aeabde86a9d5381b6d72"
 }

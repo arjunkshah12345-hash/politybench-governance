@@ -165,13 +165,18 @@ class CursorLLMExecutive:
         self,
         model: str = "composer-2.5",
         decision_interval: int = 3,
-        timeout_sec: int = 120,
+        timeout_sec: int | None = None,
         fallback=None,
     ):
         self.model = model
         self.name = model
         self.decision_interval = max(1, decision_interval)
-        self.timeout_sec = timeout_sec
+        # Heavy thinking / max models routinely exceed 2 minutes per decision.
+        heavy = any(
+            tag in model
+            for tag in ("thinking", "xhigh", "-max", "sol-max", "sol-xhigh", "fable")
+        )
+        self.timeout_sec = timeout_sec if timeout_sec is not None else (420 if heavy else 180)
         self.fallback = fallback
         self.llm_calls = 0
         self.policy_log: list[dict[str, Any]] = []

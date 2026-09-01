@@ -1,0 +1,9 @@
+generated_at: 2026-08-31T07:53:56.028150+00:00
+scenario: macro_fiscal_crisis  fidelity: F0  seeds: 1  llm_interval: 4
+
+#1 Composer Union | composer-2.5 | robust=24.19 grade=A U=17.9% debt=2.26 trust=0.95
+#2 GPT Commonwealth | gpt-5.2 | robust=23.77 grade=B U=17.7% debt=2.27 trust=0.95
+#3 Gemini Republic | gemini-3.7-flash-high | robust=23.77 grade=C U=17.7% debt=2.27 trust=0.95
+#4 Horizon Planning State | simple_mpc | robust=23.72 grade=D U=17.9% debt=2.26 trust=0.95
+#5 Meridian Federation | rule_based | robust=23.69 grade=F U=17.9% debt=2.26 trust=0.95
+#6 Stasis Republic | hold_policy | robust=15.73 grade=F U=14.1% debt=2.16 trust=0.95

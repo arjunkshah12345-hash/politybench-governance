@@ -7,6 +7,8 @@ export function VoxelTown({
   poverty = 0.15,
   debtGdp = 1,
   calendarMonth = 6,
+  dayPhase = "day",
+  weather = "clear",
 }: {
   terrain: string;
   damage?: number;
@@ -15,6 +17,8 @@ export function VoxelTown({
   poverty?: number;
   debtGdp?: number;
   calendarMonth?: number;
+  dayPhase?: "dawn" | "day" | "dusk" | "night";
+  weather?: "clear" | "rain" | "storm" | "snow";
 }) {
   const ruined = damage > 0.15;
   const boom = trust > 0.7 && unemployment < 0.1 && poverty < 0.2;
@@ -28,48 +32,85 @@ export function VoxelTown({
           ? "summer"
           : "autumn";
 
+  const people = crisis || weather === "storm" ? 2 : boom ? 6 : dayPhase === "night" ? 1 : 4;
+  const showRain = weather === "rain" || weather === "storm" || crisis;
+  const showSnow = weather === "snow";
+
   return (
     <div
-      className={`voxel-town-scene terrain-${terrain} season-${season} ${ruined ? "ruined" : ""} ${boom ? "boom" : ""} ${crisis ? "crisis" : ""}`}
+      className={`voxel-town-scene terrain-${terrain} season-${season} phase-${dayPhase} weather-${weather} ${ruined ? "ruined" : ""} ${boom ? "boom" : ""} ${crisis ? "crisis" : ""}`}
     >
       <div className="vt-sky">
-        <span className="vt-sun" />
-        <span className="vt-cloud c1" />
-        <span className="vt-cloud c2" />
+        <span className={`vt-sun ${dayPhase === "night" ? "moon" : ""}`} />
+        {dayPhase !== "night" && weather !== "storm" && (
+          <>
+            <span className="vt-cloud c1" />
+            <span className="vt-cloud c2" />
+          </>
+        )}
+        {dayPhase === "night" && (
+          <div className="vt-stars" aria-hidden>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <i key={i} style={{ left: `${12 + i * 14}%`, top: `${8 + (i % 3) * 10}%` }} />
+            ))}
+          </div>
+        )}
+        {showRain && (
+          <div className={`vt-rain ${weather === "storm" ? "storm" : ""}`} aria-hidden>
+            {Array.from({ length: weather === "storm" ? 14 : 8 }).map((_, i) => (
+              <i key={i} style={{ left: `${6 + i * 7}%`, animationDelay: `${i * 0.09}s` }} />
+            ))}
+          </div>
+        )}
+        {showSnow && (
+          <div className="vt-snow" aria-hidden>
+            {Array.from({ length: 10 }).map((_, i) => (
+              <i key={i} style={{ left: `${8 + i * 9}%`, animationDelay: `${i * 0.2}s` }} />
+            ))}
+          </div>
+        )}
       </div>
       <div className="vt-ground">
         <div className={`vt-bldg capitol ${ruined ? "damaged" : ""}`}>
           <div className="vt-roof" />
           <div className="vt-wall">
-            <i className="vt-win" />
+            <i className={`vt-win ${dayPhase === "night" || dayPhase === "dusk" ? "lit" : ""}`} />
             <i className="vt-door" />
-            <i className="vt-win" />
+            <i className={`vt-win ${dayPhase === "night" ? "lit" : ""}`} />
           </div>
           <div className={`vt-flag ${trust > 0.6 ? "flying" : ""}`} />
+          {!crisis && dayPhase !== "night" && <span className="vt-smoke" />}
         </div>
         <div className={`vt-bldg house ${poverty > 0.3 ? "poor" : ""}`}>
           <div className="vt-roof red" />
           <div className="vt-wall">
-            <i className="vt-win" />
+            <i className={`vt-win ${dayPhase === "night" ? "lit" : ""}`} />
           </div>
         </div>
-        <div className="vt-bldg shop">
+        <div className={`vt-bldg shop ${boom ? "busy" : ""}`}>
           <div className="vt-roof blue" />
           <div className="vt-wall">
-            <i className="vt-win" />
+            <i className={`vt-win ${dayPhase !== "day" ? "lit" : ""}`} />
           </div>
+          {boom && <span className="vt-coins">$</span>}
         </div>
         <div className="vt-tree" />
         <div className="vt-tree short" />
         <div className="vt-people">
-          {Array.from({ length: crisis ? 2 : boom ? 5 : 3 }).map((_, i) => (
-            <span key={i} className={`vt-person p${i}`} style={{ animationDelay: `${i * 0.2}s` }}>
-              {unemployment > 0.15 && i === 0 ? "😟" : boom ? "🙂" : "😐"}
+          {Array.from({ length: people }).map((_, i) => (
+            <span
+              key={i}
+              className={`vt-person walk p${i % 4}`}
+              style={{ animationDelay: `${i * 0.35}s`, animationDuration: `${2.4 + (i % 3) * 0.4}s` }}
+            >
+              {unemployment > 0.15 && i === 0 ? "😟" : boom ? "🙂" : ruined ? "😮" : "😐"}
             </span>
           ))}
         </div>
         {crisis && <div className="vt-banner">CRISIS</div>}
         {boom && <div className="vt-banner boom">BOOM</div>}
+        {weather === "storm" && <div className="vt-banner storm">STORM</div>}
+        <span className="vt-clock">{dayPhase.toUpperCase()}</span>
       </div>
     </div>
   );

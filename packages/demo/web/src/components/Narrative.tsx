@@ -27,14 +27,34 @@ export function narrativeFor(c: CountryReport): string {
   return parts.join(" ");
 }
 
+/** Live month-by-month duel callout. */
+export function duelCallout(left: CountryReport, right: CountryReport, month: number): string {
+  const ls = left.trajectory[Math.min(month, left.trajectory.length - 1)] || {};
+  const rs = right.trajectory[Math.min(month, right.trajectory.length - 1)] || {};
+  const l0 = Number(left.trajectory[0]?.gdp || 1);
+  const r0 = Number(right.trajectory[0]?.gdp || 1);
+  const lIdx = Number(ls.gdp || l0) / Math.max(l0, 1e-9);
+  const rIdx = Number(rs.gdp || r0) / Math.max(r0, 1e-9);
+  const gap = Math.abs(lIdx - rIdx);
+  if (gap < 0.01) return "Dead heat on GDP — cabinets sweat.";
+  const lead = lIdx > rIdx ? left : right;
+  const trail = lead.agent_id === left.agent_id ? right : left;
+  if (gap > 0.08) return `${lead.sprite} ${lead.country_name} pulls away — ${trail.country_name} is bleeding output.`;
+  return `${lead.sprite} ${lead.country_name} edges ahead · Δ${(gap * 100).toFixed(0)}pp GDP`;
+}
+
 export function Podium({ countries }: { countries: CountryReport[] }) {
   const top = [...countries].sort((a, b) => a.rank - b.rank).slice(0, 3);
   if (top.length < 2) return null;
   const order = top.length >= 3 ? [top[1], top[0], top[2]] : top;
   return (
-    <div className="podium">
-      {order.map((c) => (
-        <div key={c.agent_id} className={`podium-slot rank-${c.rank}`}>
+    <div className="podium podium-enter">
+      {order.map((c, i) => (
+        <div
+          key={c.agent_id}
+          className={`podium-slot rank-${c.rank}`}
+          style={{ animationDelay: `${i * 0.12}s` }}
+        >
           <span className="podium-sprite">{c.sprite}</span>
           <strong>{c.country_name}</strong>
           <span className="podium-score">{c.evaluation.robust_score_single.toFixed(1)}</span>
